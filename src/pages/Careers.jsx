@@ -13,8 +13,8 @@ import {
 import { careersData } from '../data/careers';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
-export default function Careers() {
-  useDocumentTitle('Careers | Join TECHNO MECH TOOLINGS');
+export default function Careers({ embedded = false }) {
+  useDocumentTitle('Careers | Join TECHNO MECH TOOLINGS', !embedded);
 
   const [selectedJob, setSelectedJob] = useState(null);
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
@@ -82,11 +82,13 @@ export default function Careers() {
       {/* Page Header */}
       <div className="bg-[#1E2227] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-[#2D333B]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#F5B800] mb-2 font-semibold">
-            <Link to="/" className="hover:underline text-gray-400">Home</Link>
-            <span className="text-gray-600">/</span>
-            <span>Careers</span>
-          </div>
+          {!embedded && (
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#F5B800] mb-2 font-semibold">
+              <Link to="/" className="hover:underline text-gray-400">Home</Link>
+              <span className="text-gray-600">/</span>
+              <span>Careers</span>
+            </div>
+          )}
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Career Opportunities at TMT
           </h1>

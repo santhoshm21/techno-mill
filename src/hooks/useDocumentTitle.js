@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
-export function useDocumentTitle(title) {
+export function useDocumentTitle(title, enabled = true) {
   useEffect(() => {
+    if (!enabled) return;
     const prevTitle = document.title;
     if (title) {
       document.title = `${title} | TECHNO MECH TOOLINGS (TMT)`;
@@ -12,5 +13,5 @@ export function useDocumentTitle(title) {
     return () => {
       document.title = prevTitle;
     };
-  }, [title]);
+  }, [title, enabled]);
 }

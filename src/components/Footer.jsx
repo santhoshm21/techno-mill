@@ -39,17 +39,17 @@ export default function Footer() {
               Quick Links
             </h4>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-xs">
-              <Link to="/" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</Link>
-              <Link to="/projects" className="text-gray-400 hover:text-[#F5B800] transition-colors">Projects</Link>
+              <a href="#home" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</a>
+              <a href="#projects" className="text-gray-400 hover:text-[#F5B800] transition-colors">Projects</a>
               
-              <Link to="/about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About Us</Link>
-              <Link to="/facility" className="text-gray-400 hover:text-[#F5B800] transition-colors">Facility</Link>
+              <a href="#about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About Us</a>
+              <a href="#facility" className="text-gray-400 hover:text-[#F5B800] transition-colors">Facility</a>
               
-              <Link to="/products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</Link>
-              <Link to="/clients" className="text-gray-400 hover:text-[#F5B800] transition-colors">Clients</Link>
+              <a href="#products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</a>
+              <a href="#clients" className="text-gray-400 hover:text-[#F5B800] transition-colors">Clients</a>
               
-              <Link to="/services" className="text-gray-400 hover:text-[#F5B800] transition-colors">Services</Link>
-              <Link to="/careers" className="text-gray-400 hover:text-[#F5B800] transition-colors">Careers</Link>
+              <a href="#services" className="text-gray-400 hover:text-[#F5B800] transition-colors">Services</a>
+              <a href="#careers" className="text-gray-400 hover:text-[#F5B800] transition-colors">Careers</a>
             </div>
           </div>
 

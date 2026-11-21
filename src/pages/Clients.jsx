@@ -16,8 +16,8 @@ import { clients, clientSectors } from '../data/clients';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Clients() {
-  useDocumentTitle('Our Esteemed Customers | Client Partners | TECHNO MECH TOOLINGS');
+export default function Clients({ embedded = false }) {
+  useDocumentTitle('Our Esteemed Customers | Client Partners | TECHNO MECH TOOLINGS', !embedded);
   const { openQuoteModal } = useQuote();
 
   return (
@@ -28,11 +28,13 @@ export default function Clients() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Trail */}
-          <nav className="flex items-center space-x-2 text-xs font-mono text-gray-500 mb-2.5" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-black transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <span className="text-gray-900 font-semibold">Clients</span>
-          </nav>
+          {!embedded && (
+            <nav className="flex items-center space-x-2 text-xs font-mono text-gray-500 mb-2.5" aria-label="Breadcrumb">
+              <Link to="/" className="hover:text-black transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+              <span className="text-gray-900 font-semibold">Clients</span>
+            </nav>
+          )}
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>

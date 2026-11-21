@@ -21,7 +21,7 @@ import { categories } from '../data/categories';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Products() {
+export default function Products({ embedded = false }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentCategorySlug = searchParams.get('category') || 'all';
   const urlSearch = searchParams.get('search') || '';
@@ -38,7 +38,8 @@ export default function Products() {
   useDocumentTitle(
     activeCategoryObj 
       ? `${activeCategoryObj.name} | TMT Tooling Catalogue` 
-      : 'Solid Carbide Products & Catalogue | TECHNO MECH TOOLINGS'
+      : 'Solid Carbide Products & Catalogue | TECHNO MECH TOOLINGS',
+    !embedded
   );
 
   // Filter and sort products
@@ -124,19 +125,27 @@ export default function Products() {
             {activeCategoryObj ? activeCategoryObj.name : 'PRODUCTION'}
           </h1>
 
-          {/* Yellow Angled Breadcrumb Polygon Badge (Like Image 5 Reference) */}
+          {/* Yellow Angled Breadcrumb / Category Badge */}
           <div className="mt-4 inline-flex items-center justify-center">
             <div className="relative inline-block bg-[#F5B800] text-[#1E2227] px-6 py-1.5 text-xs font-mono font-bold uppercase tracking-wider shadow-md transform -skew-x-12 border border-amber-400">
               <span className="transform skew-x-12 inline-flex items-center gap-1.5 font-black">
-                <span>You are here :</span>
-                <Link to="/" className="hover:underline">Home</Link>
-                <span>/</span>
-                <span>Products</span>
-                {activeCategoryObj && (
+                {!embedded ? (
                   <>
+                    <span>You are here :</span>
+                    <Link to="/" className="hover:underline">Home</Link>
                     <span>/</span>
-                    <span className="text-black font-black">{activeCategoryObj.name}</span>
+                    <span>Products</span>
+                    {activeCategoryObj && (
+                      <>
+                        <span>/</span>
+                        <span className="text-black font-black">{activeCategoryObj.name}</span>
+                      </>
+                    )}
                   </>
+                ) : (
+                  <span>
+                    {activeCategoryObj ? `Catalogue : ${activeCategoryObj.name}` : 'Precision Solid Carbide Lineup'}
+                  </span>
                 )}
               </span>
             </div>

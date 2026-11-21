@@ -13,8 +13,8 @@ import { projects } from '../data/projects';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Projects() {
-  useDocumentTitle('Recent Developments & Projects | TECHNO MECH TOOLINGS');
+export default function Projects({ embedded = false }) {
+  useDocumentTitle('Recent Developments & Projects | TECHNO MECH TOOLINGS', !embedded);
   const { openQuoteModal } = useQuote();
 
   return (
@@ -25,11 +25,13 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Trail */}
-          <nav className="flex items-center space-x-2 text-xs font-mono text-gray-500 mb-3" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-black transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <span className="text-gray-900 font-semibold">Projects</span>
-          </nav>
+          {!embedded && (
+            <nav className="flex items-center space-x-2 text-xs font-mono text-gray-500 mb-3" aria-label="Breadcrumb">
+              <Link to="/" className="hover:text-black transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+              <span className="text-gray-900 font-semibold">Projects</span>
+            </nav>
+          )}
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>

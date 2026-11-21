@@ -13,8 +13,8 @@ import { services } from '../data/services';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Services() {
-  useDocumentTitle('Services | Re-Sharpening, Re-Fluting & Coating | TECHNO MECH TOOLINGS');
+export default function Services({ embedded = false }) {
+  useDocumentTitle('Services | Re-Sharpening, Re-Fluting & Coating | TECHNO MECH TOOLINGS', !embedded);
   const { openQuoteModal } = useQuote();
 
   return (

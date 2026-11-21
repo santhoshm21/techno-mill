@@ -10,8 +10,8 @@ import {
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function About() {
-  useDocumentTitle('About Us | TECHNO MECH TOOLINGS (TMT)');
+export default function About({ embedded = false }) {
+  useDocumentTitle('About Us | TECHNO MECH TOOLINGS (TMT)', !embedded);
   const { openQuoteModal } = useQuote();
 
   // Quick technical inquiry form state

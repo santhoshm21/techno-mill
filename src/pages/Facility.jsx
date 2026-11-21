@@ -20,8 +20,8 @@ import { facilityData } from '../data/facility';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Facility() {
-  useDocumentTitle('Infrastructure & Manufacturing Facility | TECHNO MECH TOOLINGS');
+export default function Facility({ embedded = false }) {
+  useDocumentTitle('Infrastructure & Manufacturing Facility | TECHNO MECH TOOLINGS', !embedded);
   const { openQuoteModal } = useQuote();
 
   return (

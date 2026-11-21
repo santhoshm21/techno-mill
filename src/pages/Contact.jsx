@@ -14,8 +14,8 @@ import {
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
-export default function Contact() {
-  useDocumentTitle('Contact Us | Plant Address, Technical Sales & Inquiries');
+export default function Contact({ embedded = false }) {
+  useDocumentTitle('Contact Us | Plant Address, Technical Sales & Inquiries', !embedded);
   const { openQuoteModal } = useQuote();
 
   const [formData, setFormData] = useState({
@@ -64,11 +64,13 @@ export default function Contact() {
       {/* Page Header */}
       <div className="bg-[#1E2227] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-[#2D333B]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#F5B800] mb-2 font-semibold">
-            <Link to="/" className="hover:underline text-gray-400">Home</Link>
-            <span className="text-gray-600">/</span>
-            <span>Contact Us</span>
-          </div>
+          {!embedded && (
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#F5B800] mb-2 font-semibold">
+              <Link to="/" className="hover:underline text-gray-400">Home</Link>
+              <span className="text-gray-600">/</span>
+              <span>Contact Us</span>
+            </div>
+          )}
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Contact TECHNO MECH TOOLINGS (TMT)
           </h1>
