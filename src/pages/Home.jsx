@@ -24,8 +24,7 @@ import {
   FaceMillVisual,
   EndMillVisual,
   TwistDrillVisual,
-  TurningInsertVisual,
-  SpecialToolVisual
+  TurningInsertVisual
 } from '../components/RealisticToolVisuals';
 import {
   TataLogo,
@@ -115,15 +114,6 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
-
-  // 5 Quick Category Cards (under Hero)
-  const quickCategories = [
-    { name: 'Drills', slug: 'drills', visual: TwistDrillVisual },
-    { name: 'End Mills', slug: 'end-mills', visual: EndMillVisual },
-    { name: 'Burnishing Drills', slug: 'burnishing-drills', visual: FaceMillVisual },
-    { name: 'Reamers', slug: 'reamers', visual: TurningInsertVisual },
-    { name: 'Special Tools', slug: 'special-tools', visual: SpecialToolVisual },
-  ];
 
   // 4 Featured Products (right of sidebar)
   const productsList = [
@@ -239,9 +229,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0D1117] via-[#0D1117]/85 to-transparent"></div>
         </div>
 
-        {/* Bottom subtle gradient for superior card readability */}
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#0D1117] via-[#0D1117]/75 to-transparent pointer-events-none z-10"></div>
-
         {/* Left / Right Arrow Navigation for Quick Manual Control */}
         <button
           onClick={() => setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
@@ -260,7 +247,7 @@ export default function Home() {
         </button>
 
         {/* Hero Overlay Content on Left (Shifted 1 inch to right and 0.5cm upward) */}
-        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 xl:px-12 pt-8 sm:pt-12 lg:pt-16 pb-4 flex-1 flex flex-col justify-center">
+        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 sm:py-16 lg:py-20 flex-1 flex flex-col justify-center">
           <div className="max-w-xl lg:max-w-2xl pl-4 sm:pl-12 md:pl-20 lg:pl-24 -translate-y-[0.5cm]">
 
             {/* Main Headline */}
@@ -300,31 +287,6 @@ export default function Home() {
               ))}
             </div>
 
-          </div>
-        </div>
-
-        {/* 2. CATEGORY QUICK ICON STRIP (5 Horizontal Cards Docked at Bottom of Full-Screen Hero) */}
-        <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8 xl:px-12 pb-5 sm:pb-7">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {quickCategories.map((item, idx) => {
-              const VisualComp = item.visual;
-              return (
-                <Link
-                  key={idx}
-                  to={`/products?category=${item.slug}`}
-                  className="bg-white/95 hover:bg-white backdrop-blur-md border border-white/20 hover:border-[#F5B800] rounded-xl p-3 shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 group transform hover:-translate-y-0.5"
-                >
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-[#F8FAFC] border border-gray-200 p-1 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-inner">
-                    <VisualComp className="w-full h-full" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-xs sm:text-sm font-bold text-gray-800 group-hover:text-[#D97706] transition-colors leading-tight">
-                      {item.name}
-                    </h3>
-                  </div>
-                </Link>
-              );
-            })}
           </div>
         </div>
 
