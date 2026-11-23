@@ -211,59 +211,49 @@ export default function About({ embedded = false }) {
           </div>
 
           {/* Facility Infrastructure & Manufacturing Plant Section */}
-          <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200">
+          <div className="bg-[#F5B800] rounded-3xl p-6 sm:p-10 shadow-xl border border-[#E0A800]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight text-gray-900">
+                <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight text-[#111827]">
                   Modern Manufacturing Facility &amp; Advanced Infrastructure
                 </h3>
 
-                <div className="space-y-3.5 text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
+                <div className="space-y-3.5 text-xs sm:text-sm text-[#111827]/90 leading-relaxed font-normal">
                   <p>
-                    Techno Mech Toolings operates from its dedicated <strong className="font-bold text-gray-900">2,000+ sq.ft modern manufacturing facility</strong> situated in Chennai, India. Purpose-built for high-precision solid carbide cutting tool manufacturing and advanced tool re-conditioning, our plant integrates multi-axis CNC technology with rigorous quality assurance.
+                    Techno Mech Toolings operates from its dedicated <strong className="font-bold text-[#111827]">2,000+ sq.ft modern manufacturing facility</strong> situated in Chennai, India. Purpose-built for high-precision solid carbide cutting tool manufacturing and advanced tool re-conditioning, our plant integrates multi-axis CNC technology with rigorous quality assurance.
                   </p>
                   <p>
-                    Our engineering infrastructure features <strong className="font-bold text-gray-900">climate-controlled grinding bays, automated diamond wheel dressing, micro-honing finishing zones</strong>, and specialized thin-film PVD coating partnerships (AlTiN, TiAlN, DLC). Every square foot is engineered for micron-level geometric accuracy and clean handling.
+                    Our engineering infrastructure features <strong className="font-bold text-[#111827]">climate-controlled grinding bays, automated diamond wheel dressing, micro-honing finishing zones</strong>, and specialized thin-film PVD coating partnerships (AlTiN, TiAlN, DLC). Every square foot is engineered for micron-level geometric accuracy and clean handling.
                   </p>
                   <p>
-                    Today we cater to precision tooling and re-sharpening demands from <strong className="font-bold text-gray-900">small-scale workshops to large-scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
+                    Today we cater to precision tooling and re-sharpening demands from <strong className="font-bold text-[#111827]">small-scale workshops to large-scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
                   </p>
                 </div>
 
                 <div className="pt-2">
                   <button
                     onClick={() => openQuoteModal({ productName: 'Manufacturing Facility Tour & Capability Inquiry' })}
-                    className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-bold text-xs px-6 py-3 rounded-xl shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
+                    className="bg-[#111827] hover:bg-black text-white font-bold text-xs px-6 py-3 rounded-xl shadow-xl transition-all inline-flex items-center gap-2 cursor-pointer"
                   >
                     <span>Inquire About Facility Capabilities</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 text-[#F5B800]" />
                   </button>
                 </div>
               </div>
 
               {/* Company Building Card */}
               <div className="lg:col-span-5">
-                <div className="bg-[#111827] rounded-2xl p-5 shadow-xl text-white">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-sm font-bold text-white tracking-tight">
-                      Techno Mech Toolings Manufacturing Plant
-                    </h4>
-                    <span className="text-[10px] font-semibold bg-[#F5B800] text-[#111827] px-2 py-0.5 rounded-full">
-                      Chennai, India
-                    </span>
-                  </div>
+                <div className="bg-[#111827] rounded-2xl p-5 shadow-2xl text-white">
+                  <h4 className="text-sm font-bold text-white tracking-tight mb-3">
+                    Techno Mech Toolings Manufacturing Plant
+                  </h4>
                   <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border border-gray-800">
                     <img 
                       src="/images/company/tmt-factory-building.jpg" 
                       alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai" 
                       className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" 
                     />
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-gray-800 flex items-center justify-between text-[11px] text-gray-400 font-mono">
-                    <span>2,000+ Sq.Ft Infrastructure</span>
-                    <span>•</span>
-                    <span>High-Precision CNC Setup</span>
                   </div>
                 </div>
               </div>
