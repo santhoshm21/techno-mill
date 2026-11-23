@@ -14,15 +14,9 @@ export default function Footer() {
     <footer className="w-full bg-[#0D0E12] py-6 sm:py-10 lg:py-14 px-3 sm:px-6 lg:px-10 font-sans selection:bg-[#F5B800] selection:text-[#1E2227] relative">
       
       {/* =========================================================================
-          REPLICA CONTAINER: Floating Dark Rounded Card (Exact Match to Reference UI)
+          REPLICA CONTAINER: Floating Dark Rounded Card (Exact Match to Image)
           ========================================================================= */}
       <div className="max-w-[1440px] mx-auto bg-[#08090B] border border-white/[0.08] rounded-3xl sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-10 lg:p-14 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)]">
-        
-        {/* Ambient Yellow Spotlight Glow behind bottom watermark */}
-        <div 
-          className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] max-w-5xl h-44 sm:h-56 bg-[#F5B800]/15 blur-[90px] pointer-events-none rounded-full" 
-          aria-hidden="true"
-        />
 
         {/* -------------------------------------------------------------
             TOP SECTION: Brand Column (Left) + 4 Link Columns (Right)
@@ -178,33 +172,15 @@ export default function Footer() {
         </div>
 
         {/* -------------------------------------------------------------
-            MIDDLE SECTION: Copyright & Attribution (Exact Match to Reference)
+            BOTTOM SECTION: Copyright & Attribution (Exact Match to Image)
             ------------------------------------------------------------- */}
-        <div className="mt-14 sm:mt-20 lg:mt-24 mb-4 sm:mb-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-gray-400 gap-3 relative z-10">
+        <div className="mt-12 sm:mt-16 lg:mt-20 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-gray-400 gap-3 relative z-10 border-t border-white/[0.06]">
           <div>
             &copy; 2026 Techno Mech Tooling. All rights reserved.
           </div>
           <div>
             Design by Grabui - Powered by Placeholder
           </div>
-        </div>
-
-        {/* -------------------------------------------------------------
-            BOTTOM SECTION: Giant Illuminated Typography "TECHNO MECH TOOLING"
-            (Exact replica of green CONVRTO word changed to Yellow glowing gradient)
-            ------------------------------------------------------------- */}
-        <div className="relative pt-2 sm:pt-4 overflow-hidden flex justify-center items-end select-none pointer-events-none">
-          <span 
-            className="font-black uppercase tracking-tighter text-center leading-none whitespace-nowrap text-[6.5vw] transition-all duration-500 filter"
-            style={{
-              background: 'radial-gradient(ellipse 65% 100% at 50% 50%, #FFF275 0%, #F5B800 35%, rgba(245, 184, 0, 0.45) 70%, rgba(160, 100, 0, 0.12) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 0 35px rgba(245, 184, 0, 0.22))',
-            }}
-          >
-            TECHNO MECH TOOLING
-          </span>
         </div>
 
       </div>
