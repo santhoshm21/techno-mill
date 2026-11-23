@@ -95,27 +95,27 @@ export default function About({ embedded = false }) {
         </div>
       </section>
 
-      {/* 4. RE-CYCLING & TOOLING COST-SAVING TECHNOLOGY SECTION */}
-      <section className="bg-[#1E2227] text-white py-14 border-t border-gray-800">
+      {/* 4. RE-CYCLING & TOOLING COST-SAVING TECHNOLOGY SECTION (Brand Yellow Background) */}
+      <section className="bg-[#F5B800] text-[#111827] py-14 border-t border-amber-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-5">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-[#111827]">
                 Innovative Re-cycling &amp; Cost Saving Concepts for Industry
               </h2>
 
-              <div className="space-y-4 text-xs sm:text-sm text-gray-300 leading-relaxed">
+              <div className="space-y-4 text-xs sm:text-sm text-[#111827]/85 font-medium leading-relaxed">
                 <p>
-                  Techno Mech Toolings provides our customers with <strong>Value added services through Re-cycling of all used cutting tools</strong> using proven, innovative re-sharpening technology. Today, Techno Mech Toolings represents the full spectrum of what Solid Carbide Tool technology can offer in Manufacturing &amp; Re-sharpening.
+                  Techno Mech Toolings provides our customers with <strong className="font-bold text-[#111827]">Value added services through Re-cycling of all used cutting tools</strong> using proven, innovative re-sharpening technology. Today, Techno Mech Toolings represents the full spectrum of what Solid Carbide Tool technology can offer in Manufacturing &amp; Re-sharpening.
                 </p>
                 <p>
-                  Our advanced engineering techniques and dedicated facility ensure that almost all regular and innovative cutting tools can be precision re-sharpened, micro-honed, and then <strong>suitably thin-film PVD coated (AlTiN, TiAlN, or DLC)</strong>.
+                  Our advanced engineering techniques and dedicated facility ensure that almost all regular and innovative cutting tools can be precision re-sharpened, micro-honed, and then <strong className="font-bold text-[#111827]">suitably thin-film PVD coated (AlTiN, TiAlN, or DLC)</strong>.
                 </p>
                 <p>
-                  Today we cater to the re-sharpening requirements of businesses ranging from <strong>Small scale workshops to Large scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
+                  Today we cater to the re-sharpening requirements of businesses ranging from <strong className="font-bold text-[#111827]">Small scale workshops to Large scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
                 </p>
               </div>
 
@@ -123,7 +123,7 @@ export default function About({ embedded = false }) {
               <div className="pt-3">
                 <button
                   onClick={() => openQuoteModal({ productName: 'Re-Sharpening & Re-Cycling Cost Saving Program' })}
-                  className="bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] font-bold text-xs px-6 py-3 rounded-md shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
+                  className="bg-[#111827] hover:bg-black text-white hover:text-[#F5B800] font-bold text-xs px-6 py-3 rounded-md shadow-lg transition-all inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>Request a Tool Re-cycling Trial</span>
                   <ArrowRight className="w-4 h-4" />
@@ -133,13 +133,13 @@ export default function About({ embedded = false }) {
 
             {/* Right Machine Showcase Column */}
             <div className="lg:col-span-5">
-              <div className="bg-[#262B31] border border-gray-700 rounded-2xl p-6 shadow-xl relative overflow-hidden group">
+              <div className="bg-[#111827] border border-black/20 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
                 <h3 className="text-lg font-bold text-white mb-4">
                   Ecogrind 5-Axis CNC Tool &amp; Cutter Grinder
                 </h3>
 
                 {/* Real Ecogrind Machine Photo */}
-                <div className="bg-white rounded-xl p-4 flex items-center justify-center border border-gray-600 aspect-[4/3] overflow-hidden">
+                <div className="bg-white rounded-xl p-4 flex items-center justify-center border border-gray-700 aspect-[4/3] overflow-hidden">
                   <img 
                     src="/images/about/ecogrind-lx-machine.png" 
                     alt="Ecogrind LX Plus 5 Axis CNC Tool and Cutter Grinder Machine" 
@@ -147,8 +147,9 @@ export default function About({ embedded = false }) {
                   />
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-gray-700/60 text-xs text-gray-300">
+                <div className="mt-4 pt-4 border-t border-gray-800 text-xs text-gray-300 flex items-center justify-between">
                   <span>Sub-micron Wheel Resolution</span>
+                  <span className="text-[#F5B800] font-mono font-bold text-[11px]">5-AXIS CNC</span>
                 </div>
               </div>
             </div>
