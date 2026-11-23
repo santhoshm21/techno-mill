@@ -102,23 +102,23 @@ export default function HomeAccordionGallery() {
   };
 
   return (
-    <section className="bg-white py-8 sm:py-10 lg:py-12 border-b border-gray-200">
+    <section className="bg-white py-6 sm:py-8 border-b border-gray-200">
       <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Header: Exact replica of 1st input image UI reference */}
-        <div className="text-center max-w-4xl mx-auto mb-5 sm:mb-6 px-4">
-          <p className="font-serif text-xl sm:text-2xl text-[#111827] font-normal tracking-wide mb-1 sm:mb-2">
+        <div className="text-center max-w-4xl mx-auto mb-4 sm:mb-5 px-4">
+          <p className="font-serif text-lg sm:text-xl text-[#111827] font-normal tracking-wide mb-1">
             Choose From
           </p>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E3A8A] tracking-tight leading-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E3A8A] tracking-tight leading-tight">
             World Class Cutting Tools For Every Application
           </h2>
         </div>
 
-        {/* 9-Column Horizontal Strip Gallery matching 1st input image */}
+        {/* 9-Column Horizontal Strip Gallery matching reference aspect ratio */}
         <div
           onMouseLeave={() => setHoveredIdx(null)}
-          className="flex flex-row gap-1.5 sm:gap-2.5 h-[460px] sm:h-[500px] lg:h-[540px] w-full overflow-hidden select-none"
+          className="flex flex-row gap-1.5 sm:gap-2.5 h-[260px] sm:h-[300px] md:h-[330px] lg:h-[350px] xl:h-[370px] w-full overflow-hidden select-none"
         >
           {panels.map((panel, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -151,22 +151,22 @@ export default function HomeAccordionGallery() {
 
                 {/* Active Expanded State: Dark bottom gradient with Title, Description, and Outline Button */}
                 {isHovered && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 sm:p-7 flex flex-col justify-end items-start text-left transition-opacity duration-300">
-                    <span className="text-xs font-semibold text-[#F5B800] tracking-wider uppercase mb-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-5 flex flex-col justify-end items-start text-left transition-opacity duration-300">
+                    <span className="text-[10px] sm:text-xs font-semibold text-[#F5B800] tracking-wider uppercase mb-0.5">
                       {panel.tag}
                     </span>
-                    <h3 className="text-lg sm:text-2xl font-bold text-white leading-tight mb-2 drop-shadow-md">
+                    <h3 className="text-base sm:text-lg font-bold text-white leading-tight mb-1 drop-shadow-md">
                       {panel.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-200 line-clamp-2 max-w-sm mb-4 leading-relaxed drop-shadow-xs">
+                    <p className="text-xs text-gray-200 line-clamp-2 max-w-sm mb-3 leading-relaxed drop-shadow-xs">
                       {panel.desc}
                     </p>
                     <Link
                       to={panel.link}
-                      className="inline-flex items-center gap-2 border border-white text-white hover:border-[#F5B800] hover:text-[#F5B800] font-semibold text-xs sm:text-sm px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-xs"
+                      className="inline-flex items-center gap-1.5 border border-white text-white hover:border-[#F5B800] hover:text-[#F5B800] font-semibold text-xs px-3 py-1.5 rounded transition-all duration-300 backdrop-blur-xs"
                     >
                       <span>Discover More</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
                 )}
