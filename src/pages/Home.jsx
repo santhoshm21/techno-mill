@@ -20,6 +20,12 @@ import { useQuote } from '../context/QuoteContext';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
 import HomePlatformRow from '../components/HomePlatformRow';
 
+// Remaining Sections Kept on Home Page
+import Services from './Services';
+import Facility from './Facility';
+import Projects from './Projects';
+import Clients from './Clients';
+
 export default function Home() {
   useDocumentTitle('TECHNO MECH TOOLINGS (TMT) | Precision Engineering. Exceptional Tooling.');
   const { openQuoteModal } = useQuote();
@@ -58,7 +64,7 @@ export default function Home() {
       title: 'Restore OEM Geometry.',
       highlight: 'Save Up to 60%.',
       desc: 'Precision diamond-wheel regrinding, OD re-fluting, and thin-film PVD recoating for drills, end mills, and broaches.',
-      primaryBtn: { text: 'View Reconditioning Services', link: '/contact' },
+      primaryBtn: { text: 'View Reconditioning Services', link: '#services' },
       type: 'image',
       image: heroCncMachining,
       alt: '5-Axis CNC Tool Reconditioning and Recoating'
@@ -80,7 +86,7 @@ export default function Home() {
       title: 'Precision Flute Grinding.',
       highlight: 'Sub-Micron Tolerances.',
       desc: 'High-speed 5-axis CNC tool and cutter grinding ensuring exceptional flute geometry, mirror finishes, and extended cutting tool durability.',
-      primaryBtn: { text: 'Explore Machine Facility', link: '/about' },
+      primaryBtn: { text: 'Explore Machine Facility', link: '#facility' },
       type: 'image',
       image: heroSaackeGrinder,
       alt: 'SAACKE UW I F 5-Axis CNC Tool & Cutter Grinding Machine'
@@ -97,7 +103,15 @@ export default function Home() {
 
   const handleHeroBtnClick = (e, targetPath) => {
     e.preventDefault();
-    navigate(targetPath);
+    if (targetPath.startsWith('#')) {
+      const el = document.querySelector(targetPath);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        window.history.replaceState(null, '', targetPath);
+      }
+    } else {
+      navigate(targetPath);
+    }
   };
 
   return (
@@ -254,6 +268,34 @@ export default function Home() {
         {/* Part C: Video Pattern 2 - High Performance Tooling Platforms Row */}
         <HomePlatformRow />
 
+      </section>
+
+      {/* =========================================================================
+          SECTION 2: SERVICES (CNC Re-Sharpening, Re-Fluting & Recoating)
+          ========================================================================= */}
+      <section id="services" className="scroll-mt-16 border-t border-gray-200">
+        <Services embedded={true} />
+      </section>
+
+      {/* =========================================================================
+          SECTION 3: FACILITY (SAACKE 5-Axis CNC & Metrology Center)
+          ========================================================================= */}
+      <section id="facility" className="scroll-mt-16 border-t border-gray-200">
+        <Facility embedded={true} />
+      </section>
+
+      {/* =========================================================================
+          SECTION 4: PROJECTS (Recent Developments & Custom Tooling Projects)
+          ========================================================================= */}
+      <section id="projects" className="scroll-mt-16 border-t border-gray-200">
+        <Projects embedded={true} />
+      </section>
+
+      {/* =========================================================================
+          SECTION 5: CLIENTS (Esteemed Customer Base & Credentials)
+          ========================================================================= */}
+      <section id="clients" className="scroll-mt-16 border-t border-gray-200">
+        <Clients embedded={true} />
       </section>
 
       {/* INTERACTIVE VIDEO PREVIEW MODAL */}

@@ -20,6 +20,12 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="careers" element={<Careers />} />
 
+        {/* Redirect home sections if accessed directly */}
+        <Route path="services" element={<Navigate to="/#services" replace />} />
+        <Route path="facility" element={<Navigate to="/#facility" replace />} />
+        <Route path="projects" element={<Navigate to="/#projects" replace />} />
+        <Route path="clients" element={<Navigate to="/#clients" replace />} />
+
         {/* Catch-all redirect to Home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
