@@ -33,17 +33,17 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2: Quick Links (Strictly Home, About, Products, Contact, Careers) */}
+          {/* Col 2: Quick Links (Strictly Home, About, Products, Services, Contact) */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Inter',_sans-serif]">
               Quick Links
             </h4>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
               <Link to="/" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</Link>
-              <Link to="/contact" className="text-gray-400 hover:text-[#F5B800] transition-colors">Contact</Link>
+              <Link to="/services" className="text-gray-400 hover:text-[#F5B800] transition-colors">Services</Link>
               
               <Link to="/about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About</Link>
-              <Link to="/careers" className="text-gray-400 hover:text-[#F5B800] transition-colors">Careers</Link>
+              <Link to="/contact" className="text-gray-400 hover:text-[#F5B800] transition-colors">Contact</Link>
               
               <Link to="/products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</Link>
             </div>

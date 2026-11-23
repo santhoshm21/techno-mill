@@ -21,9 +21,7 @@ import HomeAccordionGallery from '../components/HomeAccordionGallery';
 import HomePlatformRow from '../components/HomePlatformRow';
 
 // Remaining Sections Kept on Home Page
-import Services from './Services';
 import Facility from './Facility';
-import Projects from './Projects';
 import Clients from './Clients';
 
 export default function Home() {
@@ -64,7 +62,7 @@ export default function Home() {
       title: 'Restore OEM Geometry.',
       highlight: 'Save Up to 60%.',
       desc: 'Precision diamond-wheel regrinding, OD re-fluting, and thin-film PVD recoating for drills, end mills, and broaches.',
-      primaryBtn: { text: 'View Reconditioning Services', link: '#services' },
+      primaryBtn: { text: 'View Reconditioning Services', link: '/services' },
       type: 'image',
       image: heroCncMachining,
       alt: '5-Axis CNC Tool Reconditioning and Recoating'
@@ -271,28 +269,14 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 2: SERVICES (CNC Re-Sharpening, Re-Fluting & Recoating)
-          ========================================================================= */}
-      <section id="services" className="scroll-mt-16 border-t border-gray-200">
-        <Services embedded={true} />
-      </section>
-
-      {/* =========================================================================
-          SECTION 3: FACILITY (SAACKE 5-Axis CNC & Metrology Center)
+          SECTION 2: FACILITY (SAACKE 5-Axis CNC & Metrology Center)
           ========================================================================= */}
       <section id="facility" className="scroll-mt-16 border-t border-gray-200">
         <Facility embedded={true} />
       </section>
 
       {/* =========================================================================
-          SECTION 4: PROJECTS (Recent Developments & Custom Tooling Projects)
-          ========================================================================= */}
-      <section id="projects" className="scroll-mt-16 border-t border-gray-200">
-        <Projects embedded={true} />
-      </section>
-
-      {/* =========================================================================
-          SECTION 5: CLIENTS (Esteemed Customer Base & Credentials)
+          SECTION 3: CLIENTS (Esteemed Customer Base & Credentials)
           ========================================================================= */}
       <section id="clients" className="scroll-mt-16 border-t border-gray-200">
         <Clients embedded={true} />

@@ -368,7 +368,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-rose-600 bg-rose-50 border border-rose-200/60',
       title: '5-Axis Regrinding',
       spec: 'SAVE UP TO 60%',
-      link: '#services',
+      link: '/services',
       Visual: StandingRegroundTool
     },
     {
@@ -380,7 +380,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-teal-600 bg-teal-50 border border-teal-200/60',
       title: 'PVD Thin-Film',
       spec: '3,400 HV HARDNESS',
-      link: '#services',
+      link: '/services',
       Visual: StandingPVDCoatedMill
     },
     {
@@ -392,7 +392,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-amber-700 bg-amber-50 border border-amber-200/60',
       title: 'Custom Form Tools',
       spec: 'DIRECT FROM CAD',
-      link: '#projects',
+      link: '/contact',
       Visual: StandingFormTool
     },
     {
@@ -439,10 +439,9 @@ export default function HomePlatformRow() {
           {platforms.map((platform) => {
             const ToolVisual = platform.Visual;
             return (
-              <a
+              <Link
                 key={platform.id}
-                href={platform.link}
-                onClick={(e) => handlePlatformClick(e, platform.link)}
+                to={platform.link}
                 className="group flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 p-1 select-none"
               >
                 {/* 1. Top Brand / Feature Badge */}
@@ -478,7 +477,7 @@ export default function HomePlatformRow() {
                     {platform.title}
                   </h4>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>

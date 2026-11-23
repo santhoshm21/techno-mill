@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   FileText, 
   Check, 
@@ -7,7 +8,8 @@ import {
   Mail,
   ArrowRight,
   ShieldCheck,
-  RotateCw
+  RotateCw,
+  ChevronRight
 } from 'lucide-react';
 import { services } from '../data/services';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -23,6 +25,14 @@ export default function Services({ embedded = false }) {
       {/* 1. COMPACT, CLEAN HEADER */}
       <section className="bg-[#F8FAFC] border-b border-[#E5E7EB] py-8 font-['Inter',_sans-serif]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {!embedded && (
+            <div className="flex items-center gap-1.5 text-xs text-gray-500 mb-3 font-medium">
+              <Link to="/" className="hover:text-[#D97706] transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+              <span className="text-gray-900 font-semibold">Services</span>
+            </div>
+          )}
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
