@@ -38,9 +38,6 @@ export default function Clients({ embedded = false }) {
         .animate-marquee-ltr {
           animation: scrollLeftToRight 35s linear infinite;
         }
-        .animate-marquee-ltr:hover {
-          animation-play-state: paused;
-        }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,12 +74,12 @@ export default function Clients({ embedded = false }) {
               key={`${item.id}-${idx}`}
               onClick={() => openQuoteModal({ productName: `Tooling for ${item.name} (${item.sector})` })}
               title={item.name}
-              className="w-44 sm:w-56 h-22 sm:h-28 bg-white rounded-2xl border border-gray-200 hover:border-gray-400 p-3.5 flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 hover:scale-105 group select-none"
+              className="w-44 sm:w-56 h-22 sm:h-28 bg-white p-3.5 flex items-center justify-center shrink-0 cursor-pointer select-none"
             >
               <img
                 src={item.logo}
                 alt={item.name}
-                className="max-h-12 sm:max-h-16 max-w-[145px] sm:max-w-[175px] object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
+                className="max-h-12 sm:max-h-16 max-w-[145px] sm:max-w-[175px] object-contain filter contrast-105 select-none"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.style.display = 'none';
