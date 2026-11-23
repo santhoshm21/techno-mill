@@ -55,9 +55,9 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 3: CLIENTS (Yellow Background with White Logo Boxes Moving Left-to-Right)
+          SECTION 3: CLIENTS (Plain Simple White Background, No Drop Shadows)
           ========================================================================= */}
-      <section id="clients" className="scroll-mt-16 border-t border-amber-300 bg-[#F5B800] py-8 sm:py-10">
+      <section id="clients" className="scroll-mt-16 border-t border-gray-200 bg-white py-8 sm:py-10">
         <Clients embedded={true} />
       </section>
 
