@@ -205,8 +205,9 @@ export default function Facility({ embedded = false }) {
         </div>
       </section>
 
-      {/* 3. QUALITY INSPECTION INSTRUMENTS SECTION (Cakrawala 4-Card Presentation Grid) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      {/* 3. QUALITY INSPECTION INSTRUMENTS SECTION (Cakrawala 4-Card Presentation Grid - Hidden on Home Page) */}
+      {!embedded && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-3 border-b-2 border-gray-200 mb-8 gap-3">
@@ -291,9 +292,11 @@ export default function Facility({ embedded = false }) {
         </div>
 
       </section>
+      )}
 
-      {/* 4. CREDENTIALS SECTION (Cakrawala "Our Four Point" / High-Impact Style) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      {/* 4. CREDENTIALS SECTION (Cakrawala "Our Four Point" / High-Impact Style - Hidden on Home Page) */}
+      {!embedded && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-12">
@@ -358,9 +361,11 @@ export default function Facility({ embedded = false }) {
         </div>
 
       </section>
+      )}
 
-      {/* 5. CALL TO ACTION STRIP (Cakrawala Style Yellow & Charcoal) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      {/* 5. CALL TO ACTION STRIP (Cakrawala Style Yellow & Charcoal - Hidden on Home Page) */}
+      {!embedded && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="bg-[#1E2227] text-white rounded-lg p-8 sm:p-10 border-2 border-[#F5B800] relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -399,6 +404,7 @@ export default function Facility({ embedded = false }) {
           </div>
         </div>
       </section>
+      )}
 
     </div>
   );

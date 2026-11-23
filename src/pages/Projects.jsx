@@ -138,7 +138,8 @@ export default function Projects({ embedded = false }) {
         </div>
       </section>
 
-      {/* 3. SIMPLE, PROFESSIONAL CAD BLUEPRINT CONSULTATION CARD */}
+      {/* 3. SIMPLE, PROFESSIONAL CAD BLUEPRINT CONSULTATION CARD (Hidden on Home Page) */}
+      {!embedded && (
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="bg-[#1E2227] text-white rounded-xl p-8 sm:p-10 shadow-sm border border-gray-800">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -174,6 +175,7 @@ export default function Projects({ embedded = false }) {
           </div>
         </div>
       </section>
+      )}
 
     </div>
   );
