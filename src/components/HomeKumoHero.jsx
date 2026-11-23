@@ -1,618 +1,437 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Grid,
-  Layers,
-  Target,
-  ShieldCheck,
-  ShoppingBag,
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-  Sparkles,
-  MapPin,
-  Play
-} from 'lucide-react';
+import { Play, ArrowRight, ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useQuote } from '../context/QuoteContext';
-import {
-  StandingTwistDrill,
-  StandingEndMill,
-  StandingBurnishingDrill,
-  StandingMachineReamer,
-  StandingTwoStepDrill,
-  StandingFormTool,
-  StandingPVDCoatedMill
-} from './HomePlatformRow';
 
 export default function HomeKumoHero({ onOpenVideoModal }) {
   const { openQuoteModal } = useQuote();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeHotspot, setActiveHotspot] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // 6 Core Tooling Categories for Techno Mech Toolings
-  const toolCategories = [
+  // 4 Featured Cutting Tool Platforms (Matching Image 1 Reference Structure)
+  const slides = [
     {
-      id: 'endmills',
-      name: 'High-Performance End Mills',
-      shortName: 'Carbide End Mill',
-      subtitle: 'AlTiN 4-Flute Variable Helix',
-      spec: 'DIN 6527 • h6 Precision',
-      priceBadge: 'Ø3.0 – Ø25.0 mm',
-      accentColor: '#38BDF8',
-      glow: 'rgba(56, 189, 248, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(56,189,248,0.45)]',
-      link: '/products?category=endmills',
-      Visual: StandingEndMill
+      id: 'gladius-endmill',
+      category: 'Solid Carbide Milling',
+      line1: '2026 TMT ULTRA',
+      line2: 'GLADIUS 4FL',
+      description: 'The all-new Gladius 4-Flute series is proven to deliver sub-micron precision with unparalleled chip evacuation, unmatched edge durability, and extended tool life in high-feed CNC machining.',
+      image: '/images/hero-tools-showcase.png',
+      badge: 'AlTiN PVD COATED',
+      link: '/products',
+      quoteSubject: 'TMT Ultra Gladius 4FL End Mill',
+      hotspots: [
+        {
+          id: 'flutes',
+          title: '38°/41° Variable Pitch Flutes',
+          spec: 'Harmonic chatter suppression in deep cavity milling; mirror Ra < 0.2µm wall finish.',
+          badge: 'DIN 6527 • Variable Pitch',
+          top: '32%',
+          left: '42%'
+        },
+        {
+          id: 'coating',
+          title: 'Multi-Layer AlTiN Nano-Coat',
+          spec: '3,300 HV micro-hardness with thermal barrier stability up to 1,100°C for dry and MQL cutting.',
+          badge: 'High-Temp Heat Resistance',
+          top: '44%',
+          left: '60%'
+        },
+        {
+          id: 'shank',
+          title: 'DIN 6535 HA h6 Shank',
+          spec: 'Sub-micron cylindrical grinding for shrink-fit and hydraulic chuck rigidity with runout < 0.003mm.',
+          badge: 'h6 Tolerance',
+          top: '56%',
+          left: '75%'
+        }
+      ]
     },
     {
-      id: 'drills',
-      name: 'Solid Carbide Drills',
-      shortName: 'Through-Coolant Drill',
-      subtitle: 'DIN 6537 140° Split Point',
-      spec: '5xD – 30xD Deep Hole',
-      priceBadge: 'Ø1.0 – Ø25.0 mm',
-      accentColor: '#F5B800',
-      glow: 'rgba(245, 184, 0, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(245,184,0,0.45)]',
-      link: '/products?category=drills',
-      Visual: StandingTwistDrill
+      id: 'through-coolant-drill',
+      category: 'Deep Hole Drilling',
+      line1: '5xD – 30xD DEEP',
+      line2: 'COOLANT DRILL',
+      description: 'Precision engineered with 140° DIN 6537 self-centering split point and dual internal helical coolant channels, eliminating pre-spotting and drastically cutting cycle times in tough alloys.',
+      image: '/images/gallery/hero-drill-lineup.jpg',
+      badge: 'DIN 6537 140° SPLIT POINT',
+      link: '/products',
+      quoteSubject: '5xD Through-Coolant Solid Carbide Drill',
+      hotspots: [
+        {
+          id: 'point',
+          title: '140° Self-Centering Split Point',
+          spec: 'Precision ground web-thinning prevents walking on curved and slanted workpiece entries.',
+          badge: 'Sub-Micron Point',
+          top: '34%',
+          left: '46%'
+        },
+        {
+          id: 'coolant-channel',
+          title: 'Dual Helical Coolant Channels',
+          spec: 'Optimized laminar coolant pressure ensures uninterrupted chip evacuation from deep holes.',
+          badge: 'Internal Coolant 30xD',
+          top: '48%',
+          left: '58%'
+        },
+        {
+          id: 'substrate',
+          title: 'European Ultra-Fine Carbide',
+          spec: '0.2µm grain size tungsten carbide with 10% cobalt for superior fracture toughness.',
+          badge: '92.5 HRA Hardness',
+          top: '62%',
+          left: '72%'
+        }
+      ]
     },
     {
-      id: 'burnishing',
-      name: 'Burnishing Drills',
-      shortName: 'Burnishing Drill',
-      subtitle: 'Single-Pass Hole Sizing & Mirror Finish',
-      spec: 'Ra < 0.2µm Mirror Finish',
-      priceBadge: 'IT6 Automotive Tolerance',
-      accentColor: '#F97316',
-      glow: 'rgba(249, 115, 22, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(249,115,22,0.45)]',
-      link: '/products?category=burnishing',
-      Visual: StandingBurnishingDrill
+      id: 'custom-form-tool',
+      category: 'Bespoke Blueprint Profiles',
+      line1: 'CUSTOM WORKPIECE',
+      line2: 'FORM TOOLING',
+      description: 'Bespoke contouring cutters, dovetail profiles, and port tools ground directly from client workpiece 3D CAD models on our German SAACKE 5-axis CNC grinding centers.',
+      image: '/images/gallery/hero-saacke-tool-geometries.jpg',
+      badge: 'GROUND DIRECTLY FROM CAD',
+      link: '/services',
+      quoteSubject: 'Custom Blueprint Form Tooling',
+      hotspots: [
+        {
+          id: 'contour',
+          title: 'Complex Multi-Radius Profile',
+          spec: 'Sub-micron form accuracy verified on Zoller Genius 3 universal measuring machine.',
+          badge: '±0.005mm Tolerance',
+          top: '36%',
+          left: '48%'
+        },
+        {
+          id: 'edge-prep',
+          title: 'Micro-Honed Cutting Edges',
+          spec: 'Controlled edge rounding (K-factor) prevents micro-chipping during high-speed turning & milling.',
+          badge: 'Controlled Edge Prep',
+          top: '50%',
+          left: '64%'
+        }
+      ]
     },
     {
-      id: 'reamers',
-      name: 'Machine Reamers',
-      shortName: 'Machine Reamer',
-      subtitle: 'Sub-Micron Bore Sizing',
-      spec: 'IT6 / Sub-Micron Precision',
-      priceBadge: 'Helical & Straight Flute',
-      accentColor: '#A855F7',
-      glow: 'rgba(168, 85, 247, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(168,85,247,0.45)]',
-      link: '/products?category=reamers',
-      Visual: StandingMachineReamer
-    },
-    {
-      id: 'stepdrills',
-      name: 'Two-Step Multi-Drills',
-      shortName: 'Step Drill',
-      subtitle: 'Multi-Diameter Drill & Chamfer',
-      spec: 'Single-Pass Multi-Op',
-      priceBadge: 'Aerospace & Automotive',
-      accentColor: '#EC4899',
-      glow: 'rgba(236, 72, 153, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(236,72,153,0.45)]',
-      link: '/products?category=drills',
-      Visual: StandingTwoStepDrill
-    },
-    {
-      id: 'formtools',
-      name: 'Custom Form Tools',
-      shortName: 'Custom Form Tool',
-      subtitle: 'Engineered Directly From Workpiece CAD',
-      spec: 'Custom Blueprint Profiles',
-      priceBadge: 'German SAACKE 5-Axis',
-      accentColor: '#10B981',
-      glow: 'rgba(16, 185, 129, 0.35)',
-      ringGlow: 'shadow-[0_0_35px_rgba(16,185,129,0.45)]',
-      link: '/contact',
-      Visual: StandingFormTool
+      id: 'burnishing-reamer',
+      category: 'Single-Pass Finishing',
+      line1: 'MIRROR FINISH',
+      line2: 'BURNISH REAMER',
+      description: 'Combines precision bore reaming and roller burnishing into one rapid cycle, consistently achieving IT6 automotive bore tolerances with mirror Ra < 0.2µm surface finishes.',
+      image: '/images/gallery/hero-solid-carbide-tools.jpg',
+      badge: 'Ra < 0.2µm MIRROR BORE',
+      link: '/products',
+      quoteSubject: 'Mirror-Finish Burnishing Reamer',
+      hotspots: [
+        {
+          id: 'burnish-lands',
+          title: 'Diamond-Lapped Burnishing Lands',
+          spec: 'Imparts compressive residual stress into bore walls, enhancing component fatigue resistance.',
+          badge: 'Work-Hardening Effect',
+          top: '38%',
+          left: '45%'
+        },
+        {
+          id: 'straight-flutes',
+          title: 'Sub-Micron Reaming Margins',
+          spec: 'Maintains H7 / IT6 bore diametrical tolerances over mass production batches.',
+          badge: 'IT6 Bore Tolerance',
+          top: '52%',
+          left: '62%'
+        }
+      ]
     }
   ];
 
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef(0);
-  const total = toolCategories.length;
-  const currentTool = toolCategories[activeIdx];
-  const CenterVisual = currentTool.Visual;
-
-  // Staggered floating wave offsets for each card (6 unique phases)
-  const floatDelays = ['0s', '0.7s', '1.4s', '2.1s', '2.8s', '3.5s'];
-
-  // Auto-advance every 4.5 seconds when not interacting
+  // Auto-advance slides every 6.5s
   useEffect(() => {
-    if (isHovered || isDragging) return;
+    if (isPaused) return;
     const timer = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % total);
-    }, 4500);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setActiveHotspot(null);
+    }, 6500);
     return () => clearInterval(timer);
-  }, [isHovered, isDragging, total]);
+  }, [isPaused, slides.length]);
 
-  const handlePrev = useCallback(() => {
-    setActiveIdx((prev) => (prev - 1 + total) % total);
-  }, [total]);
+  const slide = slides[currentSlide];
 
-  const handleNext = useCallback(() => {
-    setActiveIdx((prev) => (prev + 1) % total);
-  }, [total]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'ArrowRight') handleNext();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handlePrev, handleNext]);
-
-  // Touch & Mouse Drag to Rotate Carousel
-  const handleDragStart = (clientX) => {
-    setIsDragging(true);
-    dragStartX.current = clientX;
-    setDragOffset(0);
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setActiveHotspot(null);
   };
 
-  const handleDragMove = (clientX) => {
-    if (!isDragging) return;
-    const delta = clientX - dragStartX.current;
-    setDragOffset(delta);
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setActiveHotspot(null);
   };
-
-  const handleDragEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    if (dragOffset > 60) {
-      handlePrev();
-    } else if (dragOffset < -60) {
-      handleNext();
-    }
-    setDragOffset(0);
-  };
-
-  // Spark particles generator (20 particles with varying speeds and delays)
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    left: `${(i * 5.2 + 3) % 96}%`,
-    duration: `${3.5 + (i % 5) * 0.8}s`,
-    delay: `${(i * 0.4) % 4}s`,
-    size: i % 3 === 0 ? 'w-1.5 h-1.5' : 'w-1 h-1',
-    color: i % 2 === 0 ? 'bg-[#F5B800]' : 'bg-[#38BDF8]'
-  }));
 
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => {
-        setIsHovered(false);
-        if (isDragging) handleDragEnd();
+        setIsPaused(false);
+        setActiveHotspot(null);
       }}
-      className="relative w-full min-h-[94vh] sm:min-h-screen bg-[#070A11] text-white flex flex-col justify-between overflow-hidden select-none"
+      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[760px] bg-[#141518] text-white overflow-hidden flex flex-col justify-between select-none"
     >
-      {/* -----------------------------------------------------------------
-          EMBEDDED CSS KEYFRAMES FOR CONTINUOUS MOTION & FLOATING PHYSICS
-          ----------------------------------------------------------------- */}
-      <style>{`
-        @keyframes kumoFloatWave {
-          0%, 100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-14px) rotate(1.5deg);
-          }
-        }
-        @keyframes kumoSparkDrift {
-          0% {
-            transform: translateY(100px) scale(0.6);
-            opacity: 0;
-          }
-          20% {
-            opacity: 0.9;
-          }
-          80% {
-            opacity: 0.8;
-          }
-          100% {
-            transform: translateY(-400px) scale(1.2);
-            opacity: 0;
-          }
-        }
-        @keyframes kumoCenterPulse {
-          0%, 100% {
-            transform: translateY(0) scale(1);
-          }
-          50% {
-            transform: translateY(-8px) scale(1.02);
-          }
-        }
-        @keyframes kumoShimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-      `}</style>
-
-      {/* -----------------------------------------------------------------
-          BACKGROUND ATMOSPHERE: Dynamic Aura, Particles & Precision Grid
-          ----------------------------------------------------------------- */}
-      {/* Glowing Aura Matching Active Tool */}
-      <div
-        className="absolute top-[28%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[950px] h-[550px] rounded-full blur-[150px] pointer-events-none transition-all duration-1000 ease-out"
-        style={{ background: currentTool.glow }}
+      {/* Background Studio Lighting (Dark Moody Slate with Studio Spotlight) */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 75% 65% at 60% 45%, rgba(55, 62, 75, 0.45) 0%, rgba(20, 21, 24, 0.98) 85%)'
+        }}
       />
 
       {/* Subtle Engineering Grid Backdrop */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_45%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundSize: '32px 32px'
+        }}
+      />
 
-      {/* 20 Ambient Floating Sparks / Carbide Micro-Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className={`absolute rounded-full blur-[0.5px] ${p.size} ${p.color}`}
-            style={{
-              left: p.left,
-              bottom: '15%',
-              animation: `kumoSparkDrift ${p.duration} infinite ease-in-out`,
-              animationDelay: p.delay
-            }}
-          />
-        ))}
-      </div>
-
-      {/* =====================================================================
-          1. TOP NAVIGATION BAR (Exact replica of video's top bar)
-          ===================================================================== */}
-      <div className="relative z-30 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-7 flex items-center justify-between">
+      {/* =========================================================================
+          HERO MAIN CONTENT AREA: Left Typography + Right Macro Product Showcase
+          ========================================================================= */}
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 pt-10 sm:pt-14 lg:pt-16 pb-24 sm:pb-28 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        {/* Left: Brand Logo in Video Style */}
-        <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-8 h-8 rounded-lg bg-[#F5B800] text-[#070A11] font-black flex items-center justify-center text-sm tracking-tighter shadow-[0_0_20px_rgba(245,184,0,0.6)] group-hover:scale-105 transition-transform">
-            TMT
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif font-black text-sm sm:text-base tracking-wider text-white uppercase leading-none">
-              TECHNO MECH
-            </span>
-            <span className="text-[9px] font-semibold tracking-widest text-[#F5B800] uppercase leading-tight">
-              PRECISION TOOLINGS
+        {/* -------------------------------------------------------------
+            LEFT COLUMN: Category Tag, Massive Bold Heading, Description & Red CTA
+            ------------------------------------------------------------- */}
+        <div className="lg:col-span-6 xl:col-span-5 space-y-4 sm:space-y-6 z-20">
+          
+          {/* Category Tag */}
+          <div className="inline-flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#E11D48] animate-pulse" />
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gray-400 font-mono">
+              {slide.category}
             </span>
           </div>
-        </Link>
 
-        {/* Center: Floating Dark Pill Toolbar (Exact video pattern) */}
-        <div className="flex items-center bg-[#151B26]/85 backdrop-blur-xl border border-white/10 rounded-full px-4 sm:px-5 py-2 shadow-2xl gap-3 sm:gap-5">
-          <Link
-            to="/products"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all cursor-pointer"
-            title="Browse Products Catalog"
-          >
-            <Grid className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/#facility"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all cursor-pointer"
-            title="Manufacturing Facility"
-          >
-            <Layers className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/services"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all cursor-pointer"
-            title="Re-Sharpening & Recoating Services"
-          >
-            <Target className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/#clients"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all cursor-pointer"
-            title="Certifications & ISO Credentials"
-          >
-            <ShieldCheck className="w-4 h-4" />
-          </Link>
-          <button
-            onClick={() => openQuoteModal({ productName: currentTool.name })}
-            className="text-[#F5B800] hover:text-white hover:scale-110 transition-all cursor-pointer relative"
-            title="Inquire Technical Quote"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#F5B800] animate-ping" />
-          </button>
-        </div>
-
-        {/* Right: Pill Location / Quick Action Button */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onOpenVideoModal && onOpenVideoModal()}
-            className="hidden sm:inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer"
-          >
-            <Play className="w-3 h-3 fill-current text-[#F5B800]" />
-            <span>Facility Tour</span>
-          </button>
-
-          <Link
-            to="/#contact"
-            className="inline-flex items-center gap-1.5 bg-[#F5B800] hover:bg-[#D97706] text-[#070A11] font-bold rounded-full px-4 py-1.5 text-xs transition-all shadow-[0_0_20px_rgba(245,184,0,0.4)] cursor-pointer"
-          >
-            <MapPin className="w-3 h-3" />
-            <span>Chennai Plant</span>
-          </Link>
-        </div>
-
-      </div>
-
-      {/* =====================================================================
-          2. MAIN STAGE: 3D CURVED ORBIT + ALL BOXES IN ACTIVE MOTION
-          ===================================================================== */}
-      <div
-        className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 my-auto min-h-[480px] sm:min-h-[560px]"
-        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
-        onTouchEnd={handleDragEnd}
-        onMouseDown={(e) => handleDragStart(e.clientX)}
-        onMouseMove={(e) => handleDragMove(e.clientX)}
-        onMouseUp={handleDragEnd}
-      >
-        
-        {/* Navigation Arrows (Sides) */}
-        <button
-          onClick={handlePrev}
-          aria-label="Previous Tool Category"
-          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/40 hover:bg-[#F5B800] text-white hover:text-black border border-white/15 flex items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer hover:scale-110 shadow-2xl"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-
-        <button
-          onClick={handleNext}
-          aria-label="Next Tool Category"
-          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/40 hover:bg-[#F5B800] text-white hover:text-black border border-white/15 flex items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer hover:scale-110 shadow-2xl"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        {/* -------------------------------------------------------------
-            STAGE CONTAINER FOR CARDS & CENTERPIECE
-            ------------------------------------------------------------- */}
-        <div className="relative w-full h-[360px] sm:h-[420px] flex items-center justify-center">
-          
-          {/* ALL THE SQUIRCLE BOXES IN CONTINUOUS ORBITAL MOTION */}
-          {toolCategories.map((tool, idx) => {
-            const CardVisual = tool.Visual;
-            
-            // Offset relative to active index: -2, -1, 0, 1, 2
-            let offset = idx - activeIdx;
-            if (offset > total / 2) offset -= total;
-            if (offset < -total / 2) offset += total;
-
-            const isCenter = offset === 0;
-            const absOffset = Math.abs(offset);
-
-            // Hide cards beyond distance of 2
-            if (absOffset > 2) return null;
-
-            // Curved Parabolic Arc Coordinates from the Video
-            const xBase = typeof window !== 'undefined' && window.innerWidth < 640 ? 120 : 195;
-            const xPos = offset * xBase + dragOffset * 0.45;
-            const yPos = Math.pow(absOffset, 1.85) * 40; // Parabolic curve downward
-            const rotation = offset * 11.5; // Tangential tilt
-            const scale = isCenter ? 1.05 : 1 - absOffset * 0.14;
-            const zIndex = isCenter ? 10 : 25 - absOffset * 3;
-            const opacity = 1 - absOffset * 0.12;
-
-            return (
-              <div
-                key={tool.id}
-                onClick={() => setActiveIdx(idx)}
-                style={{
-                  transform: `translate3d(${xPos}px, ${yPos}px, 0) rotate(${rotation}deg) scale(${scale})`,
-                  zIndex,
-                  opacity
-                }}
-                className="absolute top-1/2 left-1/2 -ml-16 sm:-ml-20 -mt-16 sm:-mt-20 cursor-pointer transition-transform duration-700 ease-out select-none"
-              >
-                {/* INNER CARD WRAPPER WITH CONTINUOUS FLOATING SINE WAVE MOTION */}
-                <div
-                  style={{
-                    animation: `kumoFloatWave 3.8s ease-in-out infinite`,
-                    animationDelay: floatDelays[idx % floatDelays.length]
-                  }}
-                  className={`w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-[#FAF9F5] shadow-[0_18px_40px_rgba(0,0,0,0.55)] border border-white/80 p-3 sm:p-4 flex flex-col items-center justify-between transition-all duration-300 hover:scale-110 hover:-translate-y-2 group ${
-                    isCenter ? `ring-2 ring-[#F5B800] ring-offset-4 ring-offset-[#070A11] ${tool.ringGlow}` : ''
-                  }`}
-                >
-                  {/* Category Top Tag */}
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-gray-500 group-hover:text-gray-900 transition-colors truncate max-w-full">
-                    {tool.shortName}
-                  </span>
-
-                  {/* High-Precision 3D Tool Model Standing inside Squircle Box */}
-                  <div className="w-full h-20 sm:h-24 flex items-center justify-center relative overflow-hidden">
-                    <CardVisual className="w-14 h-20 sm:w-16 sm:h-24 drop-shadow-md group-hover:scale-115 transition-transform duration-300" />
-                  </div>
-
-                  {/* Spec Indicator at Bottom of Box */}
-                  <div className="w-full text-center">
-                    <span className="text-[8px] sm:text-[9px] font-mono font-bold text-gray-400 group-hover:text-[#D97706] tracking-tighter truncate block transition-colors">
-                      {tool.spec.split('•')[0]}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-
-          {/* -------------------------------------------------------------
-              CENTERPIECE: STANDING CUTTING TOOL AT MOUNTAIN PEAK (NO WHITE BOX)
-              ------------------------------------------------------------- */}
-          <div className="relative z-20 flex flex-col items-center justify-end pointer-events-none">
-            
-            {/* The Standing Tool Presentation with Glowing Levitation */}
-            <div className="relative w-44 sm:w-60 md:w-68 h-64 sm:h-80 md:h-96 flex flex-col items-center justify-end">
-              
-              {/* Dynamic Floating Category Title (Clean, elegant, NO white box) */}
-              <div className="absolute top-[28%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none text-center w-[280px] sm:w-[360px]">
-                <h3 className="font-serif font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] leading-tight">
-                  {currentTool.name}
-                </h3>
-                <span className="inline-block mt-1 text-[10px] sm:text-xs font-bold text-[#F5B800] uppercase tracking-widest px-3 py-0.5 rounded-full bg-black/50 backdrop-blur-md border border-[#F5B800]/30 shadow-lg">
-                  {currentTool.subtitle}
-                </span>
-              </div>
-
-              {/* Standing 3D Vector Tool Visual with Breathing Levitation */}
-              <div
-                style={{
-                  animation: 'kumoCenterPulse 4s ease-in-out infinite'
-                }}
-                className="w-full h-full flex items-center justify-center drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out"
-              >
-                <CenterVisual className="w-28 h-56 sm:w-36 sm:h-72 md:w-44 md:h-84 drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]" />
-              </div>
-
-              {/* Pedestal Action Pill Card (Resting on Mountain Peak) */}
-              <div className="absolute -bottom-6 z-40 pointer-events-auto">
-                <div className="bg-[#FAF9F5] text-gray-900 rounded-2xl px-4 py-2.5 shadow-2xl border border-gray-200/90 flex flex-col items-center min-w-[140px] transform hover:scale-105 transition-transform duration-200">
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-gray-700 tracking-wider uppercase leading-none">
-                    {currentTool.spec}
-                  </span>
-                  <div className="flex items-center gap-2.5 mt-1.5">
-                    <button
-                      onClick={() => openQuoteModal({ productName: currentTool.name })}
-                      className="w-7 h-7 rounded-full bg-[#070A11] text-white hover:bg-[#F5B800] hover:text-[#070A11] flex items-center justify-center transition-colors shadow-md cursor-pointer"
-                      title={`Request Technical Quote for ${currentTool.name}`}
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                    </button>
-                    <Link
-                      to={currentTool.link}
-                      className="text-[10px] font-bold text-gray-700 hover:text-[#D97706] flex items-center gap-0.5 leading-none cursor-pointer"
-                    >
-                      <span>Explore</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
+          {/* Massive Heading (2 Lines - Matching Image 1 "2019 TREK MADONE SLR") */}
+          <div className="space-y-1">
+            <h1 className="font-black text-3xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter uppercase text-white leading-[0.95] drop-shadow-md">
+              <span className="block text-white">{slide.line1}</span>
+              <span className="block text-white/95">{slide.line2}</span>
+            </h1>
           </div>
 
-        </div>
-
-      </div>
-
-      {/* =====================================================================
-          3. SINTERED CARBIDE BEDROCK MOUNTAIN + DISPLAY HEADLINE
-          (Exact replica of matcha mountain base and "Choose you matcha tea")
-          ===================================================================== */}
-      <div className="relative z-20 w-full overflow-hidden select-none -mt-10 sm:-mt-14 pb-6 sm:pb-10 flex flex-col items-center">
-        
-        {/* Mountain Landscape Silhouette / Bedrock Texture */}
-        <div className="relative w-full max-w-5xl h-36 sm:h-48 md:h-56 mx-auto flex items-end justify-center">
-          
-          {/* Primary Sintered Carbide Mountain SVG Structure */}
-          <svg
-            viewBox="0 0 1000 320"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full object-cover filter drop-shadow-[0_-12px_24px_rgba(0,0,0,0.85)]"
-          >
-            <defs>
-              <linearGradient id="carbideMountainGrad" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stopColor="#252F3C" />
-                <stop offset="30%" stopColor="#1B222C" />
-                <stop offset="70%" stopColor="#121720" />
-                <stop offset="100%" stopColor="#070A11" />
-              </linearGradient>
-              <linearGradient id="ridgeHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#475569" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="#94A3B8" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#475569" stopOpacity="0.2" />
-              </linearGradient>
-            </defs>
-
-            {/* Back Outer Ridges */}
-            <path
-              d="M 0 320 Q 200 120 380 200 Q 500 80 620 200 Q 800 120 1000 320 Z"
-              fill="#121720"
-              opacity="0.75"
-            />
-
-            {/* Main Center Mountain Peak Pedestal */}
-            <path
-              d="M 50 320 Q 240 240 370 160 Q 450 60 500 45 Q 550 60 630 160 Q 760 240 950 320 Z"
-              fill="url(#carbideMountainGrad)"
-            />
-
-            {/* Mountain Ridge Facets & Creases (Matching matcha mountain crags) */}
-            <path
-              d="M 500 45 Q 480 140 430 220 Q 380 280 320 320"
-              stroke="url(#ridgeHighlight)"
-              strokeWidth="2.5"
-              fill="none"
-              opacity="0.6"
-            />
-            <path
-              d="M 500 45 Q 530 150 590 230 Q 640 280 700 320"
-              stroke="#070A11"
-              strokeWidth="3.5"
-              fill="none"
-              opacity="0.8"
-            />
-            <path
-              d="M 450 150 Q 500 180 540 240"
-              stroke="url(#ridgeHighlight)"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0.4"
-            />
-          </svg>
-
-          {/* Natural Carbide Texture Overlay */}
-          <img
-            src="/images/carbide-mountain-base.png"
-            alt="Carbide Bedrock Pedestal"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-50 pointer-events-none"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-            }}
-          />
-
-        </div>
-
-        {/* -------------------------------------------------------------
-            MASSIVE DISPLAY HEADLINE (Exact replica of "Chooise you matcha tea")
-            ------------------------------------------------------------- */}
-        <div className="relative -mt-16 sm:-mt-24 md:-mt-28 z-30 text-center px-4 w-full">
-          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)] max-w-5xl mx-auto">
-            Choose your cutting tool
-          </h1>
-          <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-300 font-medium max-w-2xl mx-auto drop-shadow-md">
-            Precision solid carbide drills, high-performance end mills, burnishing tools, and bespoke CNC geometries engineered to micron tolerances.
+          {/* Subtitle Description */}
+          <p className="text-xs sm:text-sm text-gray-300 max-w-md sm:max-w-lg leading-relaxed font-normal pt-1">
+            {slide.description}
           </p>
 
-          {/* Interactive Navigation Dot Indicators */}
-          <div className="flex items-center justify-center gap-2.5 mt-4 sm:mt-6">
-            {toolCategories.map((t, i) => (
-              <button
-                key={t.id}
-                onClick={() => setActiveIdx(i)}
-                aria-label={`Select ${t.name}`}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeIdx === i ? 'w-9 bg-[#F5B800] shadow-[0_0_12px_rgba(245,184,0,0.8)]' : 'w-2.5 bg-gray-600 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+          {/* CTA Buttons (Solid Bold Red Button matching Image 1 "SEE DETAILS") */}
+          <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4">
+            <Link
+              to={slide.link}
+              className="bg-[#E11D48] hover:bg-[#BE123C] text-white font-black text-xs uppercase tracking-[0.15em] px-8 py-3.5 shadow-[0_10px_25px_rgba(225,29,72,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center cursor-pointer rounded-xs"
+            >
+              <span>SEE DETAILS</span>
+            </Link>
+
+            <button
+              onClick={() => openQuoteModal({ productName: slide.quoteSubject })}
+              className="border border-white/30 hover:border-white text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider px-6 py-3.5 transition-all inline-flex items-center gap-2 cursor-pointer rounded-xs"
+            >
+              <span>REQUEST QUOTE</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
+
         </div>
 
+        {/* -------------------------------------------------------------
+            CENTER-RIGHT COLUMN: Macro Tool Showcase + Interactive Hotspot Pins
+            ------------------------------------------------------------- */}
+        <div className="lg:col-span-6 xl:col-span-7 relative flex items-center justify-center min-h-[340px] sm:min-h-[420px] lg:min-h-[500px]">
+          
+          {/* Cutting Tool Image Container */}
+          <div className="relative w-full max-w-2xl h-[340px] sm:h-[440px] lg:h-[500px] flex items-center justify-center">
+            
+            {/* Dramatic Product Image */}
+            <img
+              key={slide.id}
+              src={slide.image}
+              alt={`${slide.line1} ${slide.line2}`}
+              className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-700 ease-out transform scale-100"
+              onError={(e) => {
+                e.currentTarget.src = '/images/hero-tools-showcase.png';
+              }}
+            />
+
+            {/* Spec Tag Floating Badge */}
+            <div className="absolute top-4 right-4 bg-black/60 border border-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-mono text-[#F5B800] font-bold tracking-wider shadow-lg pointer-events-none">
+              {slide.badge}
+            </div>
+
+            {/* -------------------------------------------------------------
+                INTERACTIVE HOTSPOT PINS (Exact Match to Image 1's Circular Dots)
+                ------------------------------------------------------------- */}
+            {slide.hotspots.map((spot) => {
+              const isActive = activeHotspot === spot.id;
+
+              return (
+                <div
+                  key={spot.id}
+                  style={{ top: spot.top, left: spot.left }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
+                >
+                  {/* Pin Dot with Concentric Animated Rings */}
+                  <button
+                    onClick={() => setActiveHotspot(isActive ? null : spot.id)}
+                    onMouseEnter={() => setActiveHotspot(spot.id)}
+                    className="relative group p-2 cursor-pointer focus:outline-none"
+                    aria-label={spot.title}
+                  >
+                    {/* Pulsing Outer Ping Ring */}
+                    <span className="absolute inset-1 rounded-full bg-white/25 animate-ping opacity-60 pointer-events-none" />
+                    
+                    {/* Concentric Glass Ring */}
+                    <span className="relative w-7 h-7 rounded-full bg-black/70 border border-white/80 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.4)] group-hover:scale-125 transition-transform duration-300">
+                      <span className="w-2.5 h-2.5 rounded-full bg-white shadow-xs" />
+                    </span>
+                  </button>
+
+                  {/* Hotspot Floating Tooltip Spec Card */}
+                  {isActive && (
+                    <div 
+                      className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-64 sm:w-72 bg-[#1B1D22]/95 border border-white/25 rounded-xl p-4 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-200 pointer-events-auto text-left"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#E11D48] bg-[#E11D48]/15 px-2 py-0.5 rounded">
+                          {spot.badge}
+                        </span>
+                        <Sparkles className="w-3.5 h-3.5 text-[#F5B800]" />
+                      </div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">
+                        {spot.title}
+                      </h4>
+                      <p className="text-[11px] text-gray-300 leading-relaxed font-normal">
+                        {spot.spec}
+                      </p>
+                      {/* Arrow Pointer */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full w-2 h-2 bg-[#1B1D22] border-r border-b border-white/25 transform rotate-45 -mt-1" />
+                    </div>
+                  )}
+
+                </div>
+              );
+            })}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* =========================================================================
+          BOTTOM DOCK BAR: Slider Indicator (01 —— 04) + Right Video Preview Card
+          ========================================================================= */}
+      <div className="relative z-20 w-full border-t border-white/10 bg-black/40 backdrop-blur-md px-5 sm:px-8 lg:px-12 py-4">
+        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          
+          {/* Previous / Next Arrow Controls */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prevSlide}
+              aria-label="Previous Tool Platform"
+              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-gray-300 hover:text-white flex items-center justify-center transition-all cursor-pointer hover:bg-white/10"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={nextSlide}
+              aria-label="Next Tool Platform"
+              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-gray-300 hover:text-white flex items-center justify-center transition-all cursor-pointer hover:bg-white/10"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* -------------------------------------------------------------
+              BOTTOM CENTER: Slider Progress Indicator (01 ————— 04)
+              (Exact replica of Image 1 bottom control)
+              ------------------------------------------------------------- */}
+          <div className="flex items-center gap-3 font-mono text-xs text-gray-400">
+            <span className="text-white font-bold tracking-wider">
+              0{currentSlide + 1}
+            </span>
+
+            {/* Progress Track */}
+            <div className="w-40 sm:w-60 h-0.5 bg-white/20 rounded-full overflow-hidden relative">
+              <div
+                className="h-full bg-white transition-all duration-500 ease-out"
+                style={{
+                  width: `${((currentSlide + 1) / slides.length) * 100}%`
+                }}
+              />
+            </div>
+
+            <span className="text-gray-400 tracking-wider">
+              0{slides.length}
+            </span>
+          </div>
+
+          {/* -------------------------------------------------------------
+              BOTTOM RIGHT: Video Preview Thumbnail Card with Play Button
+              (Exact replica of Image 1 bottom-right card)
+              ------------------------------------------------------------- */}
+          <div
+            onClick={onOpenVideoModal}
+            className="w-44 sm:w-52 h-16 sm:h-18 rounded-lg border border-white/20 bg-black/60 overflow-hidden relative shadow-xl group cursor-pointer flex items-center p-2 gap-3 hover:border-[#E11D48] transition-all duration-300"
+          >
+            {/* Thumbnail Image */}
+            <div className="w-16 h-12 rounded overflow-hidden relative shrink-0 bg-neutral-900 border border-white/10">
+              <img
+                src="/images/about/ecogrind-lx-machine.png"
+                alt="5-Axis CNC Tool Grinding Video"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-[#E11D48] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                  <Play className="w-3 h-3 fill-current ml-0.5" />
+                </div>
+              </div>
+            </div>
+
+            {/* Video Label */}
+            <div className="flex-1 min-w-0">
+              <span className="text-[10px] uppercase font-mono font-bold text-[#E11D48] block tracking-wider">
+                Facility Tour
+              </span>
+              <p className="text-xs font-bold text-white truncate group-hover:text-[#F5B800] transition-colors">
+                5-Axis CNC Video
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* -------------------------------------------------------------
+          RIGHT EDGE: Vertical Slide Indicators (- - - -)
+          (Matching Image 1 Right Edge Indicator)
+          ------------------------------------------------------------- */}
+      <div className="hidden lg:flex flex-col gap-3 absolute right-5 top-1/2 -translate-y-1/2 z-20">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setCurrentSlide(idx);
+              setActiveHotspot(null);
+            }}
+            className={`transition-all duration-300 cursor-pointer ${
+              currentSlide === idx
+                ? 'w-6 h-1 bg-white rounded-full'
+                : 'w-2.5 h-1 bg-white/30 hover:bg-white/70 rounded-full'
+            }`}
+            aria-label={`Jump to slide 0${idx + 1}`}
+          />
+        ))}
       </div>
 
     </div>
