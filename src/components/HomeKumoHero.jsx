@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useQuote } from '../context/QuoteContext';
 
 export default function HomeKumoHero({ onOpenVideoModal }) {
   const { openQuoteModal } = useQuote();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeHotspot, setActiveHotspot] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
 
   // 4 Featured Cutting Tool Platforms with Full-Bleed Images
   const slides = [
@@ -145,25 +143,18 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
     }
   ];
 
-  // Auto-advance slides every 6.5s
+  // Auto-advance slides every 4s
   useEffect(() => {
-    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setActiveHotspot(null);
-    }, 6500);
+    }, 4000);
     return () => clearInterval(timer);
-  }, [isPaused, slides.length]);
+  }, [slides.length]);
 
   const slide = slides[currentSlide];
 
   return (
     <div
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => {
-        setIsPaused(false);
-        setActiveHotspot(null);
-      }}
       className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[660px] xl:min-h-[700px] bg-[#141518] text-white overflow-hidden flex flex-col justify-center select-none"
     >
       {/* =========================================================================
@@ -190,55 +181,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
 
         {/* Bottom Fade */}
         <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#141518] via-[#141518]/70 to-transparent pointer-events-none z-10" />
-
-        {/* -------------------------------------------------------------
-            INTERACTIVE HOTSPOT PINS DIRECTLY ON FULL BLEED IMAGE
-            ------------------------------------------------------------- */}
-        {slide.hotspots.map((spot) => {
-          const isActive = activeHotspot === spot.id;
-
-          return (
-            <div
-              key={spot.id}
-              style={{ top: spot.top, left: spot.left }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
-            >
-              {/* Concentric Pulsing Pin */}
-              <button
-                onClick={() => setActiveHotspot(isActive ? null : spot.id)}
-                onMouseEnter={() => setActiveHotspot(spot.id)}
-                className="relative group p-2 cursor-pointer focus:outline-none"
-                aria-label={spot.title}
-              >
-                <span className="absolute inset-1 rounded-full bg-white/30 animate-ping opacity-60 pointer-events-none" />
-                <span className="relative w-7 h-7 rounded-full bg-black/70 border border-white/90 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.4)] group-hover:scale-125 transition-transform duration-300">
-                  <span className="w-2.5 h-2.5 rounded-full bg-white shadow-xs" />
-                </span>
-              </button>
-
-              {/* Tooltip Card */}
-              {isActive && (
-                <div 
-                  className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-64 sm:w-72 bg-[#1B1D22]/95 border border-white/25 rounded-xl p-4 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-200 pointer-events-auto text-left"
-                >
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#F5B800] bg-[#F5B800]/15 px-2 py-0.5 rounded">
-                      {spot.badge}
-                    </span>
-                    <Sparkles className="w-3.5 h-3.5 text-[#F5B800]" />
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">
-                    {spot.title}
-                  </h4>
-                  <p className="text-[11px] text-gray-300 leading-relaxed font-normal">
-                    {spot.spec}
-                  </p>
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-2 h-2 bg-[#1B1D22] border-r border-b border-white/25 transform rotate-45 -mt-1" />
-                </div>
-              )}
-            </div>
-          );
-        })}
 
       </div>
 
@@ -288,10 +230,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         {slides.map((_, idx) => (
           <button
             key={idx}
-            onClick={() => {
-              setCurrentSlide(idx);
-              setActiveHotspot(null);
-            }}
+            onClick={() => setCurrentSlide(idx)}
             className={`transition-all duration-300 cursor-pointer ${
               currentSlide === idx
                 ? 'w-6 h-1 bg-white rounded-full'
