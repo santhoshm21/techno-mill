@@ -16,6 +16,10 @@ import heroSaackeGrinder from '../assets/images/hero-saacke-grinder.jpg';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
+// Home Section Additions (Matching Video Design Pattern)
+import HomeAccordionGallery from '../components/HomeAccordionGallery';
+import HomePlatformRow from '../components/HomePlatformRow';
+
 // 9-in-1 Single Page Sections (Stacked sequentially)
 import About from './About';
 import Products from './Products';
@@ -116,9 +120,12 @@ export default function Home() {
     <div className="bg-white font-sans antialiased text-[#1F2937] selection:bg-[#F5B800] selection:text-[#1E2227]">
 
       {/* =========================================================================
-          SECTION 1: HOME (Full-Height Hero Carousel With 5-Second Rotation)
+          SECTION 1: HOME (Hero Carousel, Accordion Gallery & Tooling Platforms)
           ========================================================================= */}
-      <section id="home" className="relative bg-[#0D1117] text-white min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden border-b border-gray-200 scroll-mt-16">
+      <section id="home" className="scroll-mt-16">
+
+        {/* Part A: Full-Height Hero Carousel With 5-Second Rotation */}
+        <div className="relative bg-[#0D1117] text-white min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden border-b border-gray-800">
 
         {/* Slide 0: TMT Manufacturing Plant Facility */}
         <div
@@ -254,6 +261,14 @@ export default function Home() {
 
           </div>
         </div>
+
+        </div>
+
+        {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery */}
+        <HomeAccordionGallery />
+
+        {/* Part C: Video Pattern 2 - High Performance Tooling Platforms Row */}
+        <HomePlatformRow />
 
       </section>
 
