@@ -152,9 +152,6 @@ export default function HomeAccordionGallery() {
                 {/* Active Expanded State: Dark bottom gradient with Title, Description, and Outline Button */}
                 {isHovered && (
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-5 flex flex-col justify-end items-start text-left transition-opacity duration-300">
-                    <span className="text-[10px] sm:text-xs font-semibold text-[#F5B800] tracking-wider uppercase mb-0.5">
-                      {panel.tag}
-                    </span>
                     <h3 className="text-base sm:text-lg font-bold text-white leading-tight mb-1 drop-shadow-md">
                       {panel.title}
                     </h3>
