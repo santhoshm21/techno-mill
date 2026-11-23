@@ -30,15 +30,12 @@ function ScrollHandler() {
 }
 
 export default function MainLayout() {
-  const { pathname } = useLocation();
-  const isHome = pathname === '/';
-
   return (
     <QuoteProvider>
       <div className="min-h-screen flex flex-col bg-white text-[#1F2937] font-sans antialiased selection:bg-[#F5B800] selection:text-[#1E2227]">
         <ScrollHandler />
         <Header />
-        <main className={`flex-1 ${isHome ? '' : 'pt-20 sm:pt-24'}`}>
+        <main className="flex-1">
           <Outlet />
         </main>
         <Footer />

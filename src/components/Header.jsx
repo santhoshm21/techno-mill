@@ -5,8 +5,9 @@ import {
   ChevronDown, 
   Menu, 
   X, 
-  ArrowRight,
-  Sparkles
+  ArrowRight, 
+  Wrench, 
+  FileText
 } from 'lucide-react';
 import TMTLogo from './TMTLogo';
 import { categories } from '../data/categories';
@@ -19,54 +20,28 @@ export default function Header() {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   const searchContainerRef = useRef(null);
   const prodDropdownRef = useRef(null);
+  const servDropdownRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const { openQuoteModal } = useQuote();
-
-  // Scroll detection for transparent-to-glass transition
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Track active section on home page
-      if (location.pathname === '/') {
-        const sectionIds = ['home', 'facility', 'contact', 'clients'];
-        const scrollPos = window.scrollY + 200;
-        for (let i = sectionIds.length - 1; i >= 0; i--) {
-          const el = document.getElementById(sectionIds[i]);
-          if (el && el.offsetTop <= scrollPos) {
-            setActiveSection(sectionIds[i]);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
 
   // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setIsSearchOpen(false);
     setProductsDropdownOpen(false);
+    setServicesDropdownOpen(false);
   }, [location.pathname]);
 
   // Live search filtering
   useEffect(() => {
     if (searchQuery.trim().length === 0) {
       setSearchResults([]);
+      setIsSearchOpen(false);
       return;
     }
 
@@ -79,6 +54,7 @@ export default function Header() {
     );
 
     setSearchResults(matches);
+    setIsSearchOpen(true);
   }, [searchQuery]);
 
   // Click outside listener
@@ -90,16 +66,44 @@ export default function Header() {
       if (prodDropdownRef.current && !prodDropdownRef.current.contains(event.target)) {
         setProductsDropdownOpen(false);
       }
+      if (servDropdownRef.current && !servDropdownRef.current.contains(event.target)) {
+        setServicesDropdownOpen(false);
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const [activeSection, setActiveSection] = useState('home');
+
+  // Track active section on scroll
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+
+    const sectionIds = ['home', 'about', 'products', 'services', 'projects', 'facility', 'clients', 'careers', 'contact'];
+    
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 140;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
+
   const scrollToSection = (e, sectionId) => {
     if (e && e.preventDefault) e.preventDefault();
     setMobileMenuOpen(false);
     setProductsDropdownOpen(false);
+    setServicesDropdownOpen(false);
 
     if (location.pathname !== '/') {
       navigate(`/#${sectionId}`);
@@ -128,56 +132,43 @@ export default function Header() {
     }
   };
 
-  const isHome = location.pathname === '/';
-  const showGlassBg = isScrolled || !isHome;
-
   return (
-    <>
-      {/* 1. TOP YELLOW ACCENT LINE (Exact Reference Video Pattern) */}
-      <div className="fixed top-0 left-0 right-0 h-[2.5px] bg-[#F5B800] z-50 shadow-[0_0_10px_#F5B800]" />
-
-      {/* 2. MAIN NAVBAR */}
-      <header 
-        className={`fixed top-[2.5px] left-0 right-0 z-40 transition-all duration-300 ${
-          showGlassBg
-            ? 'bg-[#0B0F15]/95 backdrop-blur-md border-b border-white/10 shadow-2xl py-3'
-            : 'bg-gradient-to-b from-black/85 via-black/40 to-transparent border-b border-transparent py-4 sm:py-5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white border-b border-[#E5E7EB] shadow-sm font-sans">
+      
+      {/* MAIN HEADER BAR (White with TMT Gladius logo, Navigation, Search & CTA) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-3">
           
-          {/* LEFT: TMT Gladius Logo (Light version for high contrast) */}
-          <TMTLogo variant="light" className="shrink-0 scale-95 sm:scale-100" />
+          {/* Left: TMT Gladius Logo (strictly single-line, shifted more to the left) */}
+          <TMTLogo variant="dark" className="shrink-0 -translate-x-3 sm:-translate-x-6 lg:-translate-x-10 xl:-translate-x-14" />
 
-          {/* CENTER: Navigation Links (Matching Video Pattern: Uppercase, Tracked, Active Yellow Underline) */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs font-bold uppercase tracking-widest text-white/80 shrink-0">
-            {/* HOME */}
+          {/* Center: Navigation Links (Strictly Home, About, Products, Contact, Careers) */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-3 text-xs lg:text-sm font-semibold whitespace-nowrap shrink-0">
+            {/* Home */}
             <Link
               to="/"
-              className={`relative py-1 transition-colors hover:text-white ${
-                isHome && activeSection === 'home' ? 'text-white' : 'text-white/80'
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/'
+                  ? 'border-[#F5B800] text-[#D97706] font-bold'
+                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              <span>HOME</span>
-              {isHome && activeSection === 'home' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
+              Home
             </Link>
 
-            {/* ABOUT */}
+            {/* About */}
             <Link
               to="/about"
-              className={`relative py-1 transition-colors hover:text-white ${
-                location.pathname === '/about' ? 'text-white' : 'text-white/80'
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/about'
+                  ? 'border-[#F5B800] text-[#D97706] font-bold'
+                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              <span>ABOUT</span>
-              {location.pathname === '/about' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
+              About
             </Link>
 
-            {/* PRODUCTS (Dropdown) */}
+            {/* Products Dropdown */}
             <div 
               ref={prodDropdownRef}
               className="relative"
@@ -186,178 +177,138 @@ export default function Header() {
             >
               <Link
                 to="/products"
-                className={`relative py-1 flex items-center gap-1 transition-colors hover:text-white ${
-                  location.pathname.startsWith('/products') ? 'text-white' : 'text-white/80'
+                className={`whitespace-nowrap flex items-center gap-0.5 px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                  location.pathname.startsWith('/products')
+                    ? 'border-[#F5B800] text-[#D97706] font-bold'
+                    : 'border-transparent text-gray-700 hover:text-[#D97706]'
                 }`}
               >
-                <span>PRODUCTS</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-                {location.pathname.startsWith('/products') && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-                )}
+                <span>Products</span>
+                <ChevronDown className="w-3.5 h-3.5 ml-0.5" />
               </Link>
 
-              {/* Products Dropdown Menu in Frosted Dark Glass */}
               {productsDropdownOpen && (
-                <div className="absolute top-full -left-4 w-72 bg-[#12161E]/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-xl py-2 z-50 text-white animate-hero-text">
-                  <div className="px-4 py-2 border-b border-white/10 text-[10px] font-mono tracking-wider text-[#F5B800] uppercase">
-                    Solid Carbide Catalogue
+                <div className="absolute top-full left-0 w-72 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 z-50">
+                  <div className="px-3 py-1.5 border-b border-gray-100 text-[11px] font-mono text-gray-400 uppercase">
+                    Tooling Catalogue
                   </div>
                   {categories.map((c) => (
                     <Link
                       key={c.id}
                       to={`/products?category=${c.slug}`}
                       onClick={() => setProductsDropdownOpen(false)}
-                      className="px-4 py-2.5 text-xs text-gray-300 hover:text-white hover:bg-white/10 flex items-center justify-between transition-colors"
+                      className="px-3 py-2 text-xs text-gray-700 hover:bg-amber-50 hover:text-[#D97706] flex items-center justify-between cursor-pointer"
                     >
                       <span>{c.name}</span>
-                      <span className="text-[10px] text-gray-500 font-mono">{c.toolCount}</span>
+                      <span className="text-[10px] text-gray-400 font-mono">{c.toolCount}</span>
                     </Link>
                   ))}
-                  <div className="border-t border-white/10 pt-2 mt-1 px-4">
+                  <div className="border-t border-gray-100 pt-1 mt-1 px-3">
                     <Link
                       to="/products"
                       onClick={() => setProductsDropdownOpen(false)}
-                      className="text-xs text-[#F5B800] hover:text-yellow-300 font-bold tracking-wider hover:underline flex items-center gap-1"
+                      className="text-xs text-[#D97706] font-semibold hover:underline cursor-pointer"
                     >
-                      <span>VIEW ALL PRODUCTS</span>
-                      <span>&rarr;</span>
+                      View All Products &rarr;
                     </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* SERVICES */}
+            {/* Services */}
             <Link
               to="/services"
-              className={`relative py-1 transition-colors hover:text-white ${
-                location.pathname === '/services' ? 'text-white' : 'text-white/80'
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/services'
+                  ? 'border-[#F5B800] text-[#D97706] font-bold'
+                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              <span>SERVICES</span>
-              {location.pathname === '/services' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
+              Services
             </Link>
 
-            {/* FACILITY */}
-            <Link
-              to="/#facility"
-              onClick={(e) => scrollToSection(e, 'facility')}
-              className={`relative py-1 transition-colors hover:text-white ${
-                isHome && activeSection === 'facility' ? 'text-white' : 'text-white/80'
-              }`}
-            >
-              <span>FACILITY</span>
-              {isHome && activeSection === 'facility' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
-            </Link>
-
-            {/* CONTACT */}
+            {/* Contact */}
             <Link
               to="/#contact"
               onClick={(e) => scrollToSection(e, 'contact')}
-              className={`relative py-1 transition-colors hover:text-white ${
-                isHome && activeSection === 'contact' ? 'text-white' : 'text-white/80'
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                activeSection === 'contact' || (location.pathname === '/' && location.hash === '#contact')
+                  ? 'border-[#F5B800] text-[#D97706] font-bold'
+                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              <span>CONTACT</span>
-              {isHome && activeSection === 'contact' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
-            </Link>
-
-            {/* CLIENTS */}
-            <Link
-              to="/#clients"
-              onClick={(e) => scrollToSection(e, 'clients')}
-              className={`relative py-1 transition-colors hover:text-white ${
-                isHome && activeSection === 'clients' ? 'text-white' : 'text-white/80'
-              }`}
-            >
-              <span>CLIENTS</span>
-              {isHome && activeSection === 'clients' && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-[#F5B800] rounded-full shadow-[0_0_8px_#F5B800]" />
-              )}
+              Contact
             </Link>
           </nav>
 
-          {/* RIGHT: Search Icon + Request Quote CTA (Matching Video Pattern) */}
+          {/* Right: Search Box + Get a Quote CTA */}
           <div className="flex items-center gap-3">
-            
-            {/* Search Toggle Icon */}
-            <div ref={searchContainerRef} className="relative">
-              <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                aria-label="Search"
-                className="w-9 h-9 rounded-full border border-white/20 text-white/90 hover:text-white hover:border-white/50 flex items-center justify-center transition-all cursor-pointer backdrop-blur-sm"
-              >
-                <Search className="w-4 h-4" />
-              </button>
+            {/* Search Input Box */}
+            <div ref={searchContainerRef} className="hidden md:block relative w-48 lg:w-56">
+              <form onSubmit={handleSearchSubmit} className="relative flex items-center">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => searchQuery.trim() && setIsSearchOpen(true)}
+                  className="w-full bg-white border border-gray-300 rounded-l-md py-1.5 pl-3 pr-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#F5B800] h-9"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] px-3 h-9 rounded-r-md flex items-center justify-center border border-l-0 border-[#F5B800] transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-3.5 h-3.5" />
+                </button>
+              </form>
 
-              {/* Floating Search Popover */}
+              {/* Search Dropdown */}
               {isSearchOpen && (
-                <div className="absolute right-0 top-12 w-80 sm:w-96 bg-[#12161E]/95 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-2xl p-3 z-50 animate-hero-text">
-                  <form onSubmit={handleSearchSubmit} className="relative flex items-center">
-                    <input
-                      type="text"
-                      autoFocus
-                      placeholder="Search tools, SKUs, drill, mill..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-white/10 border border-white/20 rounded-xl py-2 pl-3 pr-8 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-[#F5B800]"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setIsSearchOpen(false)}
-                      className="absolute right-2 text-gray-400 hover:text-white"
-                    >
-                      <X className="w-4 h-4" />
+                <div className="absolute top-full right-0 mt-1.5 w-80 bg-white border border-gray-200 rounded-md shadow-2xl overflow-hidden z-50 max-h-80 overflow-y-auto">
+                  <div className="p-2 bg-gray-50 border-b border-gray-200 text-[11px] font-semibold text-gray-600 flex justify-between">
+                    <span>Matches ({searchResults.length})</span>
+                    <button onClick={() => setIsSearchOpen(false)} className="text-gray-400 hover:text-gray-600">
+                      <X className="w-3 h-3" />
                     </button>
-                  </form>
-
-                  {/* Matches List */}
-                  {searchQuery.trim().length > 0 && (
-                    <div className="mt-2 max-h-60 overflow-y-auto divide-y divide-white/10">
-                      {searchResults.length === 0 ? (
-                        <div className="p-3 text-xs text-gray-400 text-center">No tools found matching "{searchQuery}"</div>
-                      ) : (
-                        searchResults.map(p => (
-                          <button
-                            key={p.id}
-                            onClick={() => handleSelectProduct(p.id)}
-                            className="w-full text-left p-2.5 hover:bg-white/10 rounded-lg flex items-center justify-between text-xs transition-colors cursor-pointer"
-                          >
-                            <div className="truncate pr-2">
-                              <div className="font-bold text-white truncate">{p.name}</div>
-                              <div className="text-[10px] text-gray-400">{p.categoryName}</div>
-                            </div>
-                            <span className="text-[10px] font-mono text-[#F5B800] bg-white/5 px-1.5 py-0.5 rounded border border-[#F5B800]/20">
-                              {p.sku}
-                            </span>
-                          </button>
-                        ))
-                      )}
-                    </div>
+                  </div>
+                  {searchResults.length === 0 ? (
+                    <div className="p-3 text-xs text-gray-500 text-center">No tools found matching query.</div>
+                  ) : (
+                    searchResults.map(p => (
+                      <button
+                        key={p.id}
+                        onClick={() => handleSelectProduct(p.id)}
+                        className="w-full text-left p-2.5 hover:bg-amber-50 border-b border-gray-100 flex items-center justify-between text-xs transition-colors"
+                      >
+                        <div className="truncate pr-2">
+                          <div className="font-semibold text-gray-800 truncate">{p.name}</div>
+                          <div className="text-[10px] text-gray-500">{p.categoryName}</div>
+                        </div>
+                        <span className="text-[10px] font-mono bg-gray-100 px-1 py-0.5 rounded text-gray-700 shrink-0">
+                          {p.sku}
+                        </span>
+                      </button>
+                    ))
                   )}
                 </div>
               )}
             </div>
 
-            {/* Request Quote CTA Button */}
+            {/* Yellow "Get a Quote →" Button */}
             <button
               onClick={() => openQuoteModal()}
-              className="bg-[#F5B800] hover:bg-yellow-400 text-[#1E2227] text-xs font-black tracking-widest uppercase px-4 sm:px-5 py-2.5 rounded-full shadow-lg shadow-yellow-500/20 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer shrink-0"
+              className="bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] font-bold text-xs px-4 py-2 rounded-md shadow-sm transition-all flex items-center gap-1.5 shrink-0 transform active:scale-95"
             >
-              <span>REQUEST QUOTE</span>
+              <span>Get a Quote</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-white/90 hover:text-white rounded-lg"
+              className="md:hidden p-2 text-gray-700 hover:text-black rounded"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -365,86 +316,66 @@ export default function Header() {
           </div>
 
         </div>
-      </header>
+      </div>
 
-      {/* 3. MOBILE MENU OVERLAY DRAWER */}
+      {/* 3. MOBILE MENU DRAWER (Only Home, About, Products, Contact, Careers) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#0B0F15]/98 backdrop-blur-2xl lg:hidden flex flex-col p-6 animate-hero-text">
-          <div className="flex items-center justify-between pb-6 border-b border-white/10">
-            <TMTLogo variant="light" />
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-white hover:text-[#F5B800]"
-            >
-              <X className="w-6 h-6" />
+        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3">
+          {/* Mobile Search */}
+          <form onSubmit={handleSearchSubmit} className="flex">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full border border-gray-300 rounded-l px-3 py-1.5 text-xs text-gray-800"
+            />
+            <button type="submit" className="bg-[#F5B800] px-3 rounded-r text-[#1E2227]">
+              <Search className="w-4 h-4" />
             </button>
-          </div>
+          </form>
 
-          {/* Mobile Navigation Links */}
-          <div className="flex-1 overflow-y-auto py-6 space-y-4 text-sm font-bold uppercase tracking-widest text-white">
+          {/* Links */}
+          <div className="divide-y divide-gray-100 text-xs font-semibold text-gray-800">
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
+              className={`block py-2.5 ${location.pathname === '/' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
-              HOME
+              Home
             </Link>
             <Link
               to="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
+              className={`block py-2.5 ${location.pathname === '/about' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
-              ABOUT
+              About
             </Link>
             <Link
               to="/products"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
+              className={`block py-2.5 ${location.pathname.startsWith('/products') ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
-              PRODUCTS
+              Products
             </Link>
             <Link
               to="/services"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
+              className={`block py-2.5 ${location.pathname === '/services' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
-              SERVICES
-            </Link>
-            <Link
-              to="/#facility"
-              onClick={(e) => scrollToSection(e, 'facility')}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
-            >
-              FACILITY
+              Services
             </Link>
             <Link
               to="/#contact"
               onClick={(e) => scrollToSection(e, 'contact')}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
+              className={`block py-2.5 ${activeSection === 'contact' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
-              CONTACT
-            </Link>
-            <Link
-              to="/#clients"
-              onClick={(e) => scrollToSection(e, 'clients')}
-              className="block py-2 hover:text-[#F5B800] border-b border-white/5"
-            >
-              CLIENTS
+              Contact
             </Link>
           </div>
-
-          {/* Bottom Quote Button on Mobile */}
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              openQuoteModal();
-            }}
-            className="w-full bg-[#F5B800] text-[#1E2227] font-black text-xs uppercase tracking-widest py-3.5 rounded-full shadow-lg"
-          >
-            REQUEST A QUOTE &rarr;
-          </button>
         </div>
       )}
-    </>
+
+    </header>
   );
 }

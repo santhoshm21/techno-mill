@@ -5,7 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
 // Home Section Additions (Matching Video Design Pattern)
-import HomeGlobeHero from '../components/HomeGlobeHero';
+import HomeScrollToolHero from '../components/HomeScrollToolHero';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
 import HomeFeaturedProducts from '../components/HomeFeaturedProducts';
 
@@ -40,8 +40,8 @@ export default function Home() {
           ========================================================================= */}
       <section id="home" className="scroll-mt-16">
 
-        {/* Part A: Video Pattern - Globe Slider Interactive Cutting Tool Hero */}
-        <HomeGlobeHero onOpenVideoModal={() => setVideoModalOpen(true)} />
+        {/* Part A: Scroll-Driven Cutting Tool Assembly Hero (Matching Video Scrollytelling Pattern) */}
+        <HomeScrollToolHero onOpenVideoModal={() => setVideoModalOpen(true)} />
 
         {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery (World Class Cutting Tools) */}
         <HomeAccordionGallery />
