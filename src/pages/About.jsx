@@ -74,14 +74,8 @@ export default function About({ embedded = false }) {
         {/* Top Tag & 2-Column Split: Heading on Left, Description on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
           
-          {/* Left Column: Pill & Bold Two-Tone Heading */}
+          {/* Left Column: Bold Two-Tone Heading */}
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 bg-orange-50 text-[11px] font-bold text-[#EA580C] uppercase tracking-widest mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-              <span>ABOUT US</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-            </div>
-
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111827] tracking-tight leading-tight">
               <span className="text-[#EA580C]">Pioneering</span> Precision Solid Carbide Tooling &amp; Re-Sharpening!
             </h2>
@@ -203,12 +197,6 @@ export default function About({ embedded = false }) {
           
           {/* Executive Vision & Mission Card */}
           <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 bg-orange-50 text-[11px] font-bold text-[#EA580C] uppercase tracking-widest mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-              <span>FOUNDER&apos;S VISION</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-            </div>
-
             <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight leading-snug mb-5">
               &quot;To be India’s Leading Innovator in Precision Solid Carbide Manufacturing &amp; Customized Re-Sharpening Technology.&quot;
             </h3>
@@ -231,12 +219,6 @@ export default function About({ embedded = false }) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-7 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 bg-orange-50 text-[11px] font-bold text-[#EA580C] uppercase tracking-widest">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-                  <span>VALUE ADDED SERVICES</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-                </div>
-
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight text-gray-900">
                   Innovative Re-cycling &amp; Cost Saving Concepts for Industry
                 </h3>
@@ -278,7 +260,7 @@ export default function About({ embedded = false }) {
                     />
                   </div>
                   <div className="mt-3 pt-3 border-t border-gray-800 text-[11px] text-gray-400 font-mono">
-                    Sub-micron Wheel Resolution • Tool Re-fluting
+                    Sub-micron Wheel Resolution
                   </div>
                 </div>
               </div>
@@ -297,12 +279,6 @@ export default function About({ embedded = false }) {
           
           {/* Header matching template */}
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 bg-orange-50 text-[11px] font-bold text-[#EA580C] uppercase tracking-widest mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-              <span>OUR TEAM</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-black text-[#111827] tracking-tight">
               <span className="text-[#EA580C]">Team</span> Members
             </h2>
