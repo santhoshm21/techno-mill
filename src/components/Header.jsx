@@ -230,9 +230,10 @@ export default function Header() {
 
             {/* Contact */}
             <Link
-              to="/contact"
+              to="/#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
               className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
-                location.pathname === '/contact'
+                activeSection === 'contact' || (location.pathname === '/' && location.hash === '#contact')
                   ? 'border-[#F5B800] text-[#D97706] font-bold'
                   : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
@@ -365,9 +366,9 @@ export default function Header() {
               Services
             </Link>
             <Link
-              to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block py-2.5 ${location.pathname === '/contact' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+              to="/#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
+              className={`block py-2.5 ${activeSection === 'contact' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
             >
               Contact
             </Link>

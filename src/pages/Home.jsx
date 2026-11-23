@@ -23,6 +23,7 @@ import HomePlatformRow from '../components/HomePlatformRow';
 // Remaining Sections Kept on Home Page
 import Facility from './Facility';
 import Clients from './Clients';
+import HomeContactSection from '../components/HomeContactSection';
 
 export default function Home() {
   useDocumentTitle('TECHNO MECH TOOLINGS (TMT) | Precision Engineering. Exceptional Tooling.');
@@ -98,6 +99,19 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
+
+  // Smooth scroll to hash on load or hash change
+  useEffect(() => {
+    if (window.location.hash) {
+      const hash = window.location.hash;
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, []);
 
   const handleHeroBtnClick = (e, targetPath) => {
     e.preventDefault();
@@ -281,6 +295,11 @@ export default function Home() {
       <section id="clients" className="scroll-mt-16 border-t border-gray-200">
         <Clients embedded={true} />
       </section>
+
+      {/* =========================================================================
+          SECTION 4: CONTACT US (Exact Replica of Reference UI, Next Before Footer)
+          ========================================================================= */}
+      <HomeContactSection />
 
       {/* INTERACTIVE VIDEO PREVIEW MODAL */}
       {videoModalOpen && (

@@ -19,7 +19,7 @@ export default function App() {
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="services" element={<Services />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="contact" element={<Navigate to="/#contact" replace />} />
         <Route path="careers" element={<Careers />} />
 
         {/* Home Section Anchors Redirection */}
