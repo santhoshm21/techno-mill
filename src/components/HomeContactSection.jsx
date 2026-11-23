@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send, Sparkles } from 'lucide-react';
+import { Calendar, ChevronDown, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
 export default function HomeContactSection() {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
     email: '',
+    phone: '',
+    toolingType: '',
+    preferredDate: '',
+    quantity: '',
     message: ''
   });
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -22,11 +24,7 @@ export default function HomeContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      setErrorMsg('Please complete all required fields.');
-      return;
-    }
-    if (!acceptedTerms) {
-      setErrorMsg('Please accept the Terms of Service to proceed.');
+      setErrorMsg('Please provide your name, email, and phone number.');
       return;
     }
 
@@ -34,161 +32,231 @@ export default function HomeContactSection() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', message: '' });
-      setAcceptedTerms(false);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        toolingType: '',
+        preferredDate: '',
+        quantity: '',
+        message: ''
+      });
     }, 800);
   };
 
   return (
-    <section id="contact" className="bg-white py-8 sm:py-10 lg:py-12 border-t border-gray-200 scroll-mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="bg-white py-12 sm:py-16 lg:py-20 border-t border-gray-200 scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Title: Exact replica of reference UI */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#111827] tracking-tight">
-            Contact Us
-          </h2>
+        {/* =========================================================================
+            HEADER: Bold Left-Aligned Title & Right-Aligned Availability Note
+            ========================================================================= */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+          <div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111827] tracking-tight font-sans">
+              Contact Us
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-sm text-left md:text-right font-normal">
+            Tell us your tooling requirements and component specs, and we&apos;ll confirm technical feasibility within 24 hours.
+          </p>
         </div>
 
-        {/* 2-Column Replica: Left Product on Shelf, Right Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* =========================================================================
+            2-COLUMN GRID: Form on Left, Elegant Rounded Card on Right
+            ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: Standing Tool on 3D Floating Shelf with Dynamic Sparks */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center select-none">
-            <div className="w-full max-w-[280px] sm:max-w-[320px] flex items-center justify-center">
-              <img
-                src="/images/contact-tool-shelf.png"
-                alt="Techno Mech High-Precision Solid Carbide Tool"
-                className="w-full h-auto max-h-[380px] object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = '/images/services/service-stepdrill-group.png';
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Right Column: Exact Form Replica */}
-          <div className="lg:col-span-8 flex flex-col justify-center">
-            
-            <div className="mb-6">
-              <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#111827] tracking-tight mb-2">
-                Let&apos;s Connect
-              </h3>
-              <p className="text-xs sm:text-[13px] text-gray-600 leading-relaxed max-w-2xl font-normal">
-                Connect with Techno Mech Toolings to explore advanced solid carbide tooling solutions, tool reconditioning, and innovative manufacturing possibilities. Our team is committed to understanding your requirements and delivering excellence through collaboration, precision engineering, and technical expertise.
-              </p>
-            </div>
-
+          {/* Left Column: Form Replica matching 2nd Input UI */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
             {submitted ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-emerald-900 flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-emerald-900 flex items-start gap-4 my-auto">
+                <CheckCircle2 className="w-7 h-7 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-emerald-800">Thank you for reaching out!</h4>
-                  <p className="text-xs text-emerald-700 mt-1">
-                    Your inquiry has been received. A senior tooling engineer from our Chennai plant will contact you shortly.
+                  <h3 className="font-bold text-base text-emerald-800">Inquiry Received Successfully</h3>
+                  <p className="text-xs sm:text-sm text-emerald-700 mt-1.5 leading-relaxed">
+                    Thank you for reaching out. A senior tooling applications engineer from our Chennai facility will contact you within 24 hours to review your requirements.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-3 text-xs font-semibold text-emerald-700 hover:text-emerald-900 underline"
+                    className="mt-4 text-xs font-semibold text-emerald-700 hover:text-emerald-900 underline cursor-pointer"
                   >
-                    Send another message
+                    Submit another inquiry &rarr;
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5">
-                
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 {errorMsg && (
-                  <div className="text-xs text-red-600 bg-red-50 border border-red-200 px-3.5 py-2 rounded-lg font-medium">
+                  <div className="text-xs text-red-600 bg-red-50 border border-red-200 px-4 py-2.5 rounded-xl font-medium">
                     {errorMsg}
                   </div>
                 )}
 
-                {/* Row 1: 3 Inline Inputs */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {/* Row 1: Name & Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Name
+                    </label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your Full Name"
-                      className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-[13px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all shadow-2xs"
+                      placeholder="Your full name"
+                      className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all"
                     />
                   </div>
+
                   <div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="Phone Number"
-                      className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-[13px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all shadow-2xs"
-                    />
-                  </div>
-                  <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Email
+                    </label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Email"
-                      className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-[13px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all shadow-2xs"
+                      placeholder="you@example.com"
+                      className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all"
                     />
                   </div>
                 </div>
 
-                {/* Row 2: Full-Width Message Box */}
+                {/* Row 2: Phone Number & Select Requirement */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 98765 43210"
+                      className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Select Your Tooling
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="toolingType"
+                        value={formData.toolingType}
+                        onChange={handleChange}
+                        className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all appearance-none pr-10 cursor-pointer"
+                      >
+                        <option value="" disabled>Choose your tooling...</option>
+                        <option value="Solid Carbide Drills">Solid Carbide Drills (3xD – 30xD)</option>
+                        <option value="High-Performance End Mills">High-Performance End Mills</option>
+                        <option value="Custom Form Tools">Custom Blueprint Form Tools</option>
+                        <option value="Burnishing Drills & Reamers">Burnishing Drills &amp; Reamers</option>
+                        <option value="Tool Regrinding & Recoating">5-Axis Tool Regrinding &amp; Recoating</option>
+                        <option value="Technical Consultation">Technical Consultation &amp; Plant Trial</option>
+                      </select>
+                      <ChevronDown className="w-4 h-4 text-gray-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row 3: Preferred Date & Quantity / Batch Size */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Preferred Date
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="preferredDate"
+                        value={formData.preferredDate}
+                        onChange={handleChange}
+                        placeholder="dd/mm/yyyy"
+                        className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all pr-10"
+                      />
+                      <Calendar className="w-4 h-4 text-gray-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                      Batch Size / Quantity
+                    </label>
+                    <input
+                      type="text"
+                      name="quantity"
+                      value={formData.quantity}
+                      onChange={handleChange}
+                      placeholder="e.g. 10 – 50 pcs"
+                      className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-xl px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 4: Message / Special Requests */}
                 <div>
+                  <label className="text-xs font-semibold text-gray-800 mb-1.5 block">
+                    Message / Special Requests
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={3}
-                    placeholder="Message"
-                    className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-xs sm:text-[13px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] resize-none transition-all shadow-2xs"
+                    rows={4}
+                    placeholder="Anything else we should know?"
+                    className="w-full bg-[#F4F4F6] border border-transparent focus:border-gray-300 focus:bg-white rounded-2xl p-4 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 resize-none transition-all"
                   ></textarea>
                 </div>
 
-                {/* Row 3: Checkbox on Left, Orange Send Button on Right */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-1">
-                  
-                  {/* Left: Checkbox */}
-                  <label className="flex items-center gap-2 cursor-pointer select-none text-xs sm:text-[13px] text-gray-700">
-                    <input
-                      type="checkbox"
-                      checked={acceptedTerms}
-                      onChange={(e) => {
-                        setAcceptedTerms(e.target.checked);
-                        if (errorMsg) setErrorMsg('');
-                      }}
-                      className="w-4 h-4 rounded border-gray-300 text-[#F59E0B] focus:ring-[#F59E0B] cursor-pointer"
-                    />
-                    <span className="font-medium text-gray-600">I accept the Terms of Service</span>
-                  </label>
-
-                  {/* Right: Solid Orange Button matching reference */}
+                {/* Row 5: Action Button (Dual Element Pill + Circle matching reference) */}
+                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-64 md:w-72 bg-[#F59E0B] hover:bg-[#EA580C] text-white font-semibold text-xs sm:text-sm py-3 px-6 rounded-lg shadow-xs hover:shadow transition-all duration-200 text-center flex items-center justify-center gap-2 cursor-pointer"
+                    className="inline-flex items-center gap-2 group cursor-pointer focus:outline-none"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <span>Send</span>
-                    )}
+                    <span className="bg-[#111827] group-hover:bg-black text-white font-medium text-xs sm:text-sm px-7 py-3.5 rounded-full transition-all duration-200 shadow-xs flex items-center justify-center">
+                      {isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}
+                    </span>
+                    <span className="w-11 h-11 rounded-full bg-[#111827] group-hover:bg-black text-white flex items-center justify-center transition-all duration-200 shadow-xs">
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </span>
                   </button>
-
                 </div>
 
               </form>
             )}
+          </div>
 
+          {/* Right Column: Tall Card with High-Res Visual & Floating Pill Badge */}
+          <div className="lg:col-span-5 flex">
+            <div className="relative w-full h-full min-h-[420px] sm:min-h-[480px] lg:min-h-full rounded-3xl overflow-hidden shadow-sm border border-gray-100 group select-none">
+              
+              {/* Cutting Tool / Engineering Visual */}
+              <img
+                src="/images/gallery/hero-drill-lineup.jpg"
+                alt="Techno Mech Precision Tooling"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = '/images/contact-tool-shelf.png';
+                }}
+              />
+
+              {/* Gentle gradient overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+
+              {/* Floating Pill Badge matching reference "Your Journey" */}
+              <div className="absolute top-5 right-5 bg-black/30 backdrop-blur-md border border-white/40 text-white text-xs font-medium px-4 py-1.5 rounded-full shadow-sm tracking-wide pointer-events-none">
+                Your Journey
+              </div>
+
+            </div>
           </div>
 
         </div>
