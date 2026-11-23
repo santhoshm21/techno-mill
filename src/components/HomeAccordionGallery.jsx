@@ -102,17 +102,20 @@ export default function HomeAccordionGallery() {
   };
 
   return (
-    <section className="bg-white py-6 sm:py-8 border-b border-gray-200">
+    <section className="bg-white py-10 sm:py-14 lg:py-16 border-b border-gray-200">
       <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
         
-        {/* Header: Exact replica of 1st input image UI reference */}
-        <div className="text-center max-w-4xl mx-auto mb-4 sm:mb-5 px-4">
-          <p className="font-serif text-lg sm:text-xl text-[#111827] font-normal tracking-wide mb-1">
+        {/* Header: Professional Modern Content Style */}
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-10 px-4">
+          <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-gray-400 block mb-2">
             Choose From
-          </p>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E3A8A] tracking-tight leading-tight">
-            World Class Cutting Tools For Every Application
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black text-[#111827] tracking-tight leading-tight">
+            World-Class Cutting Tools For Every Application
           </h2>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2.5 max-w-2xl mx-auto leading-relaxed font-normal">
+            High-performance solid carbide drills, end mills, reamers, and custom form cutters ground to micron-level accuracy on 5-axis CNC grinding centers.
+          </p>
         </div>
 
         {/* 9-Column Horizontal Strip Gallery matching reference aspect ratio */}
