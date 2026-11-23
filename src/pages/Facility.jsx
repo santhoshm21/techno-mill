@@ -173,14 +173,16 @@ export default function Facility({ embedded = false }) {
                           {mach.description}
                         </p>
 
-                        <div className="space-y-1.5 border-t border-gray-100 pt-3">
-                          {mach.specs.slice(0, 2).map((sp, i) => (
-                            <div key={i} className="text-[11px] text-gray-600 flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#F5B800] shrink-0"></span>
-                              <span className="truncate">{sp}</span>
-                            </div>
-                          ))}
-                        </div>
+                        {!embedded && (
+                          <div className="space-y-1.5 border-t border-gray-100 pt-3">
+                            {mach.specs.slice(0, 2).map((sp, i) => (
+                              <div key={i} className="text-[11px] text-gray-600 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#F5B800] shrink-0"></span>
+                                <span className="truncate">{sp}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">

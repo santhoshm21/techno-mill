@@ -78,15 +78,6 @@ export default function HomeFeaturedProducts() {
               key={product.id}
               className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-xs hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group relative"
             >
-              {/* Corner Badge */}
-              {product.badge && (
-                <div className="absolute top-3 left-3 z-10">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-50 text-[#B45309] border border-amber-200">
-                    {product.badge}
-                  </span>
-                </div>
-              )}
-
               {/* High Quality Product Image Container */}
               <Link
                 to={`/products/${product.id}`}
@@ -105,10 +96,6 @@ export default function HomeFeaturedProducts() {
               {/* Product Info & Specs */}
               <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between border-t border-gray-100 bg-white">
                 <div>
-                  <div className="text-[11px] font-mono text-gray-400 uppercase tracking-wider mb-1">
-                    {product.categoryName}
-                  </div>
-                  
                   <h3 className="font-bold text-sm text-[#111827] group-hover:text-[#D97706] transition-colors line-clamp-1 mb-1.5">
                     <Link to={`/products/${product.id}`}>{product.name}</Link>
                   </h3>
@@ -116,22 +103,6 @@ export default function HomeFeaturedProducts() {
                   <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">
                     {product.shortDescription}
                   </p>
-
-                  {/* Spec Highlights */}
-                  {product.specs && (
-                    <div className="flex flex-wrap gap-1.5 mb-4 text-[10px] font-mono text-gray-600">
-                      {product.specs.diameterRange && (
-                        <span className="bg-gray-100 px-2 py-0.5 rounded">
-                          {product.specs.diameterRange}
-                        </span>
-                      )}
-                      {product.specs.coating && (
-                        <span className="bg-gray-100 px-2 py-0.5 rounded">
-                          {product.specs.coating.split(' ')[0]} PVD
-                        </span>
-                      )}
-                    </div>
-                  )}
                 </div>
 
                 {/* Card Actions: View Specs & Get Quote */}
@@ -161,9 +132,8 @@ export default function HomeFeaturedProducts() {
         {/* Bottom Banner: Custom Blueprint Tooling Consultation */}
         <div className="mt-12 bg-[#111827] rounded-2xl p-6 sm:p-8 border border-gray-800 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-[11px] font-mono text-[#F5B800] uppercase font-bold tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Custom Blueprint Engineering</span>
+            <div className="text-[11px] font-mono text-[#F5B800] uppercase font-bold tracking-wider">
+              Custom Blueprint Engineering
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-white">
               Need a Custom Solid Carbide Tool Manufactured to Your Blueprint?
