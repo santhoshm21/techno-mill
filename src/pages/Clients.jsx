@@ -55,11 +55,11 @@ export default function Clients({ embedded = false }) {
         )}
 
         {/* Simple & Clean Header */}
-        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-5 px-4">
+        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-6 px-4">
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-tight">
             Our Esteemed Clients
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500 mt-2 font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#111827]/80 mt-1.5 font-medium leading-relaxed">
             Supplying high-reliability solid carbide cutting tools to Tier-1 automotive and precision engineering leaders across India.
           </p>
         </div>
@@ -77,12 +77,12 @@ export default function Clients({ embedded = false }) {
               key={`${item.id}-${idx}`}
               onClick={() => openQuoteModal({ productName: `Tooling for ${item.name} (${item.sector})` })}
               title={item.name}
-              className="w-36 sm:w-44 h-16 sm:h-20 bg-white rounded-xl border border-gray-200/90 shadow-2xs hover:shadow-md hover:border-[#F5B800] p-2.5 flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 hover:scale-105 group select-none"
+              className="w-40 sm:w-48 h-20 sm:h-24 bg-white rounded-2xl border border-white/80 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.18)] p-3 flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 hover:scale-105 group select-none"
             >
               <img
                 src={item.logo}
                 alt={item.name}
-                className="max-h-9 sm:max-h-11 max-w-[115px] sm:max-w-[130px] object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
+                className="max-h-10 sm:max-h-12 max-w-[125px] sm:max-w-[140px] object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.style.display = 'none';
