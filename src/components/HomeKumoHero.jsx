@@ -227,7 +227,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
                   className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-64 sm:w-72 bg-[#1B1D22]/95 border border-white/25 rounded-xl p-4 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-200 pointer-events-auto text-left"
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#E11D48] bg-[#E11D48]/15 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#F5B800] bg-[#F5B800]/15 px-2 py-0.5 rounded">
                       {spot.badge}
                     </span>
                     <Sparkles className="w-3.5 h-3.5 text-[#F5B800]" />
@@ -256,7 +256,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
           
           {/* Category Tag */}
           <div className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#E11D48] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#F5B800] animate-pulse" />
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gray-400 font-mono">
               {slide.category}
             </span>
@@ -275,11 +275,11 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
             {slide.description}
           </p>
 
-          {/* CTA Buttons (Solid Bold Red Button matching Reference "SEE DETAILS") */}
+          {/* CTA Buttons (Solid Bold Brand Yellow Button "SEE DETAILS") */}
           <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4">
             <Link
               to={slide.link}
-              className="bg-[#E11D48] hover:bg-[#BE123C] text-white font-black text-xs uppercase tracking-[0.15em] px-8 py-3.5 shadow-[0_10px_25px_rgba(225,29,72,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center cursor-pointer rounded-xs"
+              className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-black text-xs uppercase tracking-[0.15em] px-8 py-3.5 shadow-[0_10px_25px_rgba(245,184,0,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center cursor-pointer rounded-xs"
             >
               <span>SEE DETAILS</span>
             </Link>
