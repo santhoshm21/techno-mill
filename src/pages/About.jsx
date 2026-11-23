@@ -248,7 +248,7 @@ export default function About({ embedded = false }) {
                   <h4 className="text-sm font-bold text-white tracking-tight mb-3">
                     Techno Mech Toolings Manufacturing Plant
                   </h4>
-                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border border-gray-800">
+                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border-4 border-white shadow-lg">
                     <img 
                       src="/images/company/tmt-factory-building.jpg" 
                       alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai" 
