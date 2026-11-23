@@ -49,49 +49,51 @@ export default function About({ embedded = false }) {
         </div>
       </section>
 
-      {/* 3. EXECUTIVE LEADERSHIP & FOUNDER'S VISION (S. MURUGAN, M.D.) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Left Column (4 cols): Executive Portrait Card */}
-          <div className="lg:col-span-4 bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm flex flex-col justify-center">
-            <div className="relative rounded-xl overflow-hidden bg-white aspect-[4/5] border border-gray-200 shadow-sm mb-5 flex items-center justify-center p-2">
-              <img 
-                src="/images/about/s-murugan-md.png" 
-                alt="S. Murugan M.D - Managing Director, Techno Mech Toolings" 
-                className="w-full h-full object-contain" 
-              />
-            </div>
+      {/* 3. EXECUTIVE LEADERSHIP & FOUNDER'S VISION (S. MURUGAN, M.D.) (Gray Background) */}
+      <section className="w-full bg-[#F3F4F6] py-12 sm:py-16 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Left Column (4 cols): Executive Portrait Card */}
+            <div className="lg:col-span-4 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-center">
+              <div className="relative rounded-xl overflow-hidden bg-white aspect-[4/5] border border-gray-100 shadow-sm mb-5 flex items-center justify-center p-2">
+                <img 
+                  src="/images/about/s-murugan-md.png" 
+                  alt="S. Murugan M.D - Managing Director, Techno Mech Toolings" 
+                  className="w-full h-full object-contain" 
+                />
+              </div>
 
-            <div className="text-center">
-              <h2 className="text-2xl font-black text-gray-900">S. Murugan</h2>
-              <div className="text-xs font-mono font-bold text-[#D97706] mt-0.5">M.D &amp; Chief Technical Director</div>
-              <div className="text-xs text-gray-500 mt-1">Founder, Techno Mech Toolings</div>
-            </div>
-          </div>
-
-          {/* Right Column (8 cols): Executive Vision & Guiding Mission */}
-          <div className="lg:col-span-8 bg-[#F8FAFC] border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col justify-center shadow-sm">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight leading-snug mb-5">
-                &quot;To be India’s Leading Innovator in Precision Solid Carbide Manufacturing &amp; Customized Re-Sharpening Technology.&quot;
-              </h3>
-
-              {/* Real Brochure Text verbatim */}
-              <div className="space-y-4 text-sm text-gray-700 leading-relaxed font-normal">
-                <p>
-                  <strong>Techno Mech Toolings</strong> is a vision of Solid Carbide cutting tools Manufacturing and Re-Sharpening technology, backed by <strong>over nineteen years of dedicated experience</strong> in the precision engineering industry.
-                </p>
-                <p>
-                  Our vision is to be a leader in Innovation and Introduction of Manufacturing &amp; Re-sharpening of Solid carbide tools — including <strong>Solid Carbide Drills, End Mills, Ballnose Cutters, Bull End Mills, Special Form Tools, and Inserts</strong> — through cutting-edge CNC technology, providing the highest quality tooling solutions to the Indian manufacturing industry with complete customized engineering.
-                </p>
-                <p>
-                  We understand the commercial and operational pressures facing today&apos;s CNC machine shops and mass production plants. Our goal is simple: deliver tools with micron-accurate geometries that reduce cycle times, eliminate chatter, and maximize tool life per corner.
-                </p>
+              <div className="text-center">
+                <h2 className="text-2xl font-black text-gray-900">S. Murugan</h2>
+                <div className="text-xs font-mono font-bold text-[#D97706] mt-0.5">M.D &amp; Chief Technical Director</div>
+                <div className="text-xs text-gray-500 mt-1">Founder, Techno Mech Toolings</div>
               </div>
             </div>
-          </div>
 
+            {/* Right Column (8 cols): Executive Vision & Guiding Mission */}
+            <div className="lg:col-span-8 bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col justify-center shadow-sm">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight leading-snug mb-5">
+                  &quot;To be India’s Leading Innovator in Precision Solid Carbide Manufacturing &amp; Customized Re-Sharpening Technology.&quot;
+                </h3>
+
+                {/* Real Brochure Text verbatim */}
+                <div className="space-y-4 text-sm text-gray-700 leading-relaxed font-normal">
+                  <p>
+                    <strong>Techno Mech Toolings</strong> is a vision of Solid Carbide cutting tools Manufacturing and Re-Sharpening technology, backed by <strong>over nineteen years of dedicated experience</strong> in the precision engineering industry.
+                  </p>
+                  <p>
+                    Our vision is to be a leader in Innovation and Introduction of Manufacturing &amp; Re-sharpening of Solid carbide tools — including <strong>Solid Carbide Drills, End Mills, Ballnose Cutters, Bull End Mills, Special Form Tools, and Inserts</strong> — through cutting-edge CNC technology, providing the highest quality tooling solutions to the Indian manufacturing industry with complete customized engineering.
+                  </p>
+                  <p>
+                    We understand the commercial and operational pressures facing today&apos;s CNC machine shops and mass production plants. Our goal is simple: deliver tools with micron-accurate geometries that reduce cycle times, eliminate chatter, and maximize tool life per corner.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
