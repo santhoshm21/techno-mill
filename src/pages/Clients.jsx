@@ -54,33 +54,14 @@ export default function Clients({ embedded = false }) {
           </nav>
         )}
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-          <div>
-            <div className="flex items-baseline gap-2">
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1E2227] tracking-tight uppercase">
-                Our Esteemed Customers :-
-              </h2>
-            </div>
-            
-            {/* Accent Underline */}
-            <div className="flex items-center gap-1 mt-1.5 mb-2.5">
-              <div className="w-12 h-1 bg-[#0284C7] rounded-full"></div>
-              <div className="w-4 h-1 bg-[#F5B800] rounded-full"></div>
-            </div>
-
-            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl font-medium leading-relaxed">
-              Supplying high-reliability solid carbide cutting tools and reconditioning services to Tier-1 automotive and precision engineering leaders across India.
-            </p>
-          </div>
-
-          <button
-            onClick={() => openQuoteModal({ productName: 'OEM Tooling Vendor Supply Inquiry' })}
-            className="bg-[#1E2227] hover:bg-black text-white font-bold text-xs px-4 py-2.5 rounded-md shadow-xs transition-all flex items-center gap-2 self-start md:self-auto shrink-0 cursor-pointer"
-          >
-            <Award className="w-3.5 h-3.5 text-[#F5B800]" />
-            <span>Inquire OEM Vendor Supply</span>
-          </button>
+        {/* Simple & Clean Header */}
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-tight">
+            Our Esteemed Clients
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2 font-normal leading-relaxed">
+            Supplying high-reliability solid carbide cutting tools to Tier-1 automotive and precision engineering leaders across India.
+          </p>
         </div>
 
       </div>
@@ -95,28 +76,18 @@ export default function Clients({ embedded = false }) {
             <div
               key={`${item.id}-${idx}`}
               onClick={() => openQuoteModal({ productName: `Tooling for ${item.name} (${item.sector})` })}
-              title={`${item.name} — ${item.group} (${item.sector})`}
-              className="w-40 sm:w-48 h-20 sm:h-24 bg-white rounded-xl border border-gray-200/90 shadow-2xs hover:shadow-md hover:border-[#F5B800] p-3 flex flex-col items-center justify-center shrink-0 cursor-pointer transition-all duration-300 hover:scale-105 group select-none relative"
+              title={item.name}
+              className="w-36 sm:w-44 h-16 sm:h-20 bg-white rounded-xl border border-gray-200/90 shadow-2xs hover:shadow-md hover:border-[#F5B800] p-2.5 flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 hover:scale-105 group select-none"
             >
-              {/* Logo Frame */}
-              <div className="w-full h-full flex items-center justify-center">
-                <img
-                  src={item.logo}
-                  alt={item.name}
-                  className="max-h-10 sm:max-h-12 max-w-[125px] sm:max-w-[140px] object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-              </div>
-
-              {/* Sub-label visible on hover */}
-              <div className="absolute inset-x-1 bottom-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                <span className="text-[9px] font-bold text-gray-600 bg-white/95 px-1.5 py-0.5 rounded shadow-2xs truncate block">
-                  {item.group || item.name}
-                </span>
-              </div>
+              <img
+                src={item.logo}
+                alt={item.name}
+                className="max-h-9 sm:max-h-11 max-w-[115px] sm:max-w-[130px] object-contain filter contrast-105 group-hover:scale-105 transition-transform duration-300"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
             </div>
           ))}
         </div>
