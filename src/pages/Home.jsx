@@ -7,7 +7,6 @@ import { useQuote } from '../context/QuoteContext';
 // Home Section Additions (Matching Video Design Pattern)
 import HomeKumoHero from '../components/HomeKumoHero';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
-import HomePlatformRow from '../components/HomePlatformRow';
 
 // Remaining Sections Kept on Home Page
 import Facility from './Facility';
@@ -45,9 +44,6 @@ export default function Home() {
 
         {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery */}
         <HomeAccordionGallery />
-
-        {/* Part C: Video Pattern 2 - High Performance Tooling Platforms Row */}
-        <HomePlatformRow />
 
       </section>
 
