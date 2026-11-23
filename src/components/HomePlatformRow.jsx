@@ -421,11 +421,11 @@ export default function HomePlatformRow() {
   };
 
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20 border-b border-gray-200">
+    <section className="bg-white py-8 sm:py-10 lg:py-12 border-b border-gray-200">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header: Exact replica of 1st input image UI reference */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
+        <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-7 px-4">
           <p className="font-serif text-xl sm:text-2xl text-[#111827] font-normal tracking-wide mb-1 sm:mb-2">
             Choose From
           </p>

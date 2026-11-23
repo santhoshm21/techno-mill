@@ -40,11 +40,11 @@ export default function HomeContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-white py-16 sm:py-20 lg:py-24 border-t border-gray-200 scroll-mt-16">
+    <section id="contact" className="bg-white py-8 sm:py-10 lg:py-12 border-t border-gray-200 scroll-mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Title: Exact replica of reference UI */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-6 sm:mb-8">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#111827] tracking-tight">
             Contact Us
           </h2>

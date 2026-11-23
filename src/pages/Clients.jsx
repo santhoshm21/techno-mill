@@ -55,7 +55,7 @@ export default function Clients({ embedded = false }) {
         )}
 
         {/* Simple & Clean Header */}
-        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-5 px-4">
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-tight">
             Our Esteemed Clients
           </h2>

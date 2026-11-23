@@ -61,7 +61,7 @@ export default function Home() {
       {/* =========================================================================
           SECTION 3: CLIENTS (Small Boxes Moving Left-to-Right Before Contact Us)
           ========================================================================= */}
-      <section id="clients" className="scroll-mt-16 border-t border-gray-200 bg-white py-12 sm:py-16">
+      <section id="clients" className="scroll-mt-16 border-t border-gray-200 bg-[#F8FAFC] py-8 sm:py-10">
         <Clients embedded={true} />
       </section>
 

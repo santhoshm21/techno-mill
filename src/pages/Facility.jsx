@@ -25,10 +25,10 @@ export default function Facility({ embedded = false }) {
   const { openQuoteModal } = useQuote();
 
   return (
-    <div className="bg-[#FFFFFF] font-sans text-[#1F2937] pb-20">
+    <div className={`bg-[#FFFFFF] font-sans text-[#1F2937] ${embedded ? 'pb-8 sm:pb-10' : 'pb-16'}`}>
       
       {/* 1. TOP HEADER BANNER (Cakrawala Clean Industrial Style) */}
-      <div className="bg-[#1E2227] text-white py-14 px-4 sm:px-6 lg:px-8 border-b-4 border-[#F5B800] relative overflow-hidden">
+      <div className={`bg-[#1E2227] text-white ${embedded ? 'py-8 sm:py-10' : 'py-12 sm:py-14'} px-4 sm:px-6 lg:px-8 border-b-4 border-[#F5B800] relative overflow-hidden`}>
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 industrial-grid-dark opacity-20 pointer-events-none"></div>
 
