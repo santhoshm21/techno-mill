@@ -43,11 +43,11 @@ export default function Home() {
         {/* Part A: 3D Arc Interactive Cutting Tool Hero (Matching Input Video UI Pattern) */}
         <HomeKumoHero onOpenVideoModal={() => setVideoModalOpen(true)} />
 
-        {/* Part B: Featured High-Quality Precision Cutting Tools Lineup */}
-        <HomeFeaturedProducts />
-
-        {/* Part C: Interactive Expanding Image Accordion Gallery (World Class Cutting Tools) */}
+        {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery (World Class Cutting Tools) */}
         <HomeAccordionGallery />
+
+        {/* Part C: Featured High-Quality Precision Cutting Tools Lineup */}
+        <HomeFeaturedProducts />
 
       </section>
 
