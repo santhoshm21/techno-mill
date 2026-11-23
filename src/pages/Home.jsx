@@ -59,16 +59,16 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 3: CLIENTS (Plain Simple White Background, No Drop Shadows)
+          SECTION 3: CONTACT US (Exact Replica of Reference UI)
+          ========================================================================= */}
+      <HomeContactSection />
+
+      {/* =========================================================================
+          SECTION 4: CLIENTS (Plain Simple White Background, Borderless Logos)
           ========================================================================= */}
       <section id="clients" className="scroll-mt-16 border-t border-gray-200 bg-white py-8 sm:py-10">
         <Clients embedded={true} />
       </section>
-
-      {/* =========================================================================
-          SECTION 4: CONTACT US (Exact Replica of Reference UI, Next Before Footer)
-          ========================================================================= */}
-      <HomeContactSection />
 
       {/* INTERACTIVE VIDEO PREVIEW MODAL */}
       {videoModalOpen && (
