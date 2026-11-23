@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function HomeAccordionGallery() {
@@ -12,7 +13,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'Sub-Micron Precision',
       desc: 'High-feed 2-flute and 3-flute drills with custom split points and through-coolant channels for stainless steel and titanium.',
       image: '/images/gallery/hero-drill-lineup.jpg',
-      link: '#products',
+      link: '/products',
       tag: 'DIN 6537 / 3xD – 30xD'
     },
     {
@@ -21,7 +22,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'Vibration-Damping',
       desc: 'Variable helix square, ball nose, and bull nose solid carbide end mills delivering mirror surface finishes and high metal removal rates.',
       image: '/images/products/pure-spindle.jpg',
-      link: '#products',
+      link: '/products',
       tag: '2 – 6 Flutes / Variable Pitch'
     },
     {
@@ -30,7 +31,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'Ra < 0.2µm Finish',
       desc: 'Combined drilling and burnishing tools engineered to size and mirror-finish automotive bores in a single operation.',
       image: '/images/gallery/hero-solid-carbide-tools.jpg',
-      link: '#products',
+      link: '/products',
       tag: 'Mirror Bore Surface'
     },
     {
@@ -39,7 +40,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'IT6 / IT7 Tolerance',
       desc: 'Through-coolant, straight flute, and helical left/right hand carbide reamers engineered for high-precision bores.',
       image: '/images/gallery/hero-saacke-tool-geometries.jpg',
-      link: '#products',
+      link: '/products',
       tag: 'Sub-Micron Hole Sizing'
     },
     {
@@ -48,7 +49,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'German SAACKE Precision',
       desc: 'Restore original OEM geometry, flute clearance angles, and edge preparation on drills and cutters with up to 60% savings.',
       image: '/images/gallery/hero-saacke-grinder.jpg',
-      link: '#services',
+      link: '/contact',
       tag: 'OEM Geometry Restoration'
     },
     {
@@ -57,7 +58,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'AlTiN / TiN / AlCrN / DLC',
       desc: 'Advanced physical vapor deposition thin-film coatings providing thermal barriers up to 1,100°C and superior wear resistance.',
       image: '/images/gallery/hero-cnc-machining.png',
-      link: '#services',
+      link: '/contact',
       tag: 'Up to 3,400 HV Hardness'
     },
     {
@@ -66,7 +67,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'Direct From Workpiece CAD',
       desc: 'Custom profiling tools and dovetail cutters ground directly to client blueprints on 5-axis CNC machines for automotive transmissions.',
       image: '/images/gallery/hero-spindle-grinding.jpg',
-      link: '#projects',
+      link: '/contact',
       tag: 'Custom Blueprint Profiles'
     },
     {
@@ -75,7 +76,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'Single-Pass Multi-Op',
       desc: 'Engineered multi-diameter step drills combining drilling, chamfering, and countersinking into one single cycle-time-reducing tool.',
       image: '/images/gallery/hero-spindle-machining.jpg',
-      link: '#products',
+      link: '/products',
       tag: 'Aerospace & Automotive'
     },
     {
@@ -84,7 +85,7 @@ export default function HomeAccordionGallery() {
       subtitle: 'High-Temp Alloys',
       desc: 'Dedicated cutting geometries engineered specifically for Inconel, hardened steels, and lightweight composites.',
       image: '/images/products/drill-lineup-banner.jpg',
-      link: '#products',
+      link: '/products',
       tag: 'Exotic Alloy Solutions'
     }
   ];
@@ -158,14 +159,13 @@ export default function HomeAccordionGallery() {
                     <p className="text-xs sm:text-sm text-gray-200 line-clamp-2 max-w-sm mb-4 leading-relaxed drop-shadow-xs">
                       {panel.desc}
                     </p>
-                    <a
-                      href={panel.link}
-                      onClick={(e) => handleScroll(e, panel.link)}
+                    <Link
+                      to={panel.link}
                       className="inline-flex items-center gap-2 border border-white text-white hover:border-[#F5B800] hover:text-[#F5B800] font-semibold text-xs sm:text-sm px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-xs"
                     >
                       <span>Discover More</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>

@@ -142,33 +142,31 @@ export default function Header() {
           {/* Left: TMT Gladius Logo (strictly single-line, shifted more to the left) */}
           <TMTLogo variant="dark" className="shrink-0 -translate-x-3 sm:-translate-x-6 lg:-translate-x-10 xl:-translate-x-14" />
 
-          {/* Center: Navigation Links (single-line, non-wrapping) */}
-          <nav className="hidden xl:flex items-center space-x-1 lg:space-x-1.5 text-xs font-semibold whitespace-nowrap shrink-0">
+          {/* Center: Navigation Links (Strictly Home, About, Products, Contact, Careers) */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-3 text-xs lg:text-sm font-semibold whitespace-nowrap shrink-0">
             {/* Home */}
-            <a
-              href="#home"
-              onClick={(e) => scrollToSection(e, 'home')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'home' && location.pathname === '/'
+            <Link
+              to="/"
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/'
                   ? 'border-[#F5B800] text-[#D97706] font-bold'
                   : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
               Home
-            </a>
+            </Link>
 
-            {/* About Us */}
-            <a
-              href="#about"
-              onClick={(e) => scrollToSection(e, 'about')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'about' && location.pathname === '/'
+            {/* About */}
+            <Link
+              to="/about"
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/about'
                   ? 'border-[#F5B800] text-[#D97706] font-bold'
                   : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              About Us
-            </a>
+              About
+            </Link>
 
             {/* Products Dropdown */}
             <div 
@@ -177,18 +175,17 @@ export default function Header() {
               onMouseEnter={() => setProductsDropdownOpen(true)}
               onMouseLeave={() => setProductsDropdownOpen(false)}
             >
-              <a
-                href="#products"
-                onClick={(e) => scrollToSection(e, 'products')}
-                className={`whitespace-nowrap flex items-center gap-0.5 px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                  activeSection === 'products' && location.pathname === '/'
+              <Link
+                to="/products"
+                className={`whitespace-nowrap flex items-center gap-0.5 px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                  location.pathname.startsWith('/products')
                     ? 'border-[#F5B800] text-[#D97706] font-bold'
                     : 'border-transparent text-gray-700 hover:text-[#D97706]'
                 }`}
               >
                 <span>Products</span>
-                <ChevronDown className="w-3 h-3 ml-0.5" />
-              </a>
+                <ChevronDown className="w-3.5 h-3.5 ml-0.5" />
+              </Link>
 
               {productsDropdownOpen && (
                 <div className="absolute top-full left-0 w-72 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 z-50">
@@ -196,155 +193,52 @@ export default function Header() {
                     Tooling Catalogue
                   </div>
                   {categories.map((c) => (
-                    <a
+                    <Link
                       key={c.id}
-                      href={`#products`}
-                      onClick={(e) => {
-                        scrollToSection(e, 'products');
-                        navigate(`/?category=${c.slug}#products`);
-                      }}
+                      to={`/products?category=${c.slug}`}
+                      onClick={() => setProductsDropdownOpen(false)}
                       className="px-3 py-2 text-xs text-gray-700 hover:bg-amber-50 hover:text-[#D97706] flex items-center justify-between cursor-pointer"
                     >
                       <span>{c.name}</span>
                       <span className="text-[10px] text-gray-400 font-mono">{c.toolCount}</span>
-                    </a>
+                    </Link>
                   ))}
                   <div className="border-t border-gray-100 pt-1 mt-1 px-3">
-                    <a
-                      href="#products"
-                      onClick={(e) => scrollToSection(e, 'products')}
+                    <Link
+                      to="/products"
+                      onClick={() => setProductsDropdownOpen(false)}
                       className="text-xs text-[#D97706] font-semibold hover:underline cursor-pointer"
                     >
                       View All Products &rarr;
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Services Dropdown */}
-            <div 
-              ref={servDropdownRef}
-              className="relative"
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
-            >
-              <a
-                href="#services"
-                onClick={(e) => scrollToSection(e, 'services')}
-                className={`whitespace-nowrap flex items-center gap-0.5 px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                  activeSection === 'services' && location.pathname === '/'
-                    ? 'border-[#F5B800] text-[#D97706] font-bold'
-                    : 'border-transparent text-gray-700 hover:text-[#D97706]'
-                }`}
-              >
-                <span>Services</span>
-                <ChevronDown className="w-3 h-3 ml-0.5" />
-              </a>
-
-              {servicesDropdownOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white border border-gray-200 shadow-xl rounded-b-md py-2 z-50 text-xs">
-                  <div className="px-3 py-1.5 border-b border-gray-100 text-[11px] font-mono text-gray-400 uppercase">
-                    Re-Sharpening &amp; Coating
-                  </div>
-                  <a
-                    href="#services"
-                    onClick={(e) => scrollToSection(e, 'services')}
-                    className="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-[#D97706] cursor-pointer"
-                  >
-                    Drills, Step Drills &amp; Form Tools
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => scrollToSection(e, 'services')}
-                    className="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-[#D97706] cursor-pointer"
-                  >
-                    End Mill Re-Sharpening &amp; Re-Fluting
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => scrollToSection(e, 'services')}
-                    className="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-[#D97706] cursor-pointer"
-                  >
-                    Segment Broaching &amp; Round Broach
-                  </a>
-                  <div className="border-t border-gray-100 pt-1 mt-1 px-3">
-                    <a
-                      href="#services"
-                      onClick={(e) => scrollToSection(e, 'services')}
-                      className="text-xs text-[#D97706] font-semibold hover:underline cursor-pointer"
-                    >
-                      View All Services &rarr;
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Projects */}
-            <a
-              href="#projects"
-              onClick={(e) => scrollToSection(e, 'projects')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'projects' && location.pathname === '/'
+            {/* Contact */}
+            <Link
+              to="/contact"
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/contact'
                   ? 'border-[#F5B800] text-[#D97706] font-bold'
                   : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
-              Projects
-            </a>
-
-            {/* Facility */}
-            <a
-              href="#facility"
-              onClick={(e) => scrollToSection(e, 'facility')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'facility' && location.pathname === '/'
-                  ? 'border-[#F5B800] text-[#D97706] font-bold'
-                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
-              }`}
-            >
-              Facility
-            </a>
-
-            {/* Clients */}
-            <a
-              href="#clients"
-              onClick={(e) => scrollToSection(e, 'clients')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'clients' && location.pathname === '/'
-                  ? 'border-[#F5B800] text-[#D97706] font-bold'
-                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
-              }`}
-            >
-              Clients
-            </a>
+              Contact
+            </Link>
 
             {/* Careers */}
-            <a
-              href="#careers"
-              onClick={(e) => scrollToSection(e, 'careers')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'careers' && location.pathname === '/'
+            <Link
+              to="/careers"
+              className={`whitespace-nowrap px-3 py-2 border-b-2 transition-all cursor-pointer ${
+                location.pathname === '/careers'
                   ? 'border-[#F5B800] text-[#D97706] font-bold'
                   : 'border-transparent text-gray-700 hover:text-[#D97706]'
               }`}
             >
               Careers
-            </a>
-
-            {/* Contact Us */}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, 'contact')}
-              className={`whitespace-nowrap px-2.5 py-2 border-b-2 transition-all cursor-pointer ${
-                activeSection === 'contact' && location.pathname === '/'
-                  ? 'border-[#F5B800] text-[#D97706] font-bold'
-                  : 'border-transparent text-gray-700 hover:text-[#D97706]'
-              }`}
-            >
-              Contact Us
-            </a>
+            </Link>
           </nav>
 
           {/* Right: Search Box + Get a Quote CTA */}
@@ -413,7 +307,7 @@ export default function Header() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-gray-700 hover:text-black rounded"
+              className="md:hidden p-2 text-gray-700 hover:text-black rounded"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -423,9 +317,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 3. MOBILE MENU DRAWER */}
+      {/* 3. MOBILE MENU DRAWER (Only Home, About, Products, Contact, Careers) */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3">
           {/* Mobile Search */}
           <form onSubmit={handleSearchSubmit} className="flex">
             <input
@@ -442,15 +336,41 @@ export default function Header() {
 
           {/* Links */}
           <div className="divide-y divide-gray-100 text-xs font-semibold text-gray-800">
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="block py-2 hover:text-[#D97706]">Home</a>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="block py-2 hover:text-[#D97706]">About Us</a>
-            <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="block py-2 hover:text-[#D97706]">Products</a>
-            <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="block py-2 hover:text-[#D97706]">Services</a>
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="block py-2 hover:text-[#D97706]">Projects</a>
-            <a href="#facility" onClick={(e) => scrollToSection(e, 'facility')} className="block py-2 hover:text-[#D97706]">Facility</a>
-            <a href="#clients" onClick={(e) => scrollToSection(e, 'clients')} className="block py-2 hover:text-[#D97706]">Clients</a>
-            <a href="#careers" onClick={(e) => scrollToSection(e, 'careers')} className="block py-2 hover:text-[#D97706]">Careers</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="block py-2 hover:text-[#D97706]">Contact Us</a>
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2.5 ${location.pathname === '/' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2.5 ${location.pathname === '/about' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+            >
+              About
+            </Link>
+            <Link
+              to="/products"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2.5 ${location.pathname.startsWith('/products') ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+            >
+              Products
+            </Link>
+            <Link
+              to="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2.5 ${location.pathname === '/contact' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+            >
+              Contact
+            </Link>
+            <Link
+              to="/careers"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2.5 ${location.pathname === '/careers' ? 'text-[#D97706] font-bold' : 'hover:text-[#D97706]'}`}
+            >
+              Careers
+            </Link>
           </div>
         </div>
       )}

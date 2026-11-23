@@ -33,23 +33,19 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Col 2: Quick Links (4 cols - split into 2 sub-columns) */}
+          {/* Col 2: Quick Links (Strictly Home, About, Products, Contact, Careers) */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Inter',_sans-serif]">
               Quick Links
             </h4>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-xs">
-              <a href="#home" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</a>
-              <a href="#projects" className="text-gray-400 hover:text-[#F5B800] transition-colors">Projects</a>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
+              <Link to="/" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</Link>
+              <Link to="/contact" className="text-gray-400 hover:text-[#F5B800] transition-colors">Contact</Link>
               
-              <a href="#about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About Us</a>
-              <a href="#facility" className="text-gray-400 hover:text-[#F5B800] transition-colors">Facility</a>
+              <Link to="/about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About</Link>
+              <Link to="/careers" className="text-gray-400 hover:text-[#F5B800] transition-colors">Careers</Link>
               
-              <a href="#products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</a>
-              <a href="#clients" className="text-gray-400 hover:text-[#F5B800] transition-colors">Clients</a>
-              
-              <a href="#services" className="text-gray-400 hover:text-[#F5B800] transition-colors">Services</a>
-              <a href="#careers" className="text-gray-400 hover:text-[#F5B800] transition-colors">Careers</a>
+              <Link to="/products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</Link>
             </div>
           </div>
 

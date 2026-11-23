@@ -20,16 +20,6 @@ import { useQuote } from '../context/QuoteContext';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
 import HomePlatformRow from '../components/HomePlatformRow';
 
-// 9-in-1 Single Page Sections (Stacked sequentially)
-import About from './About';
-import Products from './Products';
-import Services from './Services';
-import Projects from './Projects';
-import Facility from './Facility';
-import Clients from './Clients';
-import Careers from './Careers';
-import Contact from './Contact';
-
 export default function Home() {
   useDocumentTitle('TECHNO MECH TOOLINGS (TMT) | Precision Engineering. Exceptional Tooling.');
   const { openQuoteModal } = useQuote();
@@ -46,7 +36,7 @@ export default function Home() {
       title: 'Precision Engineering.',
       highlight: 'Direct Factory Supply.',
       desc: 'Delivering innovative solid carbide tooling solutions and reconditioning services from our state-of-the-art Chennai manufacturing plant.',
-      primaryBtn: { text: 'Explore Our Products', link: '#products' },
+      primaryBtn: { text: 'Explore Our Products', link: '/products' },
       type: 'image',
       image: factoryBuildingImg,
       alt: 'Techno Mech Toolings Manufacturing Plant & Headquarters'
@@ -57,7 +47,7 @@ export default function Home() {
       title: 'Sub-Micron Precision.',
       highlight: 'Extended Tool Life.',
       desc: 'High-performance drills, reamers, end mills, and custom form tools engineered with premium European carbide rods.',
-      primaryBtn: { text: 'Browse Tool Catalog', link: '#products' },
+      primaryBtn: { text: 'Browse Tool Catalog', link: '/products' },
       type: 'image',
       image: heroSolidCarbideTools,
       alt: 'Precision Solid Carbide Cutting Tools Lineup'
@@ -68,7 +58,7 @@ export default function Home() {
       title: 'Restore OEM Geometry.',
       highlight: 'Save Up to 60%.',
       desc: 'Precision diamond-wheel regrinding, OD re-fluting, and thin-film PVD recoating for drills, end mills, and broaches.',
-      primaryBtn: { text: 'View Reconditioning Services', link: '#services' },
+      primaryBtn: { text: 'View Reconditioning Services', link: '/contact' },
       type: 'image',
       image: heroCncMachining,
       alt: '5-Axis CNC Tool Reconditioning and Recoating'
@@ -79,7 +69,7 @@ export default function Home() {
       title: 'Engineered Geometries.',
       highlight: 'Multi-Flute Design.',
       desc: 'Custom-designed drill point profiles, multi-step geometries, split points, and through-coolant hole configurations ground on SAACKE 5-axis CNC centers.',
-      primaryBtn: { text: 'Explore Special Tools', link: '#products' },
+      primaryBtn: { text: 'Explore Special Tools', link: '/products' },
       type: 'image',
       image: heroSaackeToolGeometries,
       alt: 'SAACKE 5-Axis CNC and Custom Tool Tip Geometries'
@@ -90,7 +80,7 @@ export default function Home() {
       title: 'Precision Flute Grinding.',
       highlight: 'Sub-Micron Tolerances.',
       desc: 'High-speed 5-axis CNC tool and cutter grinding ensuring exceptional flute geometry, mirror finishes, and extended cutting tool durability.',
-      primaryBtn: { text: 'Explore Machine Facility', link: '#facility' },
+      primaryBtn: { text: 'Explore Machine Facility', link: '/about' },
       type: 'image',
       image: heroSaackeGrinder,
       alt: 'SAACKE UW I F 5-Axis CNC Tool & Cutter Grinding Machine'
@@ -105,15 +95,9 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [heroSlides.length]);
 
-  const handleHeroBtnClick = (e, targetHash) => {
-    if (targetHash.startsWith('#')) {
-      e.preventDefault();
-      const el = document.querySelector(targetHash);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        window.history.replaceState(null, '', targetHash);
-      }
-    }
+  const handleHeroBtnClick = (e, targetPath) => {
+    e.preventDefault();
+    navigate(targetPath);
   };
 
   return (
@@ -271,71 +255,6 @@ export default function Home() {
         <HomePlatformRow />
 
       </section>
-
-
-      {/* =========================================================================
-          SECTION 2: ABOUT US (Company History, Vision, MD Profile, Recycling)
-          ========================================================================= */}
-      <section id="about" className="scroll-mt-16 border-t border-gray-200">
-        <About embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 3: PRODUCTS (Complete Solid Carbide Tooling Catalogue & Filtering)
-          ========================================================================= */}
-      <section id="products" className="scroll-mt-16 border-t border-gray-200">
-        <Products embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 4: SERVICES (CNC Re-Sharpening, Re-Fluting, Recoating & Flow)
-          ========================================================================= */}
-      <section id="services" className="scroll-mt-16 border-t border-gray-200">
-        <Services embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 5: PROJECTS (Recent Developments & Custom Tooling Projects)
-          ========================================================================= */}
-      <section id="projects" className="scroll-mt-16 border-t border-gray-200">
-        <Projects embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 6: FACILITY (SAACKE 5-Axis CNC, Metrology, Infrastructure & Benchmarks)
-          ========================================================================= */}
-      <section id="facility" className="scroll-mt-16 border-t border-gray-200">
-        <Facility embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 7: CLIENTS (Our Esteemed Customer Base & Industry Credentials)
-          ========================================================================= */}
-      <section id="clients" className="scroll-mt-16 border-t border-gray-200">
-        <Clients embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 8: CAREERS (Opportunities, Company Culture & Application Form)
-          ========================================================================= */}
-      <section id="careers" className="scroll-mt-16 border-t border-gray-200">
-        <Careers embedded={true} />
-      </section>
-
-
-      {/* =========================================================================
-          SECTION 9: CONTACT US (Plant Address, Map, Phone, Direct RFQ Form)
-          ========================================================================= */}
-      <section id="contact" className="scroll-mt-16 border-t border-gray-200">
-        <Contact embedded={true} />
-      </section>
-
 
       {/* INTERACTIVE VIDEO PREVIEW MODAL */}
       {videoModalOpen && (

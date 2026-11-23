@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // =========================================================================
 // 9 REALISTIC STANDING CUTTING TOOL VECTOR VISUALS (100% TRANSPARENT BG)
@@ -307,7 +308,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-blue-600 bg-blue-50 border border-blue-200/60',
       title: 'Solid Carbide Drills',
       spec: 'DIN 6537 / 30xD',
-      link: '#products',
+      link: '/products',
       Visual: StandingTwistDrill
     },
     {
@@ -319,7 +320,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-emerald-600 bg-emerald-50 border border-emerald-200/60',
       title: 'Solid End Mills',
       spec: '2 – 6 FLUTES',
-      link: '#products',
+      link: '/products',
       Visual: StandingEndMill
     },
     {
@@ -331,7 +332,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-amber-600 bg-amber-50 border border-amber-200/60',
       title: 'Burnishing Drills',
       spec: 'RA < 0.2µm FINISH',
-      link: '#products',
+      link: '/products',
       Visual: StandingBurnishingDrill
     },
     {
@@ -343,7 +344,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-indigo-600 bg-indigo-50 border border-indigo-200/60',
       title: 'Machine Reamers',
       spec: 'IT6 TOLERANCE',
-      link: '#products',
+      link: '/products',
       Visual: StandingMachineReamer
     },
     {
@@ -355,7 +356,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-purple-600 bg-purple-50 border border-purple-200/60',
       title: 'Two-Step Drills',
       spec: 'SINGLE-PASS DRILL',
-      link: '#products',
+      link: '/products',
       Visual: StandingTwoStepDrill
     },
     {
@@ -367,7 +368,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-rose-600 bg-rose-50 border border-rose-200/60',
       title: '5-Axis Regrinding',
       spec: 'SAVE UP TO 60%',
-      link: '#services',
+      link: '/contact',
       Visual: StandingRegroundTool
     },
     {
@@ -379,7 +380,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-teal-600 bg-teal-50 border border-teal-200/60',
       title: 'PVD Thin-Film',
       spec: '3,400 HV HARDNESS',
-      link: '#services',
+      link: '/contact',
       Visual: StandingPVDCoatedMill
     },
     {
@@ -391,7 +392,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-amber-700 bg-amber-50 border border-amber-200/60',
       title: 'Custom Form Tools',
       spec: 'DIRECT FROM CAD',
-      link: '#projects',
+      link: '/contact',
       Visual: StandingFormTool
     },
     {
@@ -403,7 +404,7 @@ export default function HomePlatformRow() {
       pillStyle: 'text-sky-700 bg-sky-50 border border-sky-200/60',
       title: 'Aerospace Tools',
       spec: 'AEROSPACE GRADE',
-      link: '#products',
+      link: '/products',
       Visual: StandingMicroDrill
     }
   ];
@@ -436,10 +437,9 @@ export default function HomePlatformRow() {
           {platforms.map((platform) => {
             const ToolVisual = platform.Visual;
             return (
-              <a
+              <Link
                 key={platform.id}
-                href={platform.link}
-                onClick={(e) => handleScroll(e, platform.link)}
+                to={platform.link}
                 className="group flex flex-col items-center justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 p-1 select-none"
               >
                 {/* 1. Top Brand / Feature Badge */}
@@ -475,7 +475,7 @@ export default function HomePlatformRow() {
                     {platform.title}
                   </h4>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
