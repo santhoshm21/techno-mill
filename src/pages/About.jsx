@@ -49,14 +49,14 @@ export default function About({ embedded = false }) {
         </div>
       </section>
 
-      {/* 3. EXECUTIVE LEADERSHIP & FOUNDER'S VISION (S. MURUGAN, M.D.) (Solid Black Background) */}
-      <section className="w-full bg-[#0B0C0E] py-14 sm:py-16 border-y border-gray-800">
+      {/* 3. EXECUTIVE LEADERSHIP & FOUNDER'S VISION (S. MURUGAN, M.D.) (Gray Background) */}
+      <section className="w-full bg-[#F3F4F6] py-12 sm:py-16 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left Column (4 cols): Executive Portrait Card */}
-            <div className="lg:col-span-4 bg-white border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col justify-center">
-              <div className="relative rounded-xl overflow-hidden bg-white aspect-[4/5] border border-gray-200 shadow-2xs mb-5 flex items-center justify-center p-2">
+            <div className="lg:col-span-4 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-center">
+              <div className="relative rounded-xl overflow-hidden bg-white aspect-[4/5] border border-gray-100 shadow-sm mb-5 flex items-center justify-center p-2">
                 <img 
                   src="/images/about/s-murugan-md.png" 
                   alt="S. Murugan M.D - Managing Director, Techno Mech Toolings" 
@@ -72,7 +72,7 @@ export default function About({ embedded = false }) {
             </div>
 
             {/* Right Column (8 cols): Executive Vision & Guiding Mission */}
-            <div className="lg:col-span-8 bg-white border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col justify-center shadow-2xl">
+            <div className="lg:col-span-8 bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col justify-center shadow-sm">
               <div>
                 <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight leading-snug mb-5">
                   &quot;To be India’s Leading Innovator in Precision Solid Carbide Manufacturing &amp; Customized Re-Sharpening Technology.&quot;
@@ -149,9 +149,8 @@ export default function About({ embedded = false }) {
                   />
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-gray-800 text-xs text-gray-300 flex items-center justify-between">
+                <div className="mt-4 pt-4 border-t border-gray-800 text-xs text-gray-300">
                   <span>Sub-micron Wheel Resolution</span>
-                  <span className="text-[#F5B800] font-mono font-bold text-[11px]">5-AXIS CNC</span>
                 </div>
               </div>
             </div>
