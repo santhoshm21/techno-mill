@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { useQuote } from '../context/QuoteContext';
 
 export default function HomeKumoHero({ onOpenVideoModal }) {
@@ -157,16 +157,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
 
   const slide = slides[currentSlide];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setActiveHotspot(null);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setActiveHotspot(null);
-  };
-
   return (
     <div
       onMouseEnter={() => setIsPaused(true)}
@@ -174,7 +164,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         setIsPaused(false);
         setActiveHotspot(null);
       }}
-      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] xl:min-h-[780px] bg-[#141518] text-white overflow-hidden flex flex-col justify-between select-none"
+      className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[660px] xl:min-h-[700px] bg-[#141518] text-white overflow-hidden flex flex-col justify-center select-none"
     >
       {/* =========================================================================
           FULL-SCREEN PRODUCT IMAGE LAYER (No Box, Bleeds Across Entire Right Canvas)
@@ -198,7 +188,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         {/* Top Fade */}
         <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#141518] via-[#141518]/50 to-transparent pointer-events-none z-10" />
 
-        {/* Bottom Fade into Dock Bar */}
+        {/* Bottom Fade */}
         <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#141518] via-[#141518]/70 to-transparent pointer-events-none z-10" />
 
         {/* Spec Tag Floating Badge */}
@@ -260,7 +250,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
       {/* =========================================================================
           HERO TEXT CONTENT (Left Column, Cleanly Overlaying the Dark Fade)
           ========================================================================= */}
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 pt-10 sm:pt-14 lg:pt-16 pb-24 sm:pb-28 flex-1 flex items-center pointer-events-none">
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20 flex items-center pointer-events-none">
         
         <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6 pointer-events-auto">
           
@@ -305,84 +295,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
 
         </div>
 
-      </div>
-
-      {/* =========================================================================
-          BOTTOM DOCK BAR: Slider Indicator (01 —— 04) + Right Video Preview Card
-          ========================================================================= */}
-      <div className="relative z-20 w-full border-t border-white/10 bg-black/50 backdrop-blur-md px-5 sm:px-8 lg:px-12 py-4">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          
-          {/* Previous / Next Arrow Controls */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={prevSlide}
-              aria-label="Previous Tool Platform"
-              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-gray-300 hover:text-white flex items-center justify-center transition-all cursor-pointer hover:bg-white/10"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Next Tool Platform"
-              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-gray-300 hover:text-white flex items-center justify-center transition-all cursor-pointer hover:bg-white/10"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Slider Progress Indicator (01 ————— 04) */}
-          <div className="flex items-center gap-3 font-mono text-xs text-gray-400">
-            <span className="text-white font-bold tracking-wider">
-              0{currentSlide + 1}
-            </span>
-
-            {/* Progress Track */}
-            <div className="w-40 sm:w-60 h-0.5 bg-white/20 rounded-full overflow-hidden relative">
-              <div
-                className="h-full bg-white transition-all duration-500 ease-out"
-                style={{
-                  width: `${((currentSlide + 1) / slides.length) * 100}%`
-                }}
-              />
-            </div>
-
-            <span className="text-gray-400 tracking-wider">
-              0{slides.length}
-            </span>
-          </div>
-
-          {/* Video Preview Thumbnail Card with Play Button */}
-          <div
-            onClick={onOpenVideoModal}
-            className="w-44 sm:w-52 h-16 sm:h-18 rounded-lg border border-white/20 bg-black/60 overflow-hidden relative shadow-xl group cursor-pointer flex items-center p-2 gap-3 hover:border-[#E11D48] transition-all duration-300"
-          >
-            {/* Thumbnail Image */}
-            <div className="w-16 h-12 rounded overflow-hidden relative shrink-0 bg-neutral-900 border border-white/10">
-              <img
-                src="/images/about/ecogrind-lx-machine.png"
-                alt="5-Axis CNC Tool Grinding Video"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-[#E11D48] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                  <Play className="w-3 h-3 fill-current ml-0.5" />
-                </div>
-              </div>
-            </div>
-
-            {/* Video Label */}
-            <div className="flex-1 min-w-0">
-              <span className="text-[10px] uppercase font-mono font-bold text-[#E11D48] block tracking-wider">
-                Facility Tour
-              </span>
-              <p className="text-xs font-bold text-white truncate group-hover:text-[#F5B800] transition-colors">
-                5-Axis CNC Video
-              </p>
-            </div>
-          </div>
-
-        </div>
       </div>
 
       {/* RIGHT EDGE: Vertical Slide Indicators (- - - -) */}
