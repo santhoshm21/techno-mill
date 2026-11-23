@@ -7,6 +7,7 @@ import { useQuote } from '../context/QuoteContext';
 // Home Section Additions (Matching Video Design Pattern)
 import HomeKumoHero from '../components/HomeKumoHero';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
+import HomeFeaturedProducts from '../components/HomeFeaturedProducts';
 
 // Remaining Sections Kept on Home Page
 import Facility from './Facility';
@@ -42,8 +43,11 @@ export default function Home() {
         {/* Part A: 3D Arc Interactive Cutting Tool Hero (Matching Input Video UI Pattern) */}
         <HomeKumoHero onOpenVideoModal={() => setVideoModalOpen(true)} />
 
-        {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery */}
+        {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery (World Class Cutting Tools) */}
         <HomeAccordionGallery />
+
+        {/* Part C: Featured High-Quality Precision Cutting Tools Lineup */}
+        <HomeFeaturedProducts />
 
       </section>
 
