@@ -210,53 +210,60 @@ export default function About({ embedded = false }) {
             </div>
           </div>
 
-          {/* Re-Cycling & Tooling Cost-Saving Section */}
+          {/* Facility Infrastructure & Manufacturing Plant Section */}
           <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-7 space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight text-gray-900">
-                  Innovative Re-cycling &amp; Cost Saving Concepts for Industry
+                  Modern Manufacturing Facility &amp; Advanced Infrastructure
                 </h3>
 
                 <div className="space-y-3.5 text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
                   <p>
-                    Techno Mech Toolings provides our customers with <strong className="font-bold text-gray-900">Value added services through Re-cycling of all used cutting tools</strong> using proven, innovative re-sharpening technology. Today, Techno Mech Toolings represents the full spectrum of what Solid Carbide Tool technology can offer in Manufacturing &amp; Re-sharpening.
+                    Techno Mech Toolings operates from its dedicated <strong className="font-bold text-gray-900">2,000+ sq.ft modern manufacturing facility</strong> situated in Chennai, India. Purpose-built for high-precision solid carbide cutting tool manufacturing and advanced tool re-conditioning, our plant integrates multi-axis CNC technology with rigorous quality assurance.
                   </p>
                   <p>
-                    Our advanced engineering techniques and dedicated facility ensure that almost all regular and innovative cutting tools can be precision re-sharpened, micro-honed, and then <strong className="font-bold text-gray-900">suitably thin-film PVD coated (AlTiN, TiAlN, or DLC)</strong>.
+                    Our engineering infrastructure features <strong className="font-bold text-gray-900">climate-controlled grinding bays, automated diamond wheel dressing, micro-honing finishing zones</strong>, and specialized thin-film PVD coating partnerships (AlTiN, TiAlN, DLC). Every square foot is engineered for micron-level geometric accuracy and clean handling.
                   </p>
                   <p>
-                    Today we cater to the re-sharpening requirements of businesses ranging from <strong className="font-bold text-gray-900">Small scale workshops to Large scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
+                    Today we cater to precision tooling and re-sharpening demands from <strong className="font-bold text-gray-900">small-scale workshops to large-scale Tier-1 manufacturing plants</strong>, maintaining unwavering standards in Quality, Quantity, and In-Time Delivery.
                   </p>
                 </div>
 
                 <div className="pt-2">
                   <button
-                    onClick={() => openQuoteModal({ productName: 'Re-Sharpening & Re-Cycling Cost Saving Program' })}
+                    onClick={() => openQuoteModal({ productName: 'Manufacturing Facility Tour & Capability Inquiry' })}
                     className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-bold text-xs px-6 py-3 rounded-xl shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
                   >
-                    <span>Request a Tool Re-cycling Trial</span>
+                    <span>Inquire About Facility Capabilities</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              {/* Machine Photo Card */}
+              {/* Company Building Card */}
               <div className="lg:col-span-5">
                 <div className="bg-[#111827] rounded-2xl p-5 shadow-xl text-white">
-                  <h4 className="text-sm font-bold text-white mb-3">
-                    Ecogrind 5-Axis CNC Tool &amp; Cutter Grinder
-                  </h4>
-                  <div className="bg-white rounded-xl p-3 flex items-center justify-center aspect-[4/3] overflow-hidden">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-sm font-bold text-white tracking-tight">
+                      Techno Mech Toolings Manufacturing Plant
+                    </h4>
+                    <span className="text-[10px] font-semibold bg-[#F5B800] text-[#111827] px-2 py-0.5 rounded-full">
+                      Chennai, India
+                    </span>
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border border-gray-800">
                     <img 
-                      src="/images/about/ecogrind-lx-machine.png" 
-                      alt="Ecogrind LX Plus 5 Axis CNC Tool and Cutter Grinder Machine" 
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300" 
+                      src="/images/company/tmt-factory-building.jpg" 
+                      alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai" 
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" 
                     />
                   </div>
-                  <div className="mt-3 pt-3 border-t border-gray-800 text-[11px] text-gray-400 font-mono">
-                    Sub-micron Wheel Resolution
+                  <div className="mt-3 pt-3 border-t border-gray-800 flex items-center justify-between text-[11px] text-gray-400 font-mono">
+                    <span>2,000+ Sq.Ft Infrastructure</span>
+                    <span>•</span>
+                    <span>High-Precision CNC Setup</span>
                   </div>
                 </div>
               </div>
