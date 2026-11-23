@@ -17,30 +17,26 @@ export default function About({ embedded = false }) {
   const { openQuoteModal } = useQuote();
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
-  const teamMembers = [
+  const facilityHighlights = [
     {
-      name: 'S. Murugan',
-      role: 'M.D & Chief Technical Director',
-      image: '/images/about/s-murugan-md.png',
-      isPortrait: true
+      name: 'SAACKE UW I F',
+      role: '5-Axis CNC Grinding Center',
+      image: '/images/facility/saacke-5axis-hero.png'
     },
     {
-      name: 'CNC Grinding Division',
-      role: '5-Axis Multi-Flute Machinists',
-      image: '/images/facility/saacke-5axis-hero.png',
-      isPortrait: false
+      name: 'Ecogrind LX Plus',
+      role: '5-Axis Tool & Cutter Grinder',
+      image: '/images/about/ecogrind-lx-machine.png'
     },
     {
-      name: 'Quality Assurance',
-      role: 'Zoller Metrology & Inspection',
-      image: '/images/facility/digital-micrometer.png',
-      isPortrait: false
+      name: 'Profile Projector 300H',
+      role: 'Optical Metrology & Inspection',
+      image: '/images/facility/profile-projector.png'
     },
     {
-      name: 'Tool Re-Cycling Team',
-      role: 'Custom Form Tools & Re-Sharpening',
-      image: '/images/about/ecogrind-lx-machine.png',
-      isPortrait: false
+      name: 'Digital Precision Metrology',
+      role: 'Sub-Micron Quality Testing',
+      image: '/images/facility/digital-micrometer.png'
     }
   ];
 
@@ -272,7 +268,7 @@ export default function About({ embedded = false }) {
       </section>
 
       {/* =========================================================================
-          6. TEAM MEMBERS SECTION: Exact Replica of Template UI
+          6. FACILITY & MACHINERY SHOWCASE SECTION
           ========================================================================= */}
       <section className="bg-white py-16 sm:py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,37 +276,37 @@ export default function About({ embedded = false }) {
           {/* Header matching template */}
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-black text-[#111827] tracking-tight">
-              <span className="text-[#F5B800]">Team</span> Members
+              <span className="text-[#F5B800]">Our</span> Facility
             </h2>
 
             <p className="text-xs sm:text-sm text-gray-500 mt-3 leading-relaxed font-normal">
-              Our leadership and precision tooling specialists bring over 19 years of dedicated tooling mastery, empowering Tier-1 automotive and aerospace machining.
+              State-of-the-art 5-axis CNC grinding centers, automated diamond wheel dressing, and comprehensive optical metrology testing spread across our dedicated 2,000 sq.ft plant.
             </p>
           </div>
 
           {/* 4 Cards Grid with Solid Yellow Bottom Blocks */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member, idx) => (
+            {facilityHighlights.map((item, idx) => (
               <div 
                 key={idx}
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group"
               >
                 {/* Photo Container */}
-                <div className="aspect-[4/5] bg-gray-50 flex items-center justify-center p-3 overflow-hidden">
+                <div className="aspect-[4/5] bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
                   <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className={`max-h-full max-w-full ${member.isPortrait ? 'object-contain' : 'object-contain'} group-hover:scale-105 transition-transform duration-500`} 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" 
                   />
                 </div>
 
                 {/* Solid Yellow Bottom Nameplate matching Template */}
                 <div className="bg-[#F5B800] text-[#111827] p-3.5 text-center">
                   <h3 className="font-bold text-sm sm:text-base text-[#111827] tracking-tight leading-tight">
-                    {member.name}
+                    {item.name}
                   </h3>
                   <p className="text-[11px] sm:text-xs text-[#111827]/80 font-medium mt-0.5">
-                    {member.role}
+                    {item.role}
                   </p>
                 </div>
               </div>
