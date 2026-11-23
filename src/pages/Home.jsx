@@ -5,7 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
 
 // Home Section Additions (Matching Video Design Pattern)
-import HomeKumoHero from '../components/HomeKumoHero';
+import HomeGlobeHero from '../components/HomeGlobeHero';
 import HomeAccordionGallery from '../components/HomeAccordionGallery';
 import HomeFeaturedProducts from '../components/HomeFeaturedProducts';
 
@@ -40,8 +40,8 @@ export default function Home() {
           ========================================================================= */}
       <section id="home" className="scroll-mt-16">
 
-        {/* Part A: 3D Arc Interactive Cutting Tool Hero (Matching Input Video UI Pattern) */}
-        <HomeKumoHero onOpenVideoModal={() => setVideoModalOpen(true)} />
+        {/* Part A: Video Pattern - Globe Slider Interactive Cutting Tool Hero */}
+        <HomeGlobeHero onOpenVideoModal={() => setVideoModalOpen(true)} />
 
         {/* Part B: Video Pattern 1 - Interactive Expanding Image Accordion Gallery (World Class Cutting Tools) */}
         <HomeAccordionGallery />
