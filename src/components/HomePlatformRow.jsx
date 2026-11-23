@@ -98,17 +98,13 @@ export default function HomePlatformRow() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header matching video: "Choose From" script & "High Performance Chemistry Platforms" equivalent */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <span className="font-serif italic text-lg sm:text-xl text-[#F5B800] tracking-wide block mb-1">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 px-4">
+          <p className="font-serif text-xl sm:text-2xl text-[#111827] font-normal tracking-wide mb-1 sm:mb-2">
             Choose From
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E2227] tracking-tight">
+          </p>
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E3A8A] tracking-tight leading-tight">
             High Performance Tooling Platforms
           </h2>
-          <div className="w-16 h-1 bg-[#F5B800] mx-auto mt-3 mb-4 rounded-full"></div>
-          <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed">
-            Select a specialized cutting tool platform engineered with sub-micron European carbide rods and ground on high-precision German 5-axis CNC machining centers.
-          </p>
         </div>
 
         {/* 9-Column Product Platform Row */}
