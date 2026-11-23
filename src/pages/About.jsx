@@ -77,7 +77,7 @@ export default function About({ embedded = false }) {
           {/* Left Column: Bold Two-Tone Heading */}
           <div className="lg:col-span-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111827] tracking-tight leading-tight">
-              <span className="text-[#EA580C]">Pioneering</span> Precision Solid Carbide Tooling &amp; Re-Sharpening!
+              <span className="text-[#F5B800]">Pioneering</span> Precision Solid Carbide Tooling &amp; Re-Sharpening!
             </h2>
           </div>
 
@@ -98,9 +98,9 @@ export default function About({ embedded = false }) {
             ========================================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 sm:mb-20">
           
-          {/* Card 1: Orange Circular Icon */}
+          {/* Card 1: Yellow Circular Icon */}
           <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex items-center gap-4 group">
-            <div className="w-13 h-13 rounded-full bg-[#EA580C] text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+            <div className="w-13 h-13 rounded-full bg-[#F5B800] text-[#111827] flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
               <Award className="w-6 h-6" />
             </div>
             <div>
@@ -128,9 +128,9 @@ export default function About({ embedded = false }) {
             </div>
           </div>
 
-          {/* Card 3: Orange Circular Icon */}
+          {/* Card 3: Yellow Circular Icon */}
           <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex items-center gap-4 group">
-            <div className="w-13 h-13 rounded-full bg-[#EA580C] text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+            <div className="w-13 h-13 rounded-full bg-[#F5B800] text-[#111827] flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
               <RefreshCw className="w-6 h-6" />
             </div>
             <div>
@@ -171,7 +171,7 @@ export default function About({ embedded = false }) {
             <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors flex items-center justify-center">
               <button 
                 onClick={() => setVideoModalOpen(true)}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white flex items-center justify-center shadow-2xl transition-all duration-300 transform group-hover:scale-110 cursor-pointer"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] flex items-center justify-center shadow-2xl transition-all duration-300 transform group-hover:scale-110 cursor-pointer"
                 aria-label="Play 5-Axis Facility Video"
               >
                 <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current ml-1" />
@@ -238,7 +238,7 @@ export default function About({ embedded = false }) {
                 <div className="pt-2">
                   <button
                     onClick={() => openQuoteModal({ productName: 'Re-Sharpening & Re-Cycling Cost Saving Program' })}
-                    className="bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold text-xs px-6 py-3 rounded-xl shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
+                    className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-bold text-xs px-6 py-3 rounded-xl shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
                   >
                     <span>Request a Tool Re-cycling Trial</span>
                     <ArrowRight className="w-4 h-4" />
@@ -280,7 +280,7 @@ export default function About({ embedded = false }) {
           {/* Header matching template */}
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-black text-[#111827] tracking-tight">
-              <span className="text-[#EA580C]">Team</span> Members
+              <span className="text-[#F5B800]">Team</span> Members
             </h2>
 
             <p className="text-xs sm:text-sm text-gray-500 mt-3 leading-relaxed font-normal">
@@ -288,7 +288,7 @@ export default function About({ embedded = false }) {
             </p>
           </div>
 
-          {/* 4 Cards Grid with Solid Orange Bottom Blocks */}
+          {/* 4 Cards Grid with Solid Yellow Bottom Blocks */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, idx) => (
               <div 
@@ -304,12 +304,12 @@ export default function About({ embedded = false }) {
                   />
                 </div>
 
-                {/* Solid Orange Bottom Nameplate matching Template */}
-                <div className="bg-[#EA580C] text-white p-3.5 text-center">
-                  <h3 className="font-bold text-sm sm:text-base text-white tracking-tight leading-tight">
+                {/* Solid Yellow Bottom Nameplate matching Template */}
+                <div className="bg-[#F5B800] text-[#111827] p-3.5 text-center">
+                  <h3 className="font-bold text-sm sm:text-base text-[#111827] tracking-tight leading-tight">
                     {member.name}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-white/90 font-medium mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-[#111827]/80 font-medium mt-0.5">
                     {member.role}
                   </p>
                 </div>
@@ -332,7 +332,7 @@ export default function About({ embedded = false }) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-[#F5B800] animate-pulse"></span>
                 <h3 className="font-bold text-sm">TECHNO MECH TOOLINGS • 5-Axis Precision Manufacturing Video</h3>
               </div>
               <button
@@ -347,7 +347,7 @@ export default function About({ embedded = false }) {
             <div className="aspect-video bg-black flex flex-col items-center justify-center p-8 relative overflow-hidden">
               <HeroVisual className="absolute inset-0 w-full h-full opacity-60" />
               <div className="relative z-10 text-center space-y-3 max-w-md">
-                <div className="w-16 h-16 rounded-full bg-[#EA580C] text-white flex items-center justify-center mx-auto shadow-2xl animate-bounce">
+                <div className="w-16 h-16 rounded-full bg-[#F5B800] text-[#111827] flex items-center justify-center mx-auto shadow-2xl animate-bounce">
                   <Play className="w-8 h-8 fill-current ml-1" />
                 </div>
                 <h4 className="text-xl font-extrabold text-white">Advanced CNC Tool Grinding &amp; Metrology</h4>
@@ -360,7 +360,7 @@ export default function About({ embedded = false }) {
                       setVideoModalOpen(false);
                       openQuoteModal({ productName: 'Plant Visit & Video Inquiry' });
                     }}
-                    className="bg-[#EA580C] text-white font-bold text-xs px-5 py-2 rounded-full cursor-pointer hover:bg-[#C2410C] transition-colors"
+                    className="bg-[#F5B800] text-[#111827] font-bold text-xs px-5 py-2 rounded-full cursor-pointer hover:bg-[#E0A800] transition-colors"
                   >
                     Schedule Plant Audit / Virtual Tour &rarr;
                   </button>
