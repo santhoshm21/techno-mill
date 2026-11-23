@@ -184,12 +184,14 @@ export default function Facility({ embedded = false }) {
                       </div>
 
                       <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-bold bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">
-                          {mach.badge}
-                        </span>
+                        {!embedded && mach.badge && (
+                          <span className="text-[10px] font-mono font-bold bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">
+                            {mach.badge}
+                          </span>
+                        )}
                         <button
                           onClick={() => openQuoteModal({ productName: `Machine Technical Trial: ${mach.name}` })}
-                          className="text-xs font-bold text-gray-800 hover:text-[#D97706] flex items-center gap-1"
+                          className={`text-xs font-bold text-gray-800 hover:text-[#D97706] flex items-center gap-1 ${embedded ? 'ml-auto' : ''}`}
                         >
                           <span>Details</span>
                           <ChevronRight className="w-3.5 h-3.5" />

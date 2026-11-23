@@ -37,12 +37,6 @@ export default function HomeFeaturedProducts() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#F5B800]" />
-              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] uppercase text-gray-500">
-                Precision Tooling Lineup
-              </span>
-            </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-tight">
               Featured Industrial Cutting Tools
             </h2>

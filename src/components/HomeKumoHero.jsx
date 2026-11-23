@@ -191,11 +191,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         {/* Bottom Fade */}
         <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#141518] via-[#141518]/70 to-transparent pointer-events-none z-10" />
 
-        {/* Spec Tag Floating Badge */}
-        <div className="absolute top-6 right-6 lg:right-16 bg-black/60 border border-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-mono text-[#F5B800] font-bold tracking-wider shadow-lg z-20 pointer-events-none">
-          {slide.badge}
-        </div>
-
         {/* -------------------------------------------------------------
             INTERACTIVE HOTSPOT PINS DIRECTLY ON FULL BLEED IMAGE
             ------------------------------------------------------------- */}
@@ -253,15 +248,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20 flex items-center pointer-events-none">
         
         <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6 pointer-events-auto">
-          
-          {/* Category Tag */}
-          <div className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#F5B800] animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gray-400 font-mono">
-              {slide.category}
-            </span>
-          </div>
-
           {/* Massive Heading (2 Lines - Matching Reference) */}
           <div className="space-y-1">
             <h1 className="font-black text-3xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter uppercase text-white leading-[0.95] drop-shadow-md">
