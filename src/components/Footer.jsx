@@ -1,14 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Linkedin, 
-  Youtube, 
-  ArrowUp
-} from 'lucide-react';
-import TMTLogo from './TMTLogo';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -19,124 +11,208 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1E2227] text-gray-300 font-['Inter',_sans-serif] border-t border-[#2D333B] relative">
+    <footer className="w-full bg-[#0D0E12] py-6 sm:py-10 lg:py-14 px-3 sm:px-6 lg:px-10 font-sans selection:bg-[#F5B800] selection:text-[#1E2227] relative">
       
-      {/* Main Footer Directory */}
-      <div className="w-full py-12 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-start">
+      {/* =========================================================================
+          REPLICA CONTAINER: Floating Dark Rounded Card (Exact Match to Reference UI)
+          ========================================================================= */}
+      <div className="max-w-[1440px] mx-auto bg-[#08090B] border border-white/[0.08] rounded-3xl sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-10 lg:p-14 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)]">
+        
+        {/* Ambient Yellow Spotlight Glow behind bottom watermark */}
+        <div 
+          className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] max-w-5xl h-44 sm:h-56 bg-[#F5B800]/15 blur-[90px] pointer-events-none rounded-full" 
+          aria-hidden="true"
+        />
+
+        {/* -------------------------------------------------------------
+            TOP SECTION: Brand Column (Left) + 4 Link Columns (Right)
+            ------------------------------------------------------------- */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative z-10">
           
-          {/* Col 1: TMT Gladius Brand Identity (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <TMTLogo variant="light" />
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm pt-2">
-              Leading precision cutting tool manufacturer specializing in solid carbide drills, high-performance end mills, milling cutters, indexable inserts, and bespoke custom tooling solutions.
+          {/* Brand Info (Left Side - 4 Columns) */}
+          <div className="lg:col-span-4 space-y-3">
+            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
+              TECHNO MECH
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 font-normal leading-relaxed max-w-sm">
+              Techno Mech Toolings is a premier manufacturer specializing in high-precision solid carbide cutting tools, custom blueprints, and reconditioning solutions.
             </p>
           </div>
 
-          {/* Col 2: Quick Links (Strictly Home, About, Products, Services, Contact) */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Inter',_sans-serif]">
-              Quick Links
-            </h4>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
-              <Link to="/" className="text-gray-400 hover:text-[#F5B800] transition-colors">Home</Link>
-              <Link to="/services" className="text-gray-400 hover:text-[#F5B800] transition-colors">Services</Link>
-              
-              <Link to="/about" className="text-gray-400 hover:text-[#F5B800] transition-colors">About</Link>
-              <Link to="/#contact" className="text-gray-400 hover:text-[#F5B800] transition-colors">Contact</Link>
-              
-              <Link to="/products" className="text-gray-400 hover:text-[#F5B800] transition-colors">Products</Link>
+          {/* 4 Link Columns (Right Side - 8 Columns) */}
+          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+            
+            {/* Column 1: Quick link */}
+            <div className="space-y-3">
+              <h4 className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                Quick link
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+                <li>
+                  <Link to="/" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-[#F5B800] transition-colors duration-200">
+                    About us
+                  </Link>
+                </li>
+                <li>
+                  <a href="/#contact" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Contact us
+                  </a>
+                </li>
+                <li>
+                  <Link to="/products" className="hover:text-[#F5B800] transition-colors duration-200">
+                    License
+                  </Link>
+                </li>
+              </ul>
             </div>
-          </div>
 
-          {/* Col 3: Contact Us (2.5 cols) */}
-          <div className="lg:col-span-3 space-y-3 text-xs">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Inter',_sans-serif]">
-              Contact Us
-            </h4>
-            <div className="space-y-2.5 text-gray-400">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#F5B800] shrink-0 mt-0.5" />
-                <span className="leading-tight">
-                  No.12, Industrial Estate,<br />
-                  Chennai – 600 098
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#F5B800] shrink-0" />
-                <a href="tel:+914424760000" className="hover:text-white transition-colors">
-                  +91 44 2476 0000
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#F5B800] shrink-0" />
-                <a href="mailto:info@technomechtoolings.com" className="hover:text-white transition-colors">
-                  info@technomechtoolings.com
-                </a>
-              </div>
+            {/* Column 2: Company */}
+            <div className="space-y-3">
+              <h4 className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                Company
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+                <li>
+                  <Link to="/services" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Service
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Service details
+                  </Link>
+                </li>
+                <li>
+                  <a href="/#facility" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Project
+                  </a>
+                </li>
+                <li>
+                  <a href="/#facility" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Project details
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
 
-          {/* Col 4: Follow Us (1.5 cols) */}
-          <div className="lg:col-span-1 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Inter',_sans-serif]">
-              Follow Us
-            </h4>
-            <div className="flex items-center gap-2.5">
-              {/* LinkedIn */}
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#F5B800] hover:bg-[#262B31] transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              {/* YouTube */}
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#F5B800] hover:bg-[#262B31] transition-all"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-4 h-4" />
-              </a>
-              {/* X / Twitter */}
-              <a 
-                href="https://x.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#F5B800] hover:bg-[#262B31] transition-all"
-                aria-label="X / Twitter"
-              >
-                <span className="font-bold text-xs">𝕏</span>
-              </a>
+            {/* Column 3: Others */}
+            <div className="space-y-3">
+              <h4 className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                Others
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+                <li>
+                  <a href="/#clients" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="/#clients" className="hover:text-[#F5B800] transition-colors duration-200">
+                    Blog details
+                  </a>
+                </li>
+                <li>
+                  <Link to="/careers" className="hover:text-[#F5B800] transition-colors duration-200">
+                    404
+                  </Link>
+                </li>
+              </ul>
             </div>
+
+            {/* Column 4: Social */}
+            <div className="space-y-3">
+              <h4 className="text-xs sm:text-sm font-semibold text-white tracking-wide">
+                Social
+              </h4>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+                <li>
+                  <a 
+                    href="https://facebook.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:text-[#F5B800] transition-colors duration-200"
+                  >
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://linkedin.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:text-[#F5B800] transition-colors duration-200"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:text-[#F5B800] transition-colors duration-200"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://twitter.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:text-[#F5B800] transition-colors duration-200"
+                  >
+                    Twitter
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </div>
 
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-[#15181C] border-t border-[#262B31] py-4 px-4 sm:px-6 lg:px-8 xl:px-12 text-xs text-gray-400">
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* -------------------------------------------------------------
+            MIDDLE SECTION: Copyright & Attribution (Exact Match to Reference)
+            ------------------------------------------------------------- */}
+        <div className="mt-14 sm:mt-20 lg:mt-24 mb-4 sm:mb-6 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-gray-400 gap-3 relative z-10">
           <div>
-            &copy; 2026 Techno Mech Toolings. All Rights Reserved.
+            &copy; 2026 Techno Mech Tooling. All rights reserved.
           </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/contact" className="hover:text-[#F5B800]">Privacy Policy</Link>
-            <span>|</span>
-            <Link to="/contact" className="hover:text-[#F5B800]">Terms &amp; Conditions</Link>
+          <div>
+            Design by Grabui - Powered by Placeholder
           </div>
         </div>
+
+        {/* -------------------------------------------------------------
+            BOTTOM SECTION: Giant Illuminated Typography "TECHNO MECH TOOLING"
+            (Exact replica of green CONVRTO word changed to Yellow glowing gradient)
+            ------------------------------------------------------------- */}
+        <div className="relative pt-2 sm:pt-4 overflow-hidden flex justify-center items-end select-none pointer-events-none">
+          <span 
+            className="font-black uppercase tracking-tighter text-center leading-none whitespace-nowrap text-[6.5vw] transition-all duration-500 filter"
+            style={{
+              background: 'radial-gradient(ellipse 65% 100% at 50% 50%, #FFF275 0%, #F5B800 35%, rgba(245, 184, 0, 0.45) 70%, rgba(160, 100, 0, 0.12) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 0 35px rgba(245, 184, 0, 0.22))',
+            }}
+          >
+            TECHNO MECH TOOLING
+          </span>
+        </div>
+
       </div>
 
       {/* Floating Yellow Scroll-To-Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-30 w-11 h-11 rounded-full bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] shadow-xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 border-2 border-white"
+        className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] shadow-xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 border-2 border-white cursor-pointer"
         aria-label="Back to Top"
       >
         <ArrowUp className="w-5 h-5 stroke-[2.5]" />
