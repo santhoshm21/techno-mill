@@ -130,26 +130,6 @@ export default function CategorySidebar({ activeCategory, onSelectCategory }) {
         </div>
       </div>
 
-      {/* 4. CUSTOM BLUEPRINT INQUIRY PROMO (Yellow Industrial Accent) */}
-      <div className="bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A] border border-amber-300 rounded-lg p-5 shadow-xs text-[#1E2227]">
-        <div className="w-8 h-8 rounded-md bg-[#1E2227] text-[#F5B800] flex items-center justify-center mb-3">
-          <Wrench className="w-4 h-4" />
-        </div>
-        <h4 className="font-black text-sm text-gray-900 leading-tight">
-          Special Blueprint Tooling?
-        </h4>
-        <p className="text-xs text-gray-700 mt-1.5 leading-relaxed font-medium">
-          Send us your workpiece CAD drawings. We design custom step drills and form cutters tailored to your machine spindle.
-        </p>
-        <button
-          onClick={() => openQuoteModal({ productName: 'Custom Tooling to Blueprint' })}
-          className="mt-3.5 w-full bg-[#1E2227] hover:bg-black text-white font-bold text-xs py-2 rounded-md shadow-xs transition-colors flex items-center justify-center gap-1.5"
-        >
-          <span>Send Part Drawing</span>
-          <ArrowRight className="w-3 h-3 text-[#F5B800]" />
-        </button>
-      </div>
-
     </div>
   );
 }
