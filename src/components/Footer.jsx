@@ -174,7 +174,7 @@ export default function Footer() {
             &copy; 2026 Techno Mech Tooling. All rights reserved.
           </div>
           <div>
-            Design by Grabui - Powered by Placeholder
+            Design by Procomets Solution
           </div>
         </div>
 
