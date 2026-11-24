@@ -426,9 +426,6 @@ export default function HomePlatformRow() {
         
         {/* Header: Exact replica of 1st input image UI reference */}
         <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-7 px-4">
-          <p className="font-serif text-xl sm:text-2xl text-[#111827] font-normal tracking-wide mb-1 sm:mb-2">
-            Choose From
-          </p>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E3A8A] tracking-tight leading-tight">
             High Performance Tooling Platforms
           </h2>

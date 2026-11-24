@@ -107,9 +107,6 @@ export default function HomeAccordionGallery() {
         
         {/* Header: Professional Modern Content Style */}
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-10 px-4">
-          <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.25em] uppercase text-gray-400 block mb-2">
-            Choose From
-          </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black text-[#111827] tracking-tight leading-tight">
             World-Class Cutting Tools For Every Application
           </h2>
