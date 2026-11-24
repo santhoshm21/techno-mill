@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Play, 
-  X, 
-  Award, 
-  Cpu, 
-  RefreshCw, 
-  ArrowRight, 
-  CheckCircle2 
+import {
+  Play,
+  X,
+  Award,
+  Cpu,
+  RefreshCw,
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useQuote } from '../context/QuoteContext';
@@ -66,10 +66,10 @@ export default function About({ embedded = false }) {
           2. INTRODUCTION SECTION: Matching Reference Layout
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12">
-        
+
         {/* Top Tag & 2-Column Split: Heading on Left, Description on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
-          
+
           {/* Left Column: Bold Two-Tone Heading */}
           <div className="lg:col-span-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111827] tracking-tight leading-tight">
@@ -93,7 +93,7 @@ export default function About({ embedded = false }) {
             3. THREE VALUE / FEATURE CARDS: Exact Replica of Template Row
             ========================================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 sm:mb-20">
-          
+
           {/* Card 1: Yellow Circular Icon */}
           <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex items-center gap-4 group">
             <div className="w-13 h-13 rounded-full bg-[#F5B800] text-[#111827] flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
@@ -145,27 +145,27 @@ export default function About({ embedded = false }) {
             4. OVERLAPPING MEDIA SHOWCASE: Large Base Visual + Overlapping Video Card
             ========================================================================= */}
         <div className="relative pb-10 sm:pb-16 lg:pb-24">
-          
+
           {/* Large Main Base Image */}
           <div className="w-full lg:w-[84%] rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-[#5FC8EE] aspect-[16/9] sm:aspect-[2/1] flex items-center justify-center relative">
-            <img 
-              src="/images/about/saacke-tooling-banner.png" 
-              alt="SAACKE CNC-Grinding Center Model UW I F with 9-Tool Solid Carbide Cutting Tools Lineup" 
-              className="w-full h-full object-contain p-4 sm:p-8 hover:scale-[1.01] transition-transform duration-500" 
+            <img
+              src="/images/about/saacke-tooling-banner.png"
+              alt="SAACKE CNC-Grinding Center Model UW I F with 9-Tool Solid Carbide Cutting Tools Lineup"
+              className="w-full h-full object-contain p-4 sm:p-8 hover:scale-[1.01] transition-transform duration-500"
             />
           </div>
 
           {/* Overlapping Video / Action Card matching Template */}
           <div className="relative lg:absolute lg:right-0 lg:bottom-0 w-full sm:w-[82%] lg:w-[46%] mt-6 lg:mt-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-[#111827] aspect-[16/10] group">
-            <img 
-              src="/images/gallery/hero-drill-lineup.jpg" 
-              alt="Precision CNC Grinding Video Preview" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90" 
+            <img
+              src="/images/gallery/hero-drill-lineup.jpg"
+              alt="Precision CNC Grinding Video Preview"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
             />
-            
+
             {/* Dark Overlay & Centered Circular Play Button */}
             <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors flex items-center justify-center">
-              <button 
+              <button
                 onClick={() => setVideoModalOpen(true)}
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] flex items-center justify-center shadow-2xl transition-all duration-300 transform group-hover:scale-110 cursor-pointer"
                 aria-label="Play 5-Axis Facility Video"
@@ -190,7 +190,7 @@ export default function About({ embedded = false }) {
           ========================================================================= */}
       <section className="bg-[#F8FAFC] py-14 sm:py-18 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           {/* Executive Vision & Mission Card */}
           <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200">
             <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight leading-snug mb-5">
@@ -213,7 +213,7 @@ export default function About({ embedded = false }) {
           {/* Facility Infrastructure & Manufacturing Plant Section */}
           <div className="bg-[#F5B800] rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-xl border border-[#E0A800]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
+
               <div className="lg:col-span-7 space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight text-[#111827]">
                   Modern Manufacturing Facility &amp; Advanced Infrastructure
@@ -244,15 +244,15 @@ export default function About({ embedded = false }) {
 
               {/* Company Building Card */}
               <div className="lg:col-span-5">
-                <div className="bg-[#111827] rounded-2xl p-5 shadow-2xl text-white">
-                  <h4 className="text-sm font-bold text-white tracking-tight mb-3">
+                <div className="bg-white rounded-2xl p-5 shadow-xl text-[#111827] border border-white/80">
+                  <h4 className="text-sm font-bold text-[#111827] tracking-tight mb-3">
                     Techno Mech Toolings Manufacturing Plant
                   </h4>
-                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border border-gray-800">
-                    <img 
-                      src="/images/company/tmt-factory-building.jpg" 
-                      alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai" 
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" 
+                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-100 border border-gray-200 shadow-sm">
+                    <img
+                      src="/images/company/tmt-factory-building.jpg"
+                      alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai"
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -269,7 +269,7 @@ export default function About({ embedded = false }) {
           ========================================================================= */}
       <section className="bg-white py-16 sm:py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header matching template */}
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-black text-[#111827] tracking-tight">
@@ -284,16 +284,16 @@ export default function About({ embedded = false }) {
           {/* 4 Cards Grid with Solid Yellow Bottom Blocks */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {facilityHighlights.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group"
               >
                 {/* Photo Container */}
                 <div className="aspect-[4/5] bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" 
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
