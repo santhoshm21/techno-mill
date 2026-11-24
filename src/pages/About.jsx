@@ -156,7 +156,7 @@ export default function About({ embedded = false }) {
           </div>
 
           {/* Overlapping Video / Action Card matching Template */}
-          <div className="relative lg:absolute lg:right-0 lg:bottom-0 w-full sm:w-[82%] lg:w-[46%] mt-6 lg:mt-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#111827] aspect-[16/10] group">
+          <div className="relative lg:absolute lg:right-0 lg:bottom-0 w-full sm:w-[82%] lg:w-[46%] mt-6 lg:mt-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-[#111827] aspect-[16/10] group">
             <img 
               src="/images/gallery/hero-drill-lineup.jpg" 
               alt="Precision CNC Grinding Video Preview" 
@@ -211,7 +211,7 @@ export default function About({ embedded = false }) {
           </div>
 
           {/* Facility Infrastructure & Manufacturing Plant Section */}
-          <div className="bg-[#F5B800] rounded-3xl p-6 sm:p-10 shadow-xl border border-[#E0A800]">
+          <div className="bg-[#F5B800] rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-xl border border-[#E0A800]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-7 space-y-4">
@@ -248,7 +248,7 @@ export default function About({ embedded = false }) {
                   <h4 className="text-sm font-bold text-white tracking-tight mb-3">
                     Techno Mech Toolings Manufacturing Plant
                   </h4>
-                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border-4 border-white shadow-lg">
+                  <div className="rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 border border-gray-800">
                     <img 
                       src="/images/company/tmt-factory-building.jpg" 
                       alt="Techno Mech Toolings Corporate & Manufacturing Plant, Chennai" 

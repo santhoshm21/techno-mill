@@ -118,10 +118,10 @@ export default function HomeAccordionGallery() {
           </p>
         </div>
 
-        {/* 9-Column Horizontal Strip Gallery matching reference aspect ratio */}
+        {/* 9-Column Horizontal Strip Gallery (Horizontal swipe on mobile, expanding accordion on desktop) */}
         <div
           onMouseLeave={() => setHoveredIdx(null)}
-          className="flex flex-row gap-1.5 sm:gap-2.5 h-[260px] sm:h-[300px] md:h-[330px] lg:h-[350px] xl:h-[370px] w-full overflow-hidden select-none"
+          className="flex flex-row gap-2 sm:gap-2.5 h-[270px] sm:h-[300px] md:h-[330px] lg:h-[350px] xl:h-[370px] w-full overflow-x-auto sm:overflow-hidden select-none pb-2 sm:pb-0 scrollbar-none snap-x"
         >
           {panels.map((panel, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -132,12 +132,12 @@ export default function HomeAccordionGallery() {
                 key={panel.id}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
-                className={`relative overflow-hidden rounded-xs cursor-pointer transition-all duration-500 ease-out ${
+                className={`relative overflow-hidden rounded-xs cursor-pointer transition-all duration-500 ease-out min-w-[145px] xs:min-w-[165px] sm:min-w-0 snap-start shrink-0 sm:shrink ${
                   isHovered
-                    ? 'flex-[3.5] lg:flex-[4] shadow-xl z-10'
+                    ? 'sm:flex-[3.5] lg:sm:flex-[4] shadow-xl z-10'
                     : isAnyHovered
-                    ? 'flex-1 opacity-70 hover:opacity-100'
-                    : 'flex-1 opacity-100 shadow-xs'
+                    ? 'sm:flex-1 opacity-70 hover:opacity-100'
+                    : 'sm:flex-1 opacity-100 shadow-xs'
                 }`}
               >
                 {/* Product / Facility Image (Bright, vivid, un-tinted by default) */}
@@ -152,9 +152,16 @@ export default function HomeAccordionGallery() {
                   }}
                 />
 
+                {/* Mobile Bottom Label (Visible on small screens for touch navigation) */}
+                <div className="sm:hidden absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-3 pt-6 flex flex-col justify-end text-left pointer-events-none">
+                  <h3 className="text-xs font-bold text-white leading-tight line-clamp-1 drop-shadow-sm">
+                    {panel.title}
+                  </h3>
+                </div>
+
                 {/* Active Expanded State: Dark bottom gradient with Title, Description, and Outline Button */}
                 {isHovered && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-5 flex flex-col justify-end items-start text-left transition-opacity duration-300">
+                  <div className="hidden sm:flex absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-5 flex-col justify-end items-start text-left transition-opacity duration-300">
                     <h3 className="text-base sm:text-lg font-bold text-white leading-tight mb-1 drop-shadow-md">
                       {panel.title}
                     </h3>

@@ -192,7 +192,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6 pointer-events-auto">
           {/* Massive Heading (2 Lines - Matching Reference) */}
           <div className="space-y-1">
-            <h1 className="font-black text-3xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter uppercase text-white leading-[0.95] drop-shadow-md">
+            <h1 className="font-black text-2xl xs:text-3xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter uppercase text-white leading-[0.98] drop-shadow-md break-words">
               <span className="block text-white">{slide.line1}</span>
               <span className="block text-white/95">{slide.line2}</span>
             </h1>
@@ -204,17 +204,17 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
           </p>
 
           {/* CTA Buttons (Solid Bold Brand Yellow Button "SEE DETAILS") */}
-          <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-4">
+          <div className="pt-2 sm:pt-4 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4">
             <Link
               to={slide.link}
-              className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-black text-xs uppercase tracking-[0.15em] px-8 py-3.5 shadow-[0_10px_25px_rgba(245,184,0,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center cursor-pointer rounded-xs"
+              className="bg-[#F5B800] hover:bg-[#E0A800] text-[#111827] font-black text-xs uppercase tracking-[0.15em] px-6 sm:px-8 py-3.5 shadow-[0_10px_25px_rgba(245,184,0,0.35)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center cursor-pointer rounded-xs text-center"
             >
               <span>SEE DETAILS</span>
             </Link>
 
             <button
               onClick={() => openQuoteModal({ productName: slide.quoteSubject })}
-              className="border border-white/30 hover:border-white text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider px-6 py-3.5 transition-all inline-flex items-center gap-2 cursor-pointer rounded-xs backdrop-blur-xs"
+              className="border border-white/30 hover:border-white text-white hover:bg-white/10 font-bold text-xs uppercase tracking-wider px-5 sm:px-6 py-3.5 transition-all inline-flex items-center justify-center gap-2 cursor-pointer rounded-xs backdrop-blur-xs text-center"
             >
               <span>REQUEST QUOTE</span>
               <ArrowRight className="w-3.5 h-3.5" />

@@ -70,12 +70,9 @@ export default function Services({ embedded = false }) {
             >
               
               {/* Top Header Strip */}
-              <div className="bg-[#F8FAFC] px-4 py-2.5 border-b border-[#E5E7EB] flex items-center justify-between font-['Inter',_sans-serif]">
+              <div className="bg-[#F8FAFC] px-4 py-2.5 border-b border-[#E5E7EB] flex items-center font-['Inter',_sans-serif]">
                 <span className="text-xs font-bold text-black font-['Inter',_sans-serif] uppercase tracking-wide">
                   {item.serviceTag}
-                </span>
-                <span className="text-[10px] font-['Inter',_sans-serif] font-semibold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
-                  {item.turnaround}
                 </span>
               </div>
 

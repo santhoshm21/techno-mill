@@ -136,11 +136,11 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-white border-b border-[#E5E7EB] shadow-sm font-sans">
       
       {/* MAIN HEADER BAR (White with TMT Gladius logo, Navigation, Search & CTA) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-2 sm:gap-3">
           
-          {/* Left: TMT Gladius Logo (strictly single-line, shifted more to the left) */}
-          <TMTLogo variant="dark" className="shrink-0 -translate-x-3 sm:-translate-x-6 lg:-translate-x-10 xl:-translate-x-14" />
+          {/* Left: TMT Gladius Logo (strictly single-line, aligned properly on mobile) */}
+          <TMTLogo variant="dark" className="shrink-0 translate-x-0 sm:-translate-x-4 lg:-translate-x-8 xl:-translate-x-12" />
 
           {/* Center: Navigation Links (Strictly Home, About, Products, Contact, Careers) */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-3 text-xs lg:text-sm font-semibold whitespace-nowrap shrink-0">
@@ -296,10 +296,10 @@ export default function Header() {
               )}
             </div>
 
-            {/* Yellow "Get a Quote →" Button */}
+            {/* Yellow "Get a Quote →" Button (Hidden on xs screens to prevent header blowout, available in mobile drawer) */}
             <button
               onClick={() => openQuoteModal()}
-              className="bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] font-bold text-xs px-4 py-2 rounded-md shadow-sm transition-all flex items-center gap-1.5 shrink-0 transform active:scale-95"
+              className="hidden sm:flex bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] font-bold text-xs px-3.5 py-2 rounded-md shadow-sm transition-all items-center gap-1.5 shrink-0 transform active:scale-95"
             >
               <span>Get a Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -372,6 +372,17 @@ export default function Header() {
             >
               Contact
             </Link>
+          </div>
+
+          {/* Mobile Dedicated "Get a Quote" Action Button */}
+          <div className="pt-2">
+            <button
+              onClick={() => { setMobileMenuOpen(false); openQuoteModal(); }}
+              className="w-full bg-[#F5B800] hover:bg-[#E0A800] text-[#1E2227] font-bold text-xs py-2.5 rounded-md shadow-sm flex items-center justify-center gap-2"
+            >
+              <span>Get a Quote</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       )}

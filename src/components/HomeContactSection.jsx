@@ -218,12 +218,12 @@ export default function HomeContactSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center gap-2 group cursor-pointer focus:outline-none"
+                    className="inline-flex items-center gap-2 group cursor-pointer focus:outline-none max-w-full"
                   >
-                    <span className="bg-[#111827] group-hover:bg-black text-white font-medium text-xs sm:text-sm px-7 py-3.5 rounded-full transition-all duration-200 shadow-xs flex items-center justify-center">
+                    <span className="bg-[#111827] group-hover:bg-black text-white font-medium text-xs sm:text-sm px-5 sm:px-7 py-3 sm:py-3.5 rounded-full transition-all duration-200 shadow-xs flex items-center justify-center">
                       {isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}
                     </span>
-                    <span className="w-11 h-11 rounded-full bg-[#111827] group-hover:bg-black text-white flex items-center justify-center transition-all duration-200 shadow-xs">
+                    <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#111827] group-hover:bg-black text-white flex items-center justify-center transition-all duration-200 shadow-xs shrink-0">
                       <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </span>
                   </button>
@@ -235,7 +235,7 @@ export default function HomeContactSection() {
 
           {/* Right Column: Tall Card with High-Res Visual & Floating Pill Badge */}
           <div className="lg:col-span-5 flex">
-            <div className="relative w-full h-full min-h-[420px] sm:min-h-[480px] lg:min-h-full rounded-3xl overflow-hidden shadow-sm border border-gray-100 group select-none">
+            <div className="relative w-full h-full min-h-[260px] sm:min-h-[420px] lg:min-h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-gray-100 group select-none">
               
               {/* Cutting Tool / Engineering Visual */}
               <img

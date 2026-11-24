@@ -126,9 +126,9 @@ export default function Products({ embedded = false }) {
           </h1>
 
           {/* Yellow Angled Breadcrumb / Category Badge */}
-          <div className="mt-4 inline-flex items-center justify-center">
-            <div className="relative inline-block bg-[#F5B800] text-[#1E2227] px-6 py-1.5 text-xs font-mono font-bold uppercase tracking-wider shadow-md transform -skew-x-12 border border-amber-400">
-              <span className="transform skew-x-12 inline-flex items-center gap-1.5 font-black">
+          <div className="mt-4 inline-flex items-center justify-center max-w-full">
+            <div className="relative inline-block bg-[#F5B800] text-[#1E2227] px-3 sm:px-6 py-1 sm:py-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider shadow-md transform-none sm:-skew-x-12 border border-amber-400 max-w-full">
+              <span className="transform-none sm:skew-x-12 inline-flex items-center justify-center gap-1.5 font-black flex-wrap">
                 {!embedded ? (
                   <>
                     <span>You are here :</span>

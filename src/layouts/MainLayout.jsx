@@ -32,10 +32,10 @@ function ScrollHandler() {
 export default function MainLayout() {
   return (
     <QuoteProvider>
-      <div className="min-h-screen flex flex-col bg-white text-[#1F2937] font-sans antialiased selection:bg-[#F5B800] selection:text-[#1E2227]">
+      <div className="min-h-screen flex flex-col bg-white text-[#1F2937] font-sans antialiased selection:bg-[#F5B800] selection:text-[#1E2227] w-full max-w-full overflow-x-hidden">
         <ScrollHandler />
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 w-full max-w-full overflow-x-hidden">
           <Outlet />
         </main>
         <Footer />

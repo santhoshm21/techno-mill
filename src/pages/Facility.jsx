@@ -52,9 +52,9 @@ export default function Facility({ embedded = false }) {
             </div>
 
             {/* Quick Stats Pill Strip */}
-            <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 sm:flex sm:items-center w-full sm:w-auto">
               {facilityData.stats.map((st, idx) => (
-                <div key={idx} className="bg-[#262B31] border border-gray-700 p-3 rounded text-center min-w-[120px]">
+                <div key={idx} className="bg-[#262B31] border border-gray-700 p-2.5 sm:p-3 rounded text-center min-w-0 sm:min-w-[120px]">
                   <div className="text-base sm:text-lg font-black text-[#F5B800] font-mono leading-tight">
                     {st.value}
                   </div>
@@ -74,7 +74,7 @@ export default function Facility({ embedded = false }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             
             {/* Left Column: Yellow Accent Block with 5 Core Highlights from Image 1 */}
-            <div className="lg:col-span-5 bg-[#F5B800] p-8 sm:p-10 flex flex-col justify-between text-[#1E2227] relative">
+            <div className="lg:col-span-5 bg-[#F5B800] p-5 sm:p-10 flex flex-col justify-between text-[#1E2227] relative">
               {/* Corner Fold Ribbon Motif */}
               <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none">
                 <div className="bg-[#E0A800] w-16 h-16 transform rotate-45 translate-x-8 -translate-y-8"></div>
@@ -121,7 +121,7 @@ export default function Facility({ embedded = false }) {
             </div>
 
             {/* Right Column: Key Machinery Feature Showcase (Cakrawala "Our News" Style) */}
-            <div className="lg:col-span-7 p-8 sm:p-10 bg-[#F8FAFC] flex flex-col justify-between">
+            <div className="lg:col-span-7 p-5 sm:p-10 bg-[#F8FAFC] flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-gray-200 mb-6">
                   <div>
