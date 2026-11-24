@@ -31,12 +31,12 @@ export default function About({ embedded = false }) {
     {
       name: 'Profile Projector 300H',
       role: 'Optical Metrology & Inspection',
-      image: '/images/facility/profile-projector.png'
+      image: '/images/products/tool-tip-geometries.png'
     },
     {
       name: 'Digital Precision Metrology',
       role: 'Sub-Micron Quality Testing',
-      image: '/images/facility/digital-micrometer.png'
+      image: '/images/gallery/hero-tool-geometries.png'
     }
   ];
 
@@ -49,7 +49,7 @@ export default function About({ embedded = false }) {
       <section className="relative w-full h-56 sm:h-64 lg:h-72 bg-[#141518] flex items-center justify-center overflow-hidden select-none">
         {/* Background Image with Dark Tint Overlay */}
         <img
-          src="/images/company/tmt-factory-building.jpg"
+          src="/images/about/tmt-tooling-banner.png"
           alt="Techno Mech Toolings Infrastructure"
           className="absolute inset-0 w-full h-full object-cover filter brightness-[0.38] contrast-110"
         />
@@ -158,7 +158,7 @@ export default function About({ embedded = false }) {
           {/* Overlapping Video / Action Card matching Template */}
           <div className="relative lg:absolute lg:right-0 lg:bottom-0 w-full sm:w-[82%] lg:w-[46%] mt-6 lg:mt-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-[#111827] aspect-[16/10] group">
             <img
-              src="/images/gallery/hero-drill-lineup.jpg"
+              src="/images/gallery/hero-cnc-machining.png"
               alt="Precision CNC Grinding Video Preview"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
             />

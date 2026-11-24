@@ -12,7 +12,7 @@ export default function HomeAccordionGallery() {
       title: 'Solid Carbide Drills',
       subtitle: 'Sub-Micron Precision',
       desc: 'High-feed 2-flute and 3-flute drills with custom split points and through-coolant channels for stainless steel and titanium.',
-      image: '/images/gallery/hero-drill-lineup.jpg',
+      image: '/images/hero-slider-drills.jpg',
       link: '/products',
       tag: 'DIN 6537 / 3xD – 30xD'
     },
@@ -21,7 +21,7 @@ export default function HomeAccordionGallery() {
       title: 'High-Performance End Mills',
       subtitle: 'Vibration-Damping',
       desc: 'Variable helix square, ball nose, and bull nose solid carbide end mills delivering mirror surface finishes and high metal removal rates.',
-      image: '/images/products/pure-spindle.jpg',
+      image: '/images/hero-slider-endmills.jpg',
       link: '/products',
       tag: '2 – 6 Flutes / Variable Pitch'
     },
@@ -30,7 +30,7 @@ export default function HomeAccordionGallery() {
       title: 'Burnishing Drills',
       subtitle: 'Ra < 0.2µm Finish',
       desc: 'Combined drilling and burnishing tools engineered to size and mirror-finish automotive bores in a single operation.',
-      image: '/images/gallery/hero-solid-carbide-tools.jpg',
+      image: '/images/hero-slider-reamers.jpg',
       link: '/products',
       tag: 'Mirror Bore Surface'
     },
@@ -39,7 +39,7 @@ export default function HomeAccordionGallery() {
       title: 'Machine Reamers',
       subtitle: 'IT6 / IT7 Tolerance',
       desc: 'Through-coolant, straight flute, and helical left/right hand carbide reamers engineered for high-precision bores.',
-      image: '/images/gallery/hero-saacke-tool-geometries.jpg',
+      image: '/images/scroll-stages/stage-4-geometry.jpg',
       link: '/products',
       tag: 'Sub-Micron Hole Sizing'
     },
@@ -48,7 +48,7 @@ export default function HomeAccordionGallery() {
       title: '5-Axis Tool Regrinding',
       subtitle: 'German SAACKE Precision',
       desc: 'Restore original OEM geometry, flute clearance angles, and edge preparation on drills and cutters with up to 60% savings.',
-      image: '/images/gallery/hero-saacke-grinder.jpg',
+      image: '/images/scroll-stages/stage-3-fluting.jpg',
       link: '/services',
       tag: 'OEM Geometry Restoration'
     },
@@ -57,7 +57,7 @@ export default function HomeAccordionGallery() {
       title: 'Thin-Film PVD Coatings',
       subtitle: 'AlTiN / TiN / AlCrN / DLC',
       desc: 'Advanced physical vapor deposition thin-film coatings providing thermal barriers up to 1,100°C and superior wear resistance.',
-      image: '/images/gallery/hero-cnc-machining.png',
+      image: '/images/scroll-stages/stage-5-coated.jpg',
       link: '/services',
       tag: 'Up to 3,400 HV Hardness'
     },
@@ -66,7 +66,7 @@ export default function HomeAccordionGallery() {
       title: 'Custom Form Tools',
       subtitle: 'Direct From Workpiece CAD',
       desc: 'Custom profiling tools and dovetail cutters ground directly to client blueprints on 5-axis CNC machines for automotive transmissions.',
-      image: '/images/gallery/hero-spindle-grinding.jpg',
+      image: '/images/scroll-stages/stage-2-shank.jpg',
       link: '/contact',
       tag: 'Custom Blueprint Profiles'
     },
@@ -75,7 +75,7 @@ export default function HomeAccordionGallery() {
       title: 'Special Multi-Step Tools',
       subtitle: 'Single-Pass Multi-Op',
       desc: 'Engineered multi-diameter step drills combining drilling, chamfering, and countersinking into one single cycle-time-reducing tool.',
-      image: '/images/gallery/hero-spindle-machining.jpg',
+      image: '/images/scroll-stages/stage-1-substrate.jpg',
       link: '/products',
       tag: 'Aerospace & Automotive'
     },
@@ -84,7 +84,7 @@ export default function HomeAccordionGallery() {
       title: 'Aerospace & Automotive Tooling',
       subtitle: 'High-Temp Alloys',
       desc: 'Dedicated cutting geometries engineered specifically for Inconel, hardened steels, and lightweight composites.',
-      image: '/images/products/drill-lineup-banner.jpg',
+      image: '/images/mission-drill-action.jpg',
       link: '/products',
       tag: 'Exotic Alloy Solutions'
     }
@@ -147,9 +147,6 @@ export default function HomeAccordionGallery() {
                   className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out ${
                     isHovered ? 'scale-105' : 'scale-100'
                   }`}
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/products/hero-solid-carbide-tools.jpg';
-                  }}
                 />
 
                 {/* Mobile Bottom Label (Visible on small screens for touch navigation) */}

@@ -118,7 +118,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
       line1: 'MIRROR FINISH',
       line2: 'BURNISH REAMER',
       description: 'Combines precision bore reaming and roller burnishing into one rapid cycle, consistently achieving IT6 automotive bore tolerances with mirror Ra < 0.2µm surface finishes.',
-      image: '/images/products/pure-spindle.jpg',
+      image: '/images/carbide-mountain-base.png',
       badge: 'Ra < 0.2µm MIRROR BORE',
       link: '/products',
       quoteSubject: 'Mirror-Finish Burnishing Reamer',
@@ -168,9 +168,6 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
           src={slide.image}
           alt={`${slide.line1} ${slide.line2}`}
           className="w-full h-full object-cover object-center lg:object-right transition-all duration-700 ease-out filter contrast-105 brightness-95"
-          onError={(e) => {
-            e.currentTarget.src = '/images/gallery/hero-drill-lineup.jpg';
-          }}
         />
 
         {/* Seamless Left Gradient Fade (Smooth transition from dark background into the photo) */}

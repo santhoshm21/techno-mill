@@ -87,9 +87,6 @@ export default function HomeFeaturedProducts() {
                   src={product.image}
                   alt={product.name}
                   className="max-h-full max-w-full object-contain filter drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/products/endmill-square-1.png';
-                  }}
                 />
               </Link>
 

@@ -239,13 +239,9 @@ export default function HomeContactSection() {
               
               {/* Cutting Tool / Engineering Visual */}
               <img
-                src="/images/gallery/hero-drill-lineup.jpg"
+                src="/images/contact-tool-shelf.png"
                 alt="Techno Mech Precision Tooling"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = '/images/contact-tool-shelf.png';
-                }}
               />
 
               {/* Gentle gradient overlay for depth */}
