@@ -239,7 +239,7 @@ export default function HomeContactSection() {
               
               {/* Cutting Tool / Engineering Visual */}
               <img
-                src="/images/contact-tool-shelf.png"
+                src="/images/gallery/hero-drill-lineup.jpg"
                 alt="Techno Mech Precision Tooling"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
