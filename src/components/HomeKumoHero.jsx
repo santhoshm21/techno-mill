@@ -155,7 +155,7 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
 
   return (
     <div
-      className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[660px] xl:min-h-[700px] bg-[#141518] text-white overflow-hidden flex flex-col justify-center select-none"
+      className="relative w-full min-h-[540px] sm:min-h-[580px] lg:min-h-[660px] xl:min-h-[700px] bg-[#141518] text-white overflow-hidden flex flex-col justify-end sm:justify-center select-none"
     >
       {/* =========================================================================
           FULL-SCREEN PRODUCT IMAGE LAYER (No Box, Bleeds Across Entire Right Canvas)
@@ -179,15 +179,15 @@ export default function HomeKumoHero({ onOpenVideoModal }) {
         {/* Top Fade */}
         <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#141518] via-[#141518]/50 to-transparent pointer-events-none z-10" />
 
-        {/* Bottom Fade */}
-        <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#141518] via-[#141518]/70 to-transparent pointer-events-none z-10" />
+        {/* Bottom Fade (Enhanced height on mobile for bottom-aligned text clarity) */}
+        <div className="absolute inset-x-0 bottom-0 h-96 sm:h-36 bg-gradient-to-t from-[#141518] via-[#141518]/90 sm:via-[#141518]/70 to-transparent pointer-events-none z-10" />
 
       </div>
 
       {/* =========================================================================
-          HERO TEXT CONTENT (Left Column, Cleanly Overlaying the Dark Fade)
+          HERO TEXT CONTENT (Positioned towards the bottom on mobile, centered on desktop)
           ========================================================================= */}
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20 flex items-center pointer-events-none">
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 pt-28 pb-8 sm:py-16 lg:py-20 flex items-end sm:items-center pointer-events-none">
         
         <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6 pointer-events-auto">
           {/* Massive Heading (2 Lines - Matching Reference) */}
