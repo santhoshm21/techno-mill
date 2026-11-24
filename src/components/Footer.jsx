@@ -110,11 +110,6 @@ export default function Footer() {
                     Blog details
                   </a>
                 </li>
-                <li>
-                  <Link to="/careers" className="hover:text-[#F5B800] transition-colors duration-200">
-                    404
-                  </Link>
-                </li>
               </ul>
             </div>
 
